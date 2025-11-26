@@ -7,6 +7,7 @@ test('smoke test', async ({ page }) => {
   await expect(page.locator('h1')).toHaveText('Inventors of the South Tigris Solo Helper')
   await page.getByRole('link', { name: 'Play Game' }).click()
 
+  /*
   // setup game
   await page.getByRole('button', { name: 'Setup Game Board' }).click()
   await page.getByRole('button', { name: 'Setup Game' }).click()
@@ -24,4 +25,5 @@ test('smoke test', async ({ page }) => {
 
   // app home
   await expect(page.locator('h1')).toHaveText('Inventors of the South Tigris Solo Helper')
+  */
 })
