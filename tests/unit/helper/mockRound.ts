@@ -1,0 +1,24 @@
+import { Round, RoundTurn } from '@/store/state'
+
+export default function mockRound(params?: MockRoundParams) : Round {
+  const round : Round = {
+    round: params?.round ?? 1,
+    turns: params?.turns ?? []
+  }
+  // renumber turnOrderIndex
+  let previousTurn = 0
+  let turnOrderIndex = 0
+  for (const turn of round.turns) {
+    if (turn.turn != previousTurn) {
+      turnOrderIndex = 0
+      previousTurn = turn.turn
+    }
+    turn.turnOrderIndex = turnOrderIndex++
+  }
+  return round
+}
+
+export interface MockRoundParams {
+  round? : number
+  turns? : RoundTurn[]
+}

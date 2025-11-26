@@ -1,0 +1,42 @@
+{
+  "gameTitle": "Inventors of the South Tigris",
+  "home": {
+    "title": "Inventors of the South Tigris Solo Helper",
+    "play1": "Play a <a href='https://boardgamegeek.com/boardgame/378387/inventors-of-the-south-tigris' target='_blank' rel='noopener'><b>Inventors of the South Tigris</b></a> solo game against a rival research institution.",
+    "play2": "This application replaces the rival action cards and player board and guides you through the game and solo ruleset. It supports all difficult levels.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Setup",
+    "difficultyLevel": {
+      "title": "Difficulty Level",
+      "easy": "Easy",
+      "hard": "Hard"
+    }
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Play Game",
+    "startGame": "Start Game",
+    "next": "Next",
+    "nextRound": "Next Round",
+    "abortGame": "Abort Game",
+    "abortGameConfirm": "Aborting the running game - are you sure?",
+    "endGame": "End Game",
+    "endGameConfirm": "End this game and return to home screen - are you sure?",
+    "cancel": "Cancel",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "close": "Close",
+    "ok": "OK"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Refresh Application",
+    "notice": "The application was updated - do you want to refresh to use the latest version?"
+  }
+}
