@@ -60,4 +60,9 @@ export interface BotPersistence {
 export interface CardDeckPersistence {
   pile: number[]
   discard: number[]
+  reserve: number[]
+}
+export interface DummyCardDeckPersistence {
+  pile: number[]
+  discard: number[]
 }

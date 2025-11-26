@@ -3,18 +3,22 @@ import Card from './Card'
 import Cards from './Cards'
 import { CardDeckPersistence } from '@/store/state'
 import { ref } from 'vue'
+import DifficultyLevel from './enum/DifficultyLevel'
+import CardType from './enum/CardType'
 
 /**
- * Manages the solo card deck with action cards and advanced reserve cards.
+ * Manages the scheme cards.
  */
 export default class CardDeck {
 
   private readonly _pile
   private readonly _discard
+  private readonly _reserve
 
-  private constructor(pile : Card[], discard : Card[]) {
+  private constructor(pile : Card[], discard : Card[], reserve : Card[]) {
     this._pile = ref(pile)
     this._discard = ref(discard)
+    this._reserve = ref(reserve)
   }
 
   public get currentCard() : Card|undefined {
@@ -27,6 +31,10 @@ export default class CardDeck {
 
   public get discard() : readonly Card[] {
     return this._discard.value
+  }
+
+  public get reserve() : readonly Card[] {
+    return this._reserve.value
   }
 
   public get pileEmpty() : boolean {
@@ -48,11 +56,14 @@ export default class CardDeck {
   }
 
   /**
-   * Reshuffle deck for next round.
+   * Add 1 dice card from the reserve to the pile an shuffles it.
    */
-  public prepareForNextRound() {
-    this._pile.value = shuffle([...this._pile.value, ...this._discard.value])
-    this._discard.value = []
+  public addReserveCard() : undefined {
+    const card = this._reserve.value.shift()
+    if (!card) {
+      return
+    }
+    this._pile.value = shuffle([...this._pile.value, card])
   }
 
   /**
@@ -61,16 +72,50 @@ export default class CardDeck {
   public toPersistence() : CardDeckPersistence {
     return {
       pile: this._pile.value.map(card => card.id),
-      discard: this._discard.value.map(card => card.id)
+      discard: this._discard.value.map(card => card.id),
+      reserve: this._reserve.value.map(card => card.id)
     }
   }
 
   /**
    * Creates a shuffled new card deck.
+   * @param round Round
+   * @param difficultyLevel Difficulty level
+   * @returns New card deck
    */
-  public static new() : CardDeck {
-    const cards = shuffle(Cards.getAll())
-    return new CardDeck(cards, [])
+  public static new(round : number, difficultyLevel: DifficultyLevel) : CardDeck {
+    const diceCardAdd = [DifficultyLevel.LEVEL_2, DifficultyLevel.LEVEL_3].includes(difficultyLevel) ? 1 : 0
+    const workerCardAdd = [DifficultyLevel.LEVEL_3].includes(difficultyLevel) ? 1 : 0
+    let diceCardCount
+    let workerCardCount
+    switch (round) {
+      case 1:
+        diceCardCount = 4 + diceCardAdd
+        workerCardCount = 2 + workerCardAdd
+        break
+      case 2:
+        diceCardCount = 5 + diceCardAdd
+        workerCardCount = 2 + workerCardAdd
+        break
+      case 3:
+        diceCardCount = 5 + diceCardAdd
+        workerCardCount = 3 + workerCardAdd
+        break
+      case 4:
+        diceCardCount = 6 + diceCardAdd
+        workerCardCount = 3 + workerCardAdd
+        break
+      default:
+        throw new Error(`Invalid round number: ${round}`)
+    }
+    const allDiceCards = shuffle(Cards.getAll(CardType.DICE))
+    const allWorkerCards = shuffle(Cards.getAll(CardType.WORKER))
+    const cards : Card[] = [
+      ...allDiceCards.slice(0, diceCardCount),
+      ...allWorkerCards.slice(0, workerCardCount)
+    ]
+    const remainingDiceCards = allDiceCards.slice(diceCardCount)
+    return new CardDeck(cards, [], remainingDiceCards)
   }
 
   /**
@@ -79,7 +124,8 @@ export default class CardDeck {
   public static fromPersistence(persistence : CardDeckPersistence) : CardDeck {
     return new CardDeck(
       persistence.pile.map(Cards.get),
-      persistence.discard.map(Cards.get)
+      persistence.discard.map(Cards.get),
+      persistence.reserve.map(Cards.get)
     )
   }
 

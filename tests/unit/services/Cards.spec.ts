@@ -1,4 +1,5 @@
 import Cards from '@/services/Cards'
+import CardType from '@/services/enum/CardType'
 import { expect } from 'chai'
 
 describe('services/Cards', () => {
@@ -10,6 +11,7 @@ describe('services/Cards', () => {
   })
 
   it('getAll', () => {
-    expect(Cards.getAll().length).to.eq(1)
+    expect(Cards.getAll(CardType.DICE).length).to.eq(9)
+    expect(Cards.getAll(CardType.WORKER).length).to.eq(6)
   })
 })
