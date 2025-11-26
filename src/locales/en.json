@@ -12,6 +12,10 @@
       "title": "Difficulty Level",
       "easy": "Easy",
       "hard": "Hard"
+    },
+    "expansions": {
+      "title": "Expansions",
+      "era-of-experts": "Era of Experts"
     }
   },
   "notfound": {
