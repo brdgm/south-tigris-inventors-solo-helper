@@ -10,27 +10,27 @@ import Guild from './enum/Guild'
 const cards : DummyCard[] = [
   {
     id: 1,
-    influencePlace: InfluencePlace.BLUE_2_YELLOW_1,
+    influencePlace: InfluencePlace.BLUE_2_ORANGE_1,
     shipMovement: 3,
     increaseCostWorkerSpace: WorkerSpace.HIRE_CAMEL,
     increaseCostGuild: Guild.BLUE,
-    blockGuildWorkerSpaces: [WorkerSpace.GUILD_BLACK_INFLUENCE_2, WorkerSpace.GUILD_YELLOW_INFLUENCE_1_CRAFTSPERSON]
+    blockGuildWorkerSpaces: [WorkerSpace.GUILD_BLACK_INFLUENCE_2, WorkerSpace.GUILD_ORANGE_INFLUENCE_1_CRAFTSPERSON]
   },
   {
     id: 2,
-    influencePlace: InfluencePlace.YELLOW_2_BLACK_1,
+    influencePlace: InfluencePlace.ORANGE_2_BLACK_1,
     shipMovement: 3,
     increaseCostWorkerSpace: WorkerSpace.ADVANCE_SHIP,
-    increaseCostGuild: Guild.YELLOW,
+    increaseCostGuild: Guild.ORANGE,
     blockGuildWorkerSpaces: [WorkerSpace.GUILD_BLUE_INFLUENCE_2, WorkerSpace.GUILD_BLACK_INFLUENCE_1_DISCARD_DEVICE_CARD]
   },
   {
     id: 3,
-    influencePlace: InfluencePlace.BLUE_1_YELLOW_2,
+    influencePlace: InfluencePlace.BLUE_1_ORANGE_2,
     shipMovement: 4,
     increaseCostWorkerSpace: WorkerSpace.REFRESH_CRAFTSPEOPLE,
     increaseCostGuild: Guild.BLUE,
-    blockGuildWorkerSpaces: [WorkerSpace.GUILD_YELLOW_INFLUENCE_2, WorkerSpace.GUILD_BLACK_INFLUENCE_1_DISCARD_DEVICE_CARD]
+    blockGuildWorkerSpaces: [WorkerSpace.GUILD_ORANGE_INFLUENCE_2, WorkerSpace.GUILD_BLACK_INFLUENCE_1_DISCARD_DEVICE_CARD]
   },
   {
     id: 4,
@@ -38,14 +38,14 @@ const cards : DummyCard[] = [
     shipMovement: 4,
     increaseCostWorkerSpace: WorkerSpace.ADVANCE_SHIP,
     increaseCostGuild: Guild.BLACK,
-    blockGuildWorkerSpaces: [WorkerSpace.GUILD_BLUE_INFLUENCE_2, WorkerSpace.GUILD_YELLOW_INFLUENCE_1_CRAFTSPERSON]
+    blockGuildWorkerSpaces: [WorkerSpace.GUILD_BLUE_INFLUENCE_2, WorkerSpace.GUILD_ORANGE_INFLUENCE_1_CRAFTSPERSON]
   },
   {
     id: 5,
-    influencePlace: InfluencePlace.YELLOW_1_BLACK_2,
+    influencePlace: InfluencePlace.ORANGE_1_BLACK_2,
     shipMovement: 4,
     increaseCostWorkerSpace: WorkerSpace.HIRE_CAMEL,
-    increaseCostGuild: Guild.YELLOW,
+    increaseCostGuild: Guild.ORANGE,
     blockGuildWorkerSpaces: [WorkerSpace.GUILD_BLACK_INFLUENCE_2, WorkerSpace.GUILD_BLUE_INFLUENCE_1_SILVER_1]
   },
   {
@@ -54,7 +54,7 @@ const cards : DummyCard[] = [
     shipMovement: 5,
     increaseCostWorkerSpace: WorkerSpace.REFRESH_CRAFTSPEOPLE,
     increaseCostGuild: Guild.BLACK,
-    blockGuildWorkerSpaces: [WorkerSpace.GUILD_YELLOW_INFLUENCE_2, WorkerSpace.GUILD_BLUE_INFLUENCE_1_SILVER_1]
+    blockGuildWorkerSpaces: [WorkerSpace.GUILD_ORANGE_INFLUENCE_2, WorkerSpace.GUILD_BLUE_INFLUENCE_1_SILVER_1]
   },
 ]
 

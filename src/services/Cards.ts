@@ -11,7 +11,7 @@ const cards : Card[] = [
   {
     id: 1,
     cardType: CardType.DICE,
-    guildPriorities: [Guild.BLUE, Guild.YELLOW, Guild.BLACK],
+    guildPriorities: [Guild.BLUE, Guild.ORANGE, Guild.BLACK],
     rowPriorities: [1, 3, 2],
     actions: [
       Action.TEST,
@@ -23,7 +23,7 @@ const cards : Card[] = [
   {
     id: 2,
     cardType: CardType.DICE,
-    guildPriorities: [Guild.BLUE, Guild.YELLOW, Guild.BLACK],
+    guildPriorities: [Guild.BLUE, Guild.ORANGE, Guild.BLACK],
     rowPriorities: [2, 1, 3],
     actions: [
       Action.TEST,
@@ -36,7 +36,7 @@ const cards : Card[] = [
   {
     id: 3,
     cardType: CardType.DICE,
-    guildPriorities: [Guild.BLUE, Guild.YELLOW, Guild.BLACK],
+    guildPriorities: [Guild.BLUE, Guild.ORANGE, Guild.BLACK],
     rowPriorities: [2, 3, 1],
     actions: [
       Action.INVENT_SILVER_1,
@@ -49,7 +49,7 @@ const cards : Card[] = [
   {
     id: 4,
     cardType: CardType.DICE,
-    guildPriorities: [Guild.BLUE, Guild.YELLOW, Guild.BLACK],
+    guildPriorities: [Guild.BLUE, Guild.ORANGE, Guild.BLACK],
     rowPriorities: [3, 2, 1],
     actions: [
       Action.BUILD_PAY_SILVER_3,
@@ -66,7 +66,7 @@ const cards : Card[] = [
     rowPriorities: [1, 2, 3],
     actions: [
       Action.PUBLISH_PAY_SILVER_3,
-      Action.INFLUENCE_YELLOW_1_SILVER_1
+      Action.INFLUENCE_ORANGE_1_SILVER_1
     ],
     tentPosition: 4,
     dummyPlayerTentPosition: 3
@@ -138,7 +138,7 @@ const cards : Card[] = [
     guildPriorities: [],
     rowPriorities: [],
     actions: [
-      Action.RESEARCH_LOOSE_INFLUENCE_YELLOW_2,
+      Action.RESEARCH_LOOSE_INFLUENCE_ORANGE_2,
       Action.SILVER_3
     ],
     tentPosition: 2,
@@ -147,7 +147,7 @@ const cards : Card[] = [
   {
     id: 12,
     cardType: CardType.WORKER,
-    guildPriorities: [Guild.BLUE, Guild.YELLOW, Guild.BLACK],
+    guildPriorities: [Guild.BLUE, Guild.ORANGE, Guild.BLACK],
     rowPriorities: [3, 1, 2],
     actions: [
       Action.RESEARCH_LOOSE_INFLUENCE_BLACK_2,
@@ -176,7 +176,7 @@ const cards : Card[] = [
     rowPriorities: [2, 1, 3],
     actions: [
       Action.RESEARCH_LOOSE_INFLUENCE_EACH_1,
-      Action.INFLUENCE_BLUE_1_YELLOW_1_SILVER_1
+      Action.INFLUENCE_BLUE_1_ORANGE_1_SILVER_1
     ],
     tentPosition: 4,
     dummyPlayerTentPosition: 2
@@ -188,7 +188,7 @@ const cards : Card[] = [
     rowPriorities: [3, 2, 1],
     actions: [
       Action.ADVANCE_SHIP_LOOSE_INFLUENCE_EACH_1,
-      Action.INFLUENCE_YELLOW_1_BLACK_1_SILVER_1
+      Action.INFLUENCE_ORANGE_1_BLACK_1_SILVER_1
     ],
     tentPosition: 5,
     dummyPlayerTentPosition: 2

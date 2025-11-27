@@ -3,7 +3,7 @@
  */
 enum Guild {
   BLUE = 'blue',
-  YELLOW = 'yellow',
+  ORANGE = 'orange',
   BLACK = 'black'
 }
 export default Guild
