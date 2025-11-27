@@ -6,7 +6,7 @@
       <label for="difficultyLevel" class="form-label">{{t('setup.difficultyLevel.easy')}}</label>
     </div>
     <div class="col-6 col-sm-8 col-md-5">
-      <input type="range" class="form-range" min="1" max="5" id="difficultyLevel"
+      <input type="range" class="form-range" min="1" max="4" id="difficultyLevel"
           :value="difficultyLevel" @input="updateDifficultyLevel($event)">
     </div>
     <div class="col-3 col-sm-2 col-md-1">
@@ -16,7 +16,12 @@
   <div class="row">
     <div class="col-6 offset-3 col-sm-8 offset-sm-2 col-md-5 offset-md-1">
       <i>
-        {{t(`difficultyLevel.${difficultyLevel}`)}}
+        <span v-html="t(`difficultyLevel.${difficultyLevel}`)"></span>
+        <ul>
+          <li v-if="difficultyLevel >= 2" v-html="t('setup.difficultyLevel.level2up')"></li>
+          <li v-if="difficultyLevel >= 3" v-html="t('setup.difficultyLevel.level3up')"></li>
+          <li v-if="difficultyLevel >= 4" v-html="t('setup.difficultyLevel.level4up')"></li>
+        </ul>
       </i>
     </div>
   </div>

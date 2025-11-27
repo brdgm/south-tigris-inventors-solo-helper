@@ -8,15 +8,32 @@
   },
   "setup": {
     "title": "Setup",
+    "eraOfExpertsRoundCountWarning": "When using <b>Era of Experts</b> expansion, you should play the shorter 3 rounds version of the game.",
     "difficultyLevel": {
       "title": "Difficulty Level",
       "easy": "Easy",
-      "hard": "Hard"
+      "hard": "Hard",
+      "level2up": "3 additional Silver and 1 more of each influence during Setup",
+      "level3up": "1 more Dice Scheme card each Round",
+      "level4up": "1 more Worker Scheme card each Round"
+    },
+    "roundCountSelection": {
+      "title": "Number of Rounds"
     },
     "expansions": {
       "title": "Expansions",
       "era-of-experts": "Era of Experts"
     }
+  },
+  "difficultyLevel": {
+    "1": "Level 1",
+    "2": "Level 2",
+    "3": "Level 3",
+    "4": "Level 4"
+  },
+  "roundCount": {
+    "4": "Standard (4 Rounds)",
+    "3": "Shorter (3 Rounds)"
   },
   "notfound": {
     "title": "Not Found"

@@ -3,6 +3,7 @@ import { name } from '@/../package.json'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Expansion from '@/services/enum/Expansion'
 import toggleArrayItem from '@brdgm/brdgm-commons/src/util/array/toggleArrayItem'
+import RoundCount from '@/services/enum/RoundCount'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -11,6 +12,7 @@ export const useStateStore = defineStore(`${name}.state`, {
       baseFontSize: 1,
       setup: {
         difficultyLevel: DifficultyLevel.LEVEL_1,
+        roundCount: RoundCount.STANDARD_4_ROUNDS,
         expansions: []
       },
       rounds: []
@@ -47,6 +49,7 @@ export interface State {
 }
 export interface Setup {
   difficultyLevel: DifficultyLevel
+  roundCount: RoundCount
   expansions: Expansion[]
   debugMode?: boolean
 }

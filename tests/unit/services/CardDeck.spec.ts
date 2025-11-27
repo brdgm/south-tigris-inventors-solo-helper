@@ -19,8 +19,8 @@ describe('services/CardDeck', () => {
     expect(persistence.reserve.length, 'reserve').to.eq(5)
   })
 
-  it('new-round-1-level-2', () => {
-    const deck = CardDeck.new(1, DifficultyLevel.LEVEL_2)
+  it('new-round-1-level-3', () => {
+    const deck = CardDeck.new(1, DifficultyLevel.LEVEL_3)
 
     expect(deck.currentCard, 'actionCard').to.undefined
     expect(deck.pile.filter(card => card.cardType==CardType.DICE) .length, 'pile-dice').to.eq(5)
@@ -29,8 +29,8 @@ describe('services/CardDeck', () => {
     expect(deck.reserve.length, 'reserve').to.eq(4)
   })
 
-  it('new-round-1-level-3', () => {
-    const deck = CardDeck.new(1, DifficultyLevel.LEVEL_3)
+  it('new-round-1-level-4', () => {
+    const deck = CardDeck.new(1, DifficultyLevel.LEVEL_4)
 
     expect(deck.currentCard, 'actionCard').to.undefined
     expect(deck.pile.filter(card => card.cardType==CardType.DICE) .length, 'pile-dice').to.eq(5)
@@ -39,8 +39,8 @@ describe('services/CardDeck', () => {
     expect(deck.reserve.length, 'reserve').to.eq(4)
   })
 
-  it('new-round-2-level-1', () => {
-    const deck = CardDeck.new(2, DifficultyLevel.LEVEL_1)
+  it('new-round-2-level-2', () => {
+    const deck = CardDeck.new(2, DifficultyLevel.LEVEL_2)
 
     expect(deck.currentCard, 'actionCard').to.undefined
     expect(deck.pile.filter(card => card.cardType==CardType.DICE) .length, 'pile-dice').to.eq(5)
@@ -59,8 +59,8 @@ describe('services/CardDeck', () => {
     expect(deck.reserve.length, 'reserve').to.eq(4)
   })
 
-  it('new-round-4-level-1', () => {
-    const deck = CardDeck.new(4, DifficultyLevel.LEVEL_1)
+  it('new-round-4-level-2', () => {
+    const deck = CardDeck.new(4, DifficultyLevel.LEVEL_2)
 
     expect(deck.currentCard, 'actionCard').to.undefined
     expect(deck.pile.filter(card => card.cardType==CardType.DICE) .length, 'pile-dice').to.eq(6)
@@ -69,8 +69,8 @@ describe('services/CardDeck', () => {
     expect(deck.reserve.length, 'reserve').to.eq(3)
   })
 
-  it('new-round-4-level-3', () => {
-    const deck = CardDeck.new(4, DifficultyLevel.LEVEL_3)
+  it('new-round-4-level-4', () => {
+    const deck = CardDeck.new(4, DifficultyLevel.LEVEL_4)
 
     expect(deck.currentCard, 'actionCard').to.undefined
     expect(deck.pile.filter(card => card.cardType==CardType.DICE) .length, 'pile-dice').to.eq(7)
