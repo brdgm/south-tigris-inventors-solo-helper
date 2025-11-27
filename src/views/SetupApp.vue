@@ -12,7 +12,7 @@
   </div>
 
   <button class="btn btn-primary btn-lg mt-4" @click="setupGame()">
-    {{t('setupGameBoard.title')}}
+    {{t('setupBot.title')}}
   </button>
 
   <FooterButtons endGameButtonType="abortGame"/>
@@ -54,7 +54,7 @@ export default defineComponent({
   methods: {
     setupGame() : void {
       this.state.resetGame()
-      this.router.push('/setupGameBoard')
+      this.router.push('/setupBot')
     }
   }
 })

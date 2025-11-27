@@ -25,6 +25,9 @@
       "era-of-experts": "Era of Experts"
     }
   },
+  "setupBot": {
+    "title": "Setup AI"
+  },
   "difficultyLevel": {
     "1": "Level 1",
     "2": "Level 2",

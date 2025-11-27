@@ -19,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     component: SetupApp
   },
   {
+    path: '/setupBot',
+    name: 'SetupBot',
+    component: SetupBot
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'NotFound',
     component: NotFound
