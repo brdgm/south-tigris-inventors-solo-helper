@@ -1,8 +1,13 @@
+import CardDeck from '@/services/CardDeck'
+import Player from '@/services/enum/Player'
 import { Round, RoundTurn } from '@/store/state'
+import mockCardDeck from './mockCardDeck'
 
 export default function mockRound(params?: MockRoundParams) : Round {
   const round : Round = {
     round: params?.round ?? 1,
+    startPlayer: params?.startPlayer ?? Player.PLAYER,
+    initialCardDeck: params?.initialCardDeck?.toPersistence() ?? mockCardDeck().toPersistence(),
     turns: params?.turns ?? []
   }
   // renumber turnOrderIndex
@@ -21,4 +26,6 @@ export default function mockRound(params?: MockRoundParams) : Round {
 export interface MockRoundParams {
   round? : number
   turns? : RoundTurn[]
+  startPlayer? : Player,
+  initialCardDeck? : CardDeck
 }

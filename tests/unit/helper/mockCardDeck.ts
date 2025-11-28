@@ -3,7 +3,8 @@ import CardDeck from '@/services/CardDeck'
 export default function mockCardDeck(params?: MockCardDeckParams) : CardDeck {  
   const cardDeck = CardDeck.fromPersistence({
     pile: params?.pile ?? [],
-    discard: params?.discard ?? []
+    discard: params?.discard ?? [],
+    reserve: params?.reserve ?? []
   })
   return cardDeck
 }
@@ -11,4 +12,5 @@ export default function mockCardDeck(params?: MockCardDeckParams) : CardDeck {
 export interface MockCardDeckParams {
   pile?: number[]
   discard?: number[]
+  reserve?: number[]
 }

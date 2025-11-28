@@ -38,6 +38,7 @@ import getDifficultyLevelSettings, { DifficultyLevelSettings } from '@/util/getD
 import RoundCount from '@/services/enum/RoundCount'
 import DummyCardDeck from '@/services/DummyCardDeck'
 import CardDeck from '@/services/CardDeck'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'SetupBot',
@@ -67,9 +68,10 @@ export default defineComponent({
       this.state.storeRound({
         round: firstRound,
         turns: [],
+        startPlayer: Player.PLAYER,
         initialCardDeck: CardDeck.new(firstRound, this.state.setup.difficultyLevel).toPersistence()
       })
-      this.router.push(`/round/${firstRound}/turn/1/player`)
+      this.router.push(`/round/${firstRound}/start`)
     }
   }
 })

@@ -60,6 +60,7 @@ export interface Setup {
 export interface Round {
   round: number
   turns: RoundTurn[]
+  startPlayer: Player
   initialCardDeck: CardDeckPersistence
 }
 export interface RoundTurn {
