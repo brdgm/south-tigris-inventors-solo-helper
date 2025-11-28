@@ -3,7 +3,7 @@ import getTurnOrder, { MAX_TURN } from '@/util/getTurnOrder'
 import Player from './enum/Player'
 
 /**
- * Calculate routes for next/back respecting "passed" state of players/bots.
+ * Calculate routes for next/back respecting "placedTent" state of players/bots.
  */
 export default class RouteCalculator {
 
