@@ -22,7 +22,6 @@ export const useStateStore = defineStore(`${name}.state`, {
   actions: {
     resetGame() {
       this.rounds = []
-      this.setup.initialDummyCardDeck = undefined
     },
     setupToggleExpansion(expansion: Expansion) : void {
       toggleArrayItem(this.setup.expansions, expansion)
@@ -53,7 +52,6 @@ export interface Setup {
   difficultyLevel: DifficultyLevel
   roundCount: RoundCount
   expansions: Expansion[]
-  initialDummyCardDeck?: DummyCardDeckPersistence
   debugMode?: boolean
 }
 
@@ -62,6 +60,7 @@ export interface Round {
   turns: RoundTurn[]
   startPlayer: Player
   initialCardDeck: CardDeckPersistence
+  dummyCardDeck: DummyCardDeckPersistence
 }
 export interface RoundTurn {
   round: number
@@ -73,7 +72,6 @@ export interface RoundTurn {
 }
 export interface BotPersistence {
   cardDeck: CardDeckPersistence
-  dummyCardDeck: DummyCardDeckPersistence
   botResources: BotResources
 }
 export interface CardDeckPersistence {

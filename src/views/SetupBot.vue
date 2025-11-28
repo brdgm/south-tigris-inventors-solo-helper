@@ -63,13 +63,13 @@ export default defineComponent({
   methods: {
     startGame() : void {
       this.state.resetGame()
-      this.state.setup.initialDummyCardDeck = DummyCardDeck.new().toPersistence()
       const firstRound = this.state.setup.roundCount === RoundCount.SHORT_3_ROUNDS ? 2 : 1
       this.state.storeRound({
         round: firstRound,
         turns: [],
         startPlayer: Player.PLAYER,
-        initialCardDeck: CardDeck.new(firstRound, this.state.setup.difficultyLevel).toPersistence()
+        initialCardDeck: CardDeck.new(firstRound, this.state.setup.difficultyLevel).toPersistence(),
+        dummyCardDeck: DummyCardDeck.new().toPersistence()
       })
       this.router.push(`/round/${firstRound}/start`)
     }

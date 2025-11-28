@@ -52,7 +52,12 @@ export default defineComponent({
   },
   methods: {
     next() : void {
-      this.router.push(`/round/${this.round + 1}/start`)
+      if (this.round == 4) {
+        this.router.push('/gameEnd')
+      }
+      else {
+        this.router.push(`/round/${this.round + 1}/start`)
+      }
     }
   }
 })
