@@ -17,7 +17,7 @@
     <div class="col-6 offset-3 col-sm-8 offset-sm-2 col-md-5 offset-md-1">
       <i>
         <span v-html="t(`difficultyLevel.${difficultyLevel}`)"></span>
-        <ul>
+        <ul class="small">
           <li v-if="difficultyLevel >= 2" v-html="t('setup.difficultyLevel.level2up')"></li>
           <li v-if="difficultyLevel >= 3" v-html="t('setup.difficultyLevel.level3up')"></li>
           <li v-if="difficultyLevel >= 4" v-html="t('setup.difficultyLevel.level4up')"></li>

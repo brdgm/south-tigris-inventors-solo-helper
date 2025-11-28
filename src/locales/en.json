@@ -9,7 +9,8 @@
   },
   "setup": {
     "title": "Setup",
-    "eraOfExpertsRoundCountWarning": "When using <b>Era of Experts</b> expansion, you should play the shorter 3 rounds version of the game.",
+    "eraOfExpertsDifficultyLevelWarning": "When using <b>Era of Experts</b> expansion, you should play on <b>Difficulty Level 4</b>.",
+    "eraOfExpertsRoundCountWarning": "When using <b>Era of Experts</b> expansion, you should play the shorter <b>3 rounds</b> version of the game.",
     "difficultyLevel": {
       "title": "Difficulty Level",
       "easy": "Easy",
@@ -27,7 +28,20 @@
     }
   },
   "setupBot": {
-    "title": "Setup AI"
+    "title": "Setup AI",
+    "instructions": {
+      "intro": "Set up Inventors as you would for a {roundCount}-Round 2-player game, with a few changes. The Dummy Player is managed by the application. Do not follow the player setup on pages 6-7 for your opponent. Instead, assign them a player colour, giving them only the following items:",
+      "workers": "Place their 3 Workers in their player area.",
+      "influence": "Place <b>{count} of their Influence into each Guild</b>. Place the rest of their Influence in a Supply nearby.",
+      "tents4Rounds": "Place their 4 Tents nearby, and their Ship on the left-most River space of the Main Board.",
+      "tents3RoundsTent1": "Place an opponent Tent on the first space of the centre Tent Area, gaining them <b>1 additional Black Influence</b> immediately.",
+      "tents3Rounds": "Place their remaining 3 Tents nearby, and their Ship on the left-most River space of the Main Board.",
+      "publishedDevice3Rounds": "Place a Published Device into play with a random Device Card and Neutral Invention Tile. Place your opponent’s Influence to indicate them as the Builder and Publisher.",
+      "shuffleInventionsTiles": "Shuffle their Invention Tiles and place them in a facedown Draw Pile.",
+      "reveal3DeviceBoards": "Only reveal <b>3 Device Boards</b> in the first column. For the solo game, there may <b>never be more than 3 Device Boards in each column</b>.",
+      "firstPlayerMaker": "Give yourself the First Player Marker.",
+      "noSchemeCards": "The AI does not need the scheme cards - the card deck and the AI silver is managed by this application."
+    }
   },
   "difficultyLevel": {
     "1": "Level 1",
