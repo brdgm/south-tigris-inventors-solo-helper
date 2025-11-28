@@ -60,7 +60,6 @@ export default defineComponent({
   },
   methods: {
     setupGame() : void {
-      this.state.resetGame()
       this.router.push('/setupBot')
     }
   }

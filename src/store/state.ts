@@ -4,6 +4,7 @@ import DifficultyLevel from '@/services/enum/DifficultyLevel'
 import Expansion from '@/services/enum/Expansion'
 import toggleArrayItem from '@brdgm/brdgm-commons/src/util/array/toggleArrayItem'
 import RoundCount from '@/services/enum/RoundCount'
+import Player from '@/services/enum/Player'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -21,6 +22,7 @@ export const useStateStore = defineStore(`${name}.state`, {
   actions: {
     resetGame() {
       this.rounds = []
+      this.setup.initialDummyCardDeck = undefined
     },
     setupToggleExpansion(expansion: Expansion) : void {
       toggleArrayItem(this.setup.expansions, expansion)
@@ -51,21 +53,27 @@ export interface Setup {
   difficultyLevel: DifficultyLevel
   roundCount: RoundCount
   expansions: Expansion[]
+  initialDummyCardDeck?: DummyCardDeckPersistence
   debugMode?: boolean
 }
 
 export interface Round {
   round: number
   turns: RoundTurn[]
+  initialCardDeck: CardDeckPersistence
 }
 export interface RoundTurn {
   round: number
   turn: number
   turnOrderIndex: number
+  player: Player
+  tentPlaced?: boolean
   botPersistence: BotPersistence
 }
 export interface BotPersistence {
   cardDeck: CardDeckPersistence
+  dummyCardDeck: DummyCardDeckPersistence
+  botResources: BotResources
 }
 export interface CardDeckPersistence {
   pile: number[]
@@ -75,4 +83,7 @@ export interface CardDeckPersistence {
 export interface DummyCardDeckPersistence {
   pile: number[]
   discard: number[]
+}
+export interface BotResources {
+  silver: number
 }

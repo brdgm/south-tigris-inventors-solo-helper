@@ -36,6 +36,8 @@ import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useRouter } from 'vue-router'
 import getDifficultyLevelSettings, { DifficultyLevelSettings } from '@/util/getDifficultyLevelSettings'
 import RoundCount from '@/services/enum/RoundCount'
+import DummyCardDeck from '@/services/DummyCardDeck'
+import CardDeck from '@/services/CardDeck'
 
 export default defineComponent({
   name: 'SetupBot',
@@ -59,7 +61,15 @@ export default defineComponent({
   },
   methods: {
     startGame() : void {
-      this.router.push('/turn/1/player')
+      this.state.resetGame()
+      this.state.setup.initialDummyCardDeck = DummyCardDeck.new().toPersistence()
+      const firstRound = this.state.setup.roundCount === RoundCount.SHORT_3_ROUNDS ? 2 : 1
+      this.state.storeRound({
+        round: firstRound,
+        turns: [],
+        initialCardDeck: CardDeck.new(firstRound, this.state.setup.difficultyLevel).toPersistence()
+      })
+      this.router.push(`/round/${firstRound}/turn/1/player`)
     }
   }
 })
