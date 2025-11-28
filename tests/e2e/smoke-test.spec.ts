@@ -7,12 +7,11 @@ test('smoke test', async ({ page }) => {
   await expect(page.locator('h1')).toHaveText('Inventors of the South Tigris Solo Helper')
   await page.getByRole('link', { name: 'Play Game' }).click()
 
-  /*
   // setup game
-  await page.getByRole('button', { name: 'Setup Game Board' }).click()
-  await page.getByRole('button', { name: 'Setup Game' }).click()
+  await page.getByRole('button', { name: 'Setup AI' }).click()
   await page.getByRole('button', { name: 'Start Game' }).click()
 
+  /*
   // play a few rounds
   await page.getByRole('button').first().click()
   await page.getByRole('button').first().click()

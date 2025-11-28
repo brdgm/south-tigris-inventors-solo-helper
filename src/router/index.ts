@@ -4,6 +4,7 @@ import { name, version, appDeployName } from '@/../package.json'
 import AppHome from '@/views/AppHome.vue'
 import NotFound from '@/views/NotFound.vue'
 import SetupApp from '@/views/SetupApp.vue'
+import SetupBot from '@/views/SetupBot.vue'
 
 const LOCALSTORAGE_KEY = `${name}.route`
 
