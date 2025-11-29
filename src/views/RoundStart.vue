@@ -6,6 +6,8 @@
     <p>...</p>
   </div>
 
+  <DummyPlayerAdvancement :round="round"/>
+
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
   </button>
@@ -26,13 +28,15 @@ import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import RouteCalculator from '@/services/RouteCalculator'
 import RoundCount from '@/services/enum/RoundCount'
+import DummyPlayerAdvancement from '@/components/round/DummyPlayerAdvancement.vue'
 
 export default defineComponent({
   name: 'RoundStart',
   components: {
     FooterButtons,
     SideBar,
-    DebugInfo
+    DebugInfo,
+    DummyPlayerAdvancement
   },
   setup() {
     const { t } = useI18n()

@@ -1,6 +1,5 @@
 import findMandatory from '@brdgm/brdgm-commons/src/util/map/findMandatory'
 import DummyCard from './DummyCard'
-import InfluencePlace from './enum/InfluencePlace'
 import WorkerSpace from './enum/WorkerSpace'
 import Guild from './enum/Guild'
 
@@ -10,7 +9,9 @@ import Guild from './enum/Guild'
 const cards : DummyCard[] = [
   {
     id: 1,
-    influencePlace: InfluencePlace.BLUE_2_ORANGE_1,
+    influenceBlue: 2,
+    influenceOrange: 1,
+    influenceBlack: 0,
     shipMovement: 3,
     increaseCostWorkerSpace: WorkerSpace.HIRE_CAMEL,
     increaseCostGuild: Guild.BLUE,
@@ -18,7 +19,9 @@ const cards : DummyCard[] = [
   },
   {
     id: 2,
-    influencePlace: InfluencePlace.ORANGE_2_BLACK_1,
+    influenceBlue: 0,
+    influenceOrange: 2,
+    influenceBlack: 1,
     shipMovement: 3,
     increaseCostWorkerSpace: WorkerSpace.ADVANCE_SHIP,
     increaseCostGuild: Guild.ORANGE,
@@ -26,7 +29,9 @@ const cards : DummyCard[] = [
   },
   {
     id: 3,
-    influencePlace: InfluencePlace.BLUE_1_ORANGE_2,
+    influenceBlue: 1,
+    influenceOrange: 2,
+    influenceBlack: 0,
     shipMovement: 4,
     increaseCostWorkerSpace: WorkerSpace.REFRESH_CRAFTSPEOPLE,
     increaseCostGuild: Guild.BLUE,
@@ -34,7 +39,9 @@ const cards : DummyCard[] = [
   },
   {
     id: 4,
-    influencePlace: InfluencePlace.BLUE_1_BLACK_2,
+    influenceBlue: 1,
+    influenceOrange: 0,
+    influenceBlack: 2,
     shipMovement: 4,
     increaseCostWorkerSpace: WorkerSpace.ADVANCE_SHIP,
     increaseCostGuild: Guild.BLACK,
@@ -42,7 +49,9 @@ const cards : DummyCard[] = [
   },
   {
     id: 5,
-    influencePlace: InfluencePlace.ORANGE_1_BLACK_2,
+    influenceBlue: 0,
+    influenceOrange: 1,
+    influenceBlack: 2,
     shipMovement: 4,
     increaseCostWorkerSpace: WorkerSpace.HIRE_CAMEL,
     increaseCostGuild: Guild.ORANGE,
@@ -50,7 +59,9 @@ const cards : DummyCard[] = [
   },
   {
     id: 6,
-    influencePlace: InfluencePlace.BLUE_2_BLACK_1,
+    influenceBlue: 2,
+    influenceOrange: 0,
+    influenceBlack: 1,
     shipMovement: 5,
     increaseCostWorkerSpace: WorkerSpace.REFRESH_CRAFTSPEOPLE,
     increaseCostGuild: Guild.BLACK,
