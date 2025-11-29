@@ -2,6 +2,9 @@
   <div class="sidebar">
     {{t('sideBar.round', {round})}}<br/>
     <template v-if="turn > 0">{{t('sideBar.turn', {turn})}}<br/></template>
+    <p class="mt-2">
+      Silver: {{ navigationState.botResources.silver }}
+    </p>
   </div>
 </template>
 
