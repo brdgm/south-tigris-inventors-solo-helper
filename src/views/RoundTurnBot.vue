@@ -66,6 +66,16 @@ export default defineComponent({
   },
   methods: {
     next() : void {
+      this.state.storeRoundTurn({
+        round: this.round,
+        turn: this.turn,
+        turnOrderIndex: this.turnOrderIndex,
+        player: this.navigationState.player,
+        botPersistence: {
+          cardDeck: this.navigationState.cardDeck.toPersistence(),
+          botResources: this.navigationState.botResources
+        }
+      })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))
     }
   }

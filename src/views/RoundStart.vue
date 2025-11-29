@@ -25,6 +25,7 @@ import { useStateStore } from '@/store/state'
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import RouteCalculator from '@/services/RouteCalculator'
+import RoundCount from '@/services/enum/RoundCount'
 
 export default defineComponent({
   name: 'RoundStart',
@@ -47,7 +48,7 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      if (this.round == 1) {
+      if (this.round == 1 || (this.state.setup.roundCount==RoundCount.SHORT_3_ROUNDS && this.round == 2)) {
         return ''
       }
       return  `/round/${this.round - 1}/end`
