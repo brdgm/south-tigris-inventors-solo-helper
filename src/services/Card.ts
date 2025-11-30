@@ -7,7 +7,15 @@ export default interface Card {
   cardType: CardType
   guildPriorities: Guild[]
   rowPriorities: number[]
-  actions: Action[]
+  actions: CardAction[]
   tentPosition: number
   dummyPlayerTentPosition: number
+}
+
+export interface CardAction {
+  action: Action
+  influenceCost?: Guild[]
+  influenceBonus?: Guild[]
+  silverCost?: number
+  silverBonus?: number
 }
