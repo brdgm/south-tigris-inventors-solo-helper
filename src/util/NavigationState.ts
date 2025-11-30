@@ -6,6 +6,7 @@ import Player from '@/services/enum/Player'
 import { MAX_TURN } from './getTurnOrder'
 import { cloneDeep } from 'lodash'
 import getDifficultyLevelSettings from './getDifficultyLevelSettings'
+import BotActions from '@/services/BotActions'
 
 export default class NavigationState {
 
@@ -15,6 +16,7 @@ export default class NavigationState {
   readonly player : Player
   readonly action : number
   readonly cardDeck: CardDeck
+  readonly botActions? : BotActions
   readonly botResources : BotResources
 
   constructor(route: RouteLocation, state: State) {    
@@ -30,7 +32,7 @@ export default class NavigationState {
     this.botResources = cloneDeep(botPersistence.botResources)
 
     if (this.player == Player.BOT) {
-      this.cardDeck.draw()
+      this.botActions = BotActions.drawCard(this.cardDeck, botPersistence.botResources)
     }
   }
 
