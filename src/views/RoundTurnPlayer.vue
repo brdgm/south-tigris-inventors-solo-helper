@@ -4,6 +4,8 @@
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
+  <PlayerPaySilver v-model="playerPaySilver"/>
+
   <button class="btn btn-primary btn-lg mt-4" @click="next">
     {{t('action.next')}}
   </button>
@@ -37,6 +39,9 @@ import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDial
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import RouteCalculator from '@/services/RouteCalculator'
+import PlayerPaySilver from '@/components/round/PlayerPaySilver.vue'
+import addSilver from '@/util/addSilver'
+import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
@@ -44,7 +49,8 @@ export default defineComponent({
     FooterButtons,
     ModalDialog,
     SideBar,
-    DebugInfo
+    DebugInfo,
+    PlayerPaySilver
   },
   setup() {
     const { t } = useI18n()
@@ -57,6 +63,11 @@ export default defineComponent({
     const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, player})
 
     return { t, router, navigationState, state, round, turn, turnOrderIndex, routeCalculator }
+  },
+  data() {
+    return {
+      playerPaySilver: 0
+    }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -72,7 +83,7 @@ export default defineComponent({
         player: this.navigationState.player,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          botResources: this.navigationState.botResources
+          botResources: addSilver(this.navigationState.botResources, toNumber(this.playerPaySilver))
         }
       })
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))

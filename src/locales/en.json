@@ -45,7 +45,8 @@
   },
   "roundTurnPlayer": {
     "title": "Player",
-    "execute": "Execute you turn."
+    "execute": "Execute you turn.",
+    "playerPaySilver": "Silver/Provisions you paid to the AI:"
   },
   "roundTurnBot": {
     "title": "AI"
