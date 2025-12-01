@@ -2,13 +2,12 @@
   <SideBar :navigationState="navigationState"/>
   <h1>{{t('roundTurnBot.title')}}</h1>
 
-  <p>...</p>
+  <BotAction :action="currentAction"/>
 
   <button class="btn btn-success btn-lg mt-4 me-2" @click="next()">
     {{t('roundTurnBot.executed')}}
   </button>
-
-  <button class="btn btn-danger btn-lg mt-4 me-2" @click="next()">
+  <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()" v-if="hasMoreActions">
     {{t('roundTurnBot.notPossible')}}
   </button>
 
@@ -38,6 +37,8 @@ import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 import RouteCalculator from '@/services/RouteCalculator'
+import { CardAction } from '@/services/Card'
+import BotAction from '@/components/round/BotAction.vue'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -45,7 +46,8 @@ export default defineComponent({
     FooterButtons,
     SideBar,
     DebugInfo,
-    ModalDialog
+    ModalDialog,
+    BotAction
   },
   setup() {
     const { t } = useI18n()
@@ -54,17 +56,29 @@ export default defineComponent({
     const state = useStateStore()
 
     const navigationState = new NavigationState(route, state)
-    const { round, turn, turnOrderIndex, player } = navigationState
-    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, player})
+    const { round, turn, turnOrderIndex, action, player, botActions } = navigationState
+    const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
 
-    return { t, router, navigationState, state, round, turn, turnOrderIndex, routeCalculator }
+    return { t, router, navigationState, state, round, turn, turnOrderIndex, action, player, botActions, routeCalculator }
   },
   computed: {
     backButtonRouteTo() : string {
       return this.routeCalculator.getBackRouteTo(this.state)
     },
+    allActions() : CardAction[] {
+      return this.botActions?.actions ?? []
+    },
+    currentAction() : CardAction {
+      return this.allActions[this.action]
+    },
+    hasMoreActions() : boolean {
+      return this.action < this.allActions.length - 1
+    }
   },
   methods: {
+    notPossible() : void {
+      this.router.push(this.routeCalculator.getNextActionRouteTo(this.state))
+    },
     next() : void {
       this.state.storeRoundTurn({
         round: this.round,

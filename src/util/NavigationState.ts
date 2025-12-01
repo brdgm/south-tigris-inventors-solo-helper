@@ -23,7 +23,7 @@ export default class NavigationState {
     this.round = getIntRouteParam(route, 'round')
     this.turn = getIntRouteParam(route, 'turn')
     this.turnOrderIndex = getIntRouteParam(route, 'turnOrderIndex')
-    this.player = (route.name == 'RoundTurnBot') ? Player.BOT : Player.PLAYER
+    this.player = (route.name == 'RoundTurnBot' || route.name == 'RoundTurnBotAction') ? Player.BOT : Player.PLAYER
     this.action = getIntRouteParam(route, 'action')
 
     const lookupTurn = isRoundEndRoute(route) ? MAX_TURN : this.turn
