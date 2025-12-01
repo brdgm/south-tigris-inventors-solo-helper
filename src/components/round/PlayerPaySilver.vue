@@ -72,4 +72,11 @@ export default defineComponent({
     }
   }
 }
+.icon {
+  height: 2rem;
+  filter: drop-shadow(1px 0 0 white)
+    drop-shadow(-1px 0 0 white)
+    drop-shadow(0 1px 0 white)
+    drop-shadow(0 -1px 0 white);
+}
 </style>
