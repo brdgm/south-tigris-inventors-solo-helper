@@ -43,6 +43,13 @@
       "noSchemeCards": "The AI does not need the scheme cards - the card deck and the AI silver is managed by this application."
     }
   },
+  "roundTurnPlayer": {
+    "title": "Player",
+    "execute": "Execute you turn."
+  },
+  "roundTurnBot": {
+    "title": "AI"
+  },
   "sideBar": {
     "round": "Round {round}",
     "turn": "Turn {turn}"
