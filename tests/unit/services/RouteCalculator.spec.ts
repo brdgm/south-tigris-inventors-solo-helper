@@ -113,7 +113,7 @@ describe('services/RouteCalculator', () => {
       mockRound({round:1, startPlayer:Player.PLAYER, turns:[
         mockTurn({round:1, turn:1, player:Player.PLAYER, tentPlaced:true}),
         mockTurn({round:1, turn:1, player:Player.BOT, tentPlaced:true})]})
-  ]})
+    ]})
     expect(routeCalculator.getLastTurnRouteTo(state)).to.eq('/round/1/turn/1/1/bot')
   })
 

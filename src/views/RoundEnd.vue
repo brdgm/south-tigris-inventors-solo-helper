@@ -47,7 +47,7 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      return this.routeCalculator.getBackRouteTo(this.state)
+      return this.routeCalculator.getLastTurnRouteTo(this.state)
     }
   },
   methods: {
