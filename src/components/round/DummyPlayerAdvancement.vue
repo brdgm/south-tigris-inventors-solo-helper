@@ -1,11 +1,42 @@
 <template>
   <h3>Dummy Player</h3>
-  <ul>
-    <li>Influence: {{ influenceBlue }} blue, {{ influenceOrange }} orange, {{ influenceBlack }} black</li>
-    <li>Ship Movement: {{ shipMovement }}</li>
-    <li>Increase Cost Worker Space: {{ increaseCostWorkerSpace }} {{  increaseCostGuild }}</li>
-    <li>Block Guild Worker Space: {{ blockGuildWorkerSpaces }}</li>
-  </ul>
+
+  <div class="dummyPlayer">
+    <div class="actionBox col instruction" data-bs-toggle="modal" data-bs-target="#dummyPlayerAdvancementModal">
+      <div class="actionWrapper">
+        <div class="bonus">
+          <AppIcon v-for="index of influenceBlue" :key="index" type="influence" name="blue" class="icon"/>
+          <AppIcon v-for="index of influenceOrange" :key="index" type="influence" name="orange" class="icon"/>
+          <AppIcon v-for="index of influenceBlack" :key="index" type="influence" name="black" class="icon"/>
+          <AppIcon name="multiple" class="multiple"/>
+        </div>
+        <div class="shipAdvancement">
+          <div class="steps">{{shipMovement}}</div>
+          <AppIcon type="action" name="advance-ship" class="icon"/>
+        </div>
+      </div>
+      <div class="workerSpaces">
+        <div class="workerSpace">
+          <AppIcon type="worker-space" :name="increaseCostWorkerSpace" class="icon"/>
+          <div class="tile">
+            <AppIcon type="increase-cost-guild" :name="increaseCostGuild" class="icon"/>
+          </div>
+        </div>
+        <div v-for="workerSpace of blockGuildWorkerSpaces" :key="workerSpace" class="workerSpace">
+          <AppIcon type="worker-space" :name="workerSpace" class="icon"/>
+          <div class="tile">
+            <AppIcon name="blocked" class="icon blocked"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ModalDialog id="dummyPlayerAdvancementModal" title="Dummy Player TBD" :scrollable="true">
+    <template #body>
+      <p>...</p>
+    </template>
+  </ModalDialog>    
 </template>
 
 <script lang="ts">
@@ -17,10 +48,14 @@ import DummyCard from '@/services/DummyCard'
 import DummyCardDeck from '@/services/DummyCardDeck'
 import WorkerSpace from '@/services/enum/WorkerSpace'
 import Guild from '@/services/enum/Guild'
+import AppIcon from '../structure/AppIcon.vue'
+import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
 
 export default defineComponent({
   name: 'DummyPlayerAdvancement',
   components: {
+    AppIcon,
+    ModalDialog
   },
   setup(props) {
     const { t } = useI18n()
@@ -79,4 +114,106 @@ function getDummyCardDeck(state : State, round : number) : DummyCardDeck {
 </script>
 
 <style lang="scss" scoped>
+.dummyPlayer {
+  margin-top: 15px;
+  max-width: 32rem;
+  padding-right: 10rem;
+  @media (max-width: 600px) {
+    padding-right: 8rem;
+  }
+}
+.actionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: #9cc4aa;
+  border: 2px solid #697f32;
+  border-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  min-height: 7rem;
+  &.instruction {
+    cursor: pointer;
+    background-image: url('@/assets/icons/help-semi-transparent.webp');
+    background-repeat: no-repeat;
+    background-position: right 5px top 5px;
+    background-size: 1.25rem;
+  }
+  .actionWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .cost, .bonus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.25rem;
+    .icon + .icon {
+      margin-left: -1rem;
+    }
+    .multiple {
+      height: 1.5rem;
+      margin-top: 0.7rem;
+      margin-left: -1.1rem;
+    }
+    .arrow {
+      height: 1.5rem;
+      margin-left: 0.5rem;
+      margin-right: -0.25rem;
+    }
+  }
+}
+.icon {
+  height: 2.75rem;
+}
+.shipAdvancement {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 1rem;
+  gap: 0.5rem;
+  .steps {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+.workerSpaces {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  margin-top: 1.5rem;
+  .workerSpace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .icon {
+      height: 4rem;
+    }
+    .tile {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #cfb895;
+      border: 1.5px solid #fff;
+      width: 3.6rem;
+      height: 2.8rem;
+      margin-top: -0.9rem;
+      z-index: 20;
+      .icon {
+        height: 1.8rem;
+        &.blocked {
+          height: 0.9rem;
+        }
+      }
+    }
+  }
+}
 </style>
