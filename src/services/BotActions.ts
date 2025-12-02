@@ -1,6 +1,7 @@
 import { BotResources } from '@/store/state'
 import CardDeck from './CardDeck'
 import { CardAction } from './Card'
+import Action from './enum/Action'
 
 /**
  * Bot actions derived from scheme card deck.
@@ -17,7 +18,12 @@ export default class BotActions {
     this.secondLastCard = secondLastCard
   }
 
-  public static drawCard(cardDeck : CardDeck, botResources : BotResources) : BotActions {
+  public static drawCard(cardDeck : CardDeck, botResources : BotResources, tentPlaced: boolean) : BotActions {
+    if (tentPlaced) {
+      // already placed a tent? gain 1 silver
+      return new BotActions([ { action:Action.SILVER, silverBonus: 1 } ], false, false)
+    }
+
     // draw card
     const card = cardDeck.draw()
 

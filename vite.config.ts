@@ -14,7 +14,13 @@ export default defineConfig({
     chunkSizeWarningLimit: 5242880
   },
   plugins: [
-    vue(),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => ['svg:style'].includes(tag),
+        }
+      }
+    }),
     VitePWA({
       registerType: 'prompt',
       manifestFilename: 'manifest.json',

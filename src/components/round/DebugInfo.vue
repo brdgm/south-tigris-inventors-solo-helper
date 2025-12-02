@@ -5,6 +5,7 @@
       <b>currentCard</b>: {{cardDeck.currentCard}}<br/>
       <b>cardDeck</b>: {{cardDeck.toPersistence()}}<br/>
       <b>botResources</b>: {{navigationState.botResources}}<br/>
+      <b>tentPlaced</b>: {{navigationState.tentPlaced}}<br/>
     </p>
   </div>
 </template>

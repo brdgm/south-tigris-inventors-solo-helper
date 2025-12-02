@@ -18,6 +18,7 @@ export default class NavigationState {
   readonly cardDeck: CardDeck
   readonly botActions? : BotActions
   readonly botResources : BotResources
+  readonly tentPlaced : Player[]
 
   constructor(route: RouteLocation, state: State) {    
     this.round = getIntRouteParam(route, 'round')
@@ -30,9 +31,10 @@ export default class NavigationState {
     const botPersistence = getBotPersistence(state, this.round, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = cloneDeep(botPersistence.botResources)
+    this.tentPlaced = getTentPlaced(state, this.round, lookupTurn, this.turnOrderIndex)
 
     if (this.player == Player.BOT) {
-      this.botActions = BotActions.drawCard(this.cardDeck, botPersistence.botResources)
+      this.botActions = BotActions.drawCard(this.cardDeck, botPersistence.botResources, this.tentPlaced.includes(Player.BOT))
     }
   }
 
@@ -69,4 +71,11 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
 
 function isRoundEndRoute(route:RouteLocation) : boolean {
   return route.name == 'RoundEnd' || route.name == 'GameEnd'
+}
+
+function getTentPlaced(state:State, round:number, turn:number, turnOrderIndex:number) : Player[] {
+  const roundData = state.rounds.find(item => item.round==round)
+  return roundData?.turns
+    .filter(item => item.turn < turn || (item.turn == turn && item.turnOrderIndex < turnOrderIndex))
+    .filter(item => item.tentPlaced).map(item => item.player) ?? []
 }

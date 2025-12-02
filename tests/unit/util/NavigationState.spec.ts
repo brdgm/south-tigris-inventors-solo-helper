@@ -28,6 +28,7 @@ describe('util/NavigationState', () => {
     expect(underTest.turn).to.equal(1)
     expect(underTest.cardDeck.toPersistence()).to.eql(mockCardDeck({pile:[1,2,3,4]}).toPersistence())
     expect(underTest.botResources).to.eql({silver:6})
+    expect(underTest.tentPlaced).to.eql([])
   })
 
   it('round1-turn1-bot', () => {
@@ -36,6 +37,16 @@ describe('util/NavigationState', () => {
     expect(underTest.turn).to.equal(1)
     expect(underTest.cardDeck.toPersistence()).to.eql(mockCardDeck({pile:[2,3,4],discard:[1]}).toPersistence())
     expect(underTest.botResources).to.eql({silver:6})
+    expect(underTest.tentPlaced).to.eql([])
+  })
+
+  it('round1-turn2-bot', () => {
+    const underTest = navigationState('RoundTurnBot',{round:'1',turn:'2',turnOrderIndex:'1'})
+    expect(underTest.round).to.equal(1)
+    expect(underTest.turn).to.equal(2)
+    expect(underTest.cardDeck.toPersistence()).to.eql(mockCardDeck({pile:[3,4],discard:[2,1]}).toPersistence())
+    expect(underTest.botResources).to.eql({silver:2})
+    expect(underTest.tentPlaced).to.eql([Player.PLAYER])
   })
 
   it('round2-turn1-player', () => {
@@ -44,6 +55,7 @@ describe('util/NavigationState', () => {
     expect(underTest.turn).to.equal(1)
     expect(underTest.cardDeck.toPersistence().discard.length).to.eq(0)
     expect(underTest.botResources).to.eql({silver:4})
+    expect(underTest.tentPlaced).to.eql([])
   })
 })
 
