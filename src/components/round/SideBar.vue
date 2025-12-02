@@ -2,9 +2,10 @@
   <div class="sidebar">
     {{t('sideBar.round', {round})}}<br/>
     <template v-if="turn > 0">{{t('sideBar.turn', {turn})}}<br/></template>
-    <p class="mt-2">
-      Silver: {{ navigationState.botResources.silver }}
-    </p>
+    <div class="metric">
+      <div class="label"><AppIcon name="silver" class="icon silver" extension="webp"/></div>
+      <div>{{ navigationState.botResources.silver }}</div>
+    </div>
   </div>
 </template>
 
@@ -14,9 +15,13 @@ import { useI18n } from 'vue-i18n'
 import { useStateStore } from '@/store/state'
 import NavigationState from '@/util/NavigationState'
 import CardDeck from '@/services/CardDeck'
+import AppIcon from '../structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'SideBar',
+  components: {
+    AppIcon
+  },
   setup() {
     const { t } = useI18n()
     const state = useStateStore()
@@ -56,6 +61,28 @@ export default defineComponent({
   @media (max-width: 600px) {
     font-size: 0.9rem;
     width: 120px;
+  }
+}
+.metric {
+  display: flex;
+  width: 60px;
+  justify-content: space-between;
+  margin-top: 10px;
+  .label {
+    display: flex;
+    width: 40px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.icon {
+  height: 1.75rem;
+  &.silver {
+    height: 1.5rem;
+    filter: drop-shadow(1px 0 0 white)
+      drop-shadow(-0.5px 0 0 white)
+      drop-shadow(0 1px 0 white)
+      drop-shadow(0 -0.5px 0 white);
   }
 }
 </style>
