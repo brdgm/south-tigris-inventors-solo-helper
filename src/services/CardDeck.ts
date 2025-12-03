@@ -110,10 +110,10 @@ export default class CardDeck {
     }
     const allDiceCards = shuffle(Cards.getAll(CardType.DICE))
     const allWorkerCards = shuffle(Cards.getAll(CardType.WORKER))
-    const cards : Card[] = [
+    const cards : Card[] = shuffle([
       ...allDiceCards.slice(0, diceCardCount),
       ...allWorkerCards.slice(0, workerCardCount)
-    ]
+    ])
     const remainingDiceCards = allDiceCards.slice(diceCardCount)
     return new CardDeck(cards, [], remainingDiceCards)
   }

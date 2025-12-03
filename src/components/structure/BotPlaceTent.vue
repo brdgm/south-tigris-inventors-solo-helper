@@ -1068,7 +1068,6 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .background {
-  background-color: #dec2a7;
   width: 20rem;
   padding: 0.5rem;
   border-radius: 0.5rem;

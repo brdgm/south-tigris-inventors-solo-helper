@@ -47,7 +47,4 @@ export default defineComponent({
   align-items: center;
   gap: 10px;
 }
-.icon {
-  height: 3rem;
-}
 </style>

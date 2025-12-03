@@ -1,37 +1,43 @@
 <template>
   <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
     <div class="actionWrapper">
-      <div class="cost" v-if="action.influenceCost">
-        <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence" :name="guild" class="icon"/>
-        <AppIcon name="multiple" class="multiple"/>
-        <AppIcon name="arrow" class="arrow"/>
-      </div>
-      <div class="bonus" v-if="action.silverCost">
-        <AppIcon v-for="index of action.silverCost" :key="index" name="silver" extension="webp" class="icon silver"/>
-        <AppIcon name="arrow" class="arrow"/>
-      </div>
+      <template v-if="!navigationState.botActions?.placeTent">
+        <div class="cost" v-if="action.influenceCost">
+          <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence" :name="guild" class="icon"/>
+          <AppIcon name="multiple" class="multiple"/>
+          <AppIcon name="arrow" class="arrow"/>
+        </div>
+        <div class="bonus" v-if="action.silverCost">
+          <AppIcon v-for="index of action.silverCost" :key="index" name="silver" extension="webp" class="icon silver"/>
+          <AppIcon name="arrow" class="arrow"/>
+        </div>
+      </template>
       <slot name="action"></slot>
-      <div class="bonus" v-if="action.influenceBonus">
-        <AppIcon v-for="(guild,index) of action.influenceBonus" :key="index" type="influence" :name="guild" class="icon"/>
-        <AppIcon name="multiple" class="multiple"/>
-      </div>
-      <div class="bonus" v-if="action.silverBonus">
-        <AppIcon v-for="index of action.silverBonus" :key="index" name="silver" extension="webp" class="icon silver"/>
-      </div>
-    </div>
-    <div class="workerPlacement" v-if="hasWorkerPlacement">
-      <AppIcon name="worker" class="icon worker"/>
-      <AppIcon name="arrow" class="arrow"/>
-      <template v-if="workerPlacementGuild">
-        <AppIcon type="influence" :name="workerPlacementGuild" class="icon guild"/> 
-      </template>
-      <template v-else>
-        <AppIcon v-for="workerSpace of workerSpacePriority" :key="workerSpace" type="worker-space" :name="workerSpace" class="icon workerSpace"/>
+      <template v-if="!navigationState.botActions?.placeTent">
+        <div class="bonus" v-if="action.influenceBonus">
+          <AppIcon v-for="(guild,index) of action.influenceBonus" :key="index" type="influence" :name="guild" class="icon"/>
+          <AppIcon name="multiple" class="multiple"/>
+        </div>
+        <div class="bonus" v-if="action.silverBonus">
+          <AppIcon v-for="index of action.silverBonus" :key="index" name="silver" extension="webp" class="icon silver"/>
+        </div>
       </template>
     </div>
-    <div class="priority" v-if="hasPriority">
-      <slot name="priority"></slot>
-    </div>
+    <template v-if="!navigationState.botActions?.placeTent">
+      <div class="workerPlacement" v-if="hasWorkerPlacement">
+        <AppIcon name="worker" class="icon worker"/>
+        <AppIcon name="arrow" class="arrow"/>
+        <template v-if="workerPlacementGuild">
+          <AppIcon type="influence" :name="workerPlacementGuild" class="icon guild"/> 
+        </template>
+        <template v-else>
+          <AppIcon v-for="workerSpace of workerSpacePriority" :key="workerSpace" type="worker-space" :name="workerSpace" class="icon workerSpace"/>
+        </template>
+      </div>
+      <div class="priority" v-if="hasPriority">
+        <slot name="priority"></slot>
+      </div>
+    </template>
   </div>
 
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">

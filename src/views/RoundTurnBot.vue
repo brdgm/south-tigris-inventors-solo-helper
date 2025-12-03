@@ -8,11 +8,7 @@
   </h1>
 
   <BotAction v-if="currentAction" :action="currentAction" :navigationState="navigationState"/>
-
-  <template v-if="placeTent">
-    <p>Bot is tentin'!</p>
-    <BotPlaceTent :tentPosition="tentPosition" :dummyPlayerTentPosition="dummyPlayerTentPosition"/>
-  </template>
+  <BotAction v-if="placeTent" :action="tentAction" :navigationState="navigationState"/>
 
   <template v-if="hasMoreActions">
     <button class="btn btn-success btn-lg mt-4 me-2" @click="next()">
@@ -46,7 +42,6 @@ import RouteCalculator from '@/services/RouteCalculator'
 import { CardAction } from '@/services/Card'
 import BotAction from '@/components/round/BotAction.vue'
 import Player from '@/services/enum/Player'
-import BotPlaceTent from '@/components/structure/BotPlaceTent.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import addSilver from '@/util/addSilver'
 import Action from '@/services/enum/Action'
@@ -58,7 +53,6 @@ export default defineComponent({
     SideBar,
     DebugInfo,
     BotAction,
-    BotPlaceTent,
     AppIcon
   },
   setup() {
@@ -92,17 +86,8 @@ export default defineComponent({
     placeTent() : boolean {
       return (this.botActions?.placeTent ?? false) || ((this.botActions?.secondLastCard ?? false) && this.action > 0)
     },
-    firstTent() : boolean {
-      return this.navigationState.tentPlaced.length == 0
-    },
-    tentPosition() : number|undefined {
-      return this.navigationState.cardDeck.currentCard?.tentPosition
-    },
-    dummyPlayerTentPosition() : number|undefined {
-      if (!this.firstTent) {
-        return undefined
-      }
-      return this.navigationState.cardDeck.currentCard?.dummyPlayerTentPosition
+    tentAction() : CardAction {
+      return { action: Action.TENT }
     }
   },
   methods: {

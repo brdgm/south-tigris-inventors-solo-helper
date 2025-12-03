@@ -10,6 +10,7 @@ enum Action {
   SILVER = 'silver',
   INFLUENCE = 'influence',
   ADVANCE_SHIP = 'advance-ship',
-  ADD_DICE_RESERVE_CARD = 'add-dice-reserve-card'
+  ADD_DICE_RESERVE_CARD = 'add-dice-reserve-card',
+  TENT = 'tent'
 }
 export default Action

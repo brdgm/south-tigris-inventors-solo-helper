@@ -17,6 +17,7 @@ import ActionSilver from './action/ActionSilver.vue'
 import ActionInfluence from './action/ActionInfluence.vue'
 import ActionAdvanceShip from './action/ActionAdvanceShip.vue'
 import ActionAddDiceReserveCard from './action/ActionAddDiceReserveCard.vue'
+import ActionTent from './action/ActionTent.vue'
 import NavigationState from '@/util/NavigationState'
 
 export default defineComponent({
@@ -30,7 +31,8 @@ export default defineComponent({
     ActionSilver,
     ActionInfluence,
     ActionAdvanceShip,
-    ActionAddDiceReserveCard
+    ActionAddDiceReserveCard,
+    ActionTent
   },
   setup() {
     const { t } = useI18n()
