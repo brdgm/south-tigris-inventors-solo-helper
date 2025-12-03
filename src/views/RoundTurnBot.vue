@@ -7,7 +7,7 @@
     </div>
   </h1>
 
-  <BotAction v-if="currentAction" :action="currentAction"/>
+  <BotAction v-if="currentAction" :action="currentAction" :navigationState="navigationState"/>
 
   <template v-if="placeTent">
     <p>Bot is tentin'!</p>

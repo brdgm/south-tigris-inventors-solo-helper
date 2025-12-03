@@ -1,6 +1,6 @@
 <template>
   <div class="actionItem">
-    <component :is="componentName" :action="action"/>
+    <component :is="componentName" :action="action" :navigationState="navigationState"/>
   </div>
 </template>
 
@@ -17,6 +17,7 @@ import ActionSilver from './action/ActionSilver.vue'
 import ActionInfluence from './action/ActionInfluence.vue'
 import ActionAdvanceShip from './action/ActionAdvanceShip.vue'
 import ActionAddDiceReserveCard from './action/ActionAddDiceReserveCard.vue'
+import NavigationState from '@/util/NavigationState'
 
 export default defineComponent({
   name: 'BotAction',
@@ -38,6 +39,10 @@ export default defineComponent({
   props: {
     action: {
       type: Object as PropType<CardAction>,
+      required: true
+    },
+    navigationState: {
+      type: NavigationState,
       required: true
     }
   },
