@@ -6,6 +6,10 @@
       <div class="label"><AppIcon name="silver" class="icon silver" extension="webp"/></div>
       <div>{{ navigationState.botResources.silver }}</div>
     </div>
+    <div class="metric">
+      <div class="label"><AppIcon name="scheme-card" class="icon schemeCard" extension="webp"/></div>
+      <div>{{ navigationState.cardDeck.pile.length }}</div>
+    </div>
   </div>
 </template>
 
@@ -83,6 +87,10 @@ export default defineComponent({
       drop-shadow(-0.5px 0 0 white)
       drop-shadow(0 1px 0 white)
       drop-shadow(0 -0.5px 0 white);
+  }
+  &.schemeCard {
+    height: 1.5rem;
+    border-radius: 0.2rem;
   }
 }
 </style>

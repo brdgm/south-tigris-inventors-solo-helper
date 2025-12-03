@@ -6,7 +6,8 @@
       </div>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.advanceShip.instruction')"/>
+      <p v-html="t('rules.action.advanceShip.moveShip')"/>
+      <p v-html="t('rules.action.test.workshopTile')"/>
     </template>
   </ActionBox>
 </template>

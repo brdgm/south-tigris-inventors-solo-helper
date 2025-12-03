@@ -9,7 +9,8 @@
       <RowPriority :navigationState="navigationState"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.publish.instruction')"/>
+      <p v-html="t('rules.action.publish.publishDevice')"/>
+      <p v-html="t('rules.action.publish.moveDeviceBoard')"/>
     </template>
   </ActionBox>
 </template>

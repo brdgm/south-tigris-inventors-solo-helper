@@ -70,6 +70,61 @@
     "4": "Standard (4 Rounds)",
     "3": "Shorter (3 Rounds)"
   },
+  "rules": {
+    "action": {
+      "general": {
+        "silverCost": "The action is only possible if the AI can spend the indicated amount of Silver (managed by the application).",
+        "influenceCost": "The action is only possible if the AI can spend the indicated Influence.",
+        "influenceBonus": "The AI places the indicated influence on Guild(s).",
+        "silverBonus": "The AI gains the indicated amount of silver (managed by the application).",
+        "workerPlacement": "The action is only possible, it the AI can place a worker on one of the indicated spaces (in order of preference)."
+      },
+      "invent": {
+        "title": "Invent",
+        "chooseDevice": "Your opponent will use their number focus to Invent a particular Device.",
+        "deviceCard": "If there is a Device Board available, turn over the top Device Card from the Draw Pile. If placing it would create at least 1 Influence match, place it on that Device Board. If not, discard it and reveal a new Device Card. Keep doing this until there is at least 1 match.",
+        "gainInfluence": "After placing the Device Card, your opponent gains 1 Influence for each match. Take the top Invention Tile from their Draw Pile and place it on the Device. They ignore all other costs and effects that players are usually concerned with."
+      },
+      "build": {
+        "title": "Build",
+        "buildDevice": "Your opponent will use their number focus to Build a previously Invented Device.",
+        "turnOverTile": "Turn over and move the Invention Tile as normal. If it was your Invention Tile, you still gain the effect. Place their Influence on the Builder slot of the Device Board, and move it into the highest possible row of the next column."
+      },
+      "publish": {
+        "title": "Publish",
+        "publishDevice": "Your opponent will use their number focus to Publish a previously Built Device. If you were the Inventor, gain 1 Silver from the Main Supply.",
+        "moveDeviceBoard": "Place their Influence on the Publisher slot of the Device Board, and move it into the highest possible row of the next column. Do not slide other Built Devices up if spaces appear above them."
+      },
+      "test": {
+        "title": "Test",
+        "chooseDie": "Your opponent will use their colour focus to decide what colour Die to place. If there are no spaces on Built and Published Devices of that colour, they will look for their next colour preference.",
+        "chooseDeviceBoard": "Use their number preference to determine which row they will place the coloured Die in. If there is 1 or more available space in that row, they will place it on the left-most Built or Published Device in that row.",
+        "rollDie": "Take the coloured Die from the Main Supply and roll it. Place it on the indicated Device Board <i>(it does not matter if the rolled number was lower than other Dice on that Device Board)</i>.",
+        "gainInfluenceAdvanceShip": "If the Die covers an Influence icon, your opponent gains 1 Influence of that colour. Move their Ship the indicated number of spaces, following the same movement rules as you would.",
+        "workshopTile": "If they stop at a space with a Workshop Tile, place it facedown in their Supply for end-game scoring."
+      },
+      "influence": {
+        "title": "Influence"
+      },
+      "silver": {
+        "title": "Silver"
+      },
+      "advanceShip": {
+        "title": "Advance Ship",
+        "moveShip": "Move their Ship 1 space, following the same movement rules as you would."
+      },
+      "research": {
+        "title": "Research",
+        "researchSpaces": {
+          "title": "When Researching, they will only carry this out on spaces that are completely empty - no Workshop Tiles or Research Tile. They will always prioritise spaces in the following order:",
+          "currentSection": "The left-most empty space within the River section where their Ship rests, but not to the right of their Ship.",
+          "previousSection": "The left-most empty space in the River section to the left of the section where their Ship rests.",
+          "entireRiver": "The left-most empty space on the entire River, even if this is to the right of their Ship."
+        },
+        "researchTile": "After selecting a space, place their Influence on the left Influence slot. Reveal the top Research Tile from that River section’s Draw pile, and place it faceup on that space. They ignore all icons on Research Tiles."
+      }
+    }
+  },
   "notfound": {
     "title": "Not Found"
   },

@@ -6,7 +6,13 @@
       </div>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.research.instruction')"/>
+      <p v-html="t('rules.action.research.researchSpaces.title')"/>
+      <ol>
+        <li v-html="t('rules.action.research.researchSpaces.currentSection')"/>
+        <li v-html="t('rules.action.research.researchSpaces.previousSection')"/>
+        <li v-html="t('rules.action.research.researchSpaces.entireRiver')"/>
+      </ol>
+      <p v-html="t('rules.action.research.researchTile')"/>
     </template>
   </ActionBox>
 </template>

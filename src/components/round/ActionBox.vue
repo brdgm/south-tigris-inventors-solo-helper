@@ -1,15 +1,5 @@
 <template>
   <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
-    <div class="workerPlacement" v-if="hasWorkerPlacement">
-      <AppIcon name="worker" class="icon worker"/>
-      <AppIcon name="arrow" class="arrow"/>
-      <template v-if="workerPlacementGuild">
-        <AppIcon type="influence" :name="workerPlacementGuild" class="icon guild"/> 
-      </template>
-      <template v-else>
-        <AppIcon v-for="workerSpace of workerSpacePriority" :key="workerSpace" type="worker-space" :name="workerSpace" class="icon workerSpace"/>
-      </template>
-    </div>
     <div class="actionWrapper">
       <div class="cost" v-if="action.influenceCost">
         <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence" :name="guild" class="icon"/>
@@ -29,6 +19,16 @@
         <AppIcon v-for="index of action.silverBonus" :key="index" name="silver" extension="webp" class="icon silver"/>
       </div>
     </div>
+    <div class="workerPlacement" v-if="hasWorkerPlacement">
+      <AppIcon name="worker" class="icon worker"/>
+      <AppIcon name="arrow" class="arrow"/>
+      <template v-if="workerPlacementGuild">
+        <AppIcon type="influence" :name="workerPlacementGuild" class="icon guild"/> 
+      </template>
+      <template v-else>
+        <AppIcon v-for="workerSpace of workerSpacePriority" :key="workerSpace" type="worker-space" :name="workerSpace" class="icon workerSpace"/>
+      </template>
+    </div>
     <div class="priority" v-if="hasPriority">
       <slot name="priority"></slot>
     </div>
@@ -36,7 +36,12 @@
 
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">
     <template #body>
+      <p v-if="action.influenceCost" v-html="t('rules.action.general.influenceCost')"/>
+      <p v-if="action.silverCost" v-html="t('rules.action.general.silverCost')"/>
+      <p v-if="hasWorkerPlacement" v-html="t('rules.action.general.workerPlacement')"/>
       <slot name="instruction"></slot>
+      <p v-if="action.influenceBonus" v-html="t('rules.action.general.influenceBonus')"/>
+      <p v-if="action.silverBonus" v-html="t('rules.action.general.silverBonus')"/>
     </template>
   </ModalDialog>
 </template>
@@ -53,6 +58,7 @@ import CardType from '@/services/enum/CardType'
 import Guild from '@/services/enum/Guild'
 import WorkerSpace from '@/services/enum/WorkerSpace'
 import Player from '@/services/enum/Player'
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: 'ActionBox',
@@ -61,8 +67,9 @@ export default defineComponent({
     AppIcon
   },
   setup() {
+    const { t } = useI18n()
     const modalId = `modal-${nanoid()}`
-    return { modalId }
+    return { t, modalId }
   },
   props: {
     action: {
@@ -154,7 +161,7 @@ export default defineComponent({
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
     .icon {
       &.worker {
         height: 4rem;

@@ -5,7 +5,6 @@
       </div>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.influence.instruction')"/>
     </template>
   </ActionBox>
 </template>

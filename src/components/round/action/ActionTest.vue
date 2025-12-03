@@ -10,7 +10,11 @@
       <RowPriority :navigationState="navigationState"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.test.instruction')"/>
+      <p v-html="t('rules.action.test.chooseDie')"/>
+      <p v-html="t('rules.action.test.chooseDeviceBoard')"/>
+      <p v-html="t('rules.action.test.rollDie')"/>
+      <p v-html="t('rules.action.test.gainInfluenceAdvanceShip')"/>
+      <p v-html="t('rules.action.test.workshopTile')"/>
     </template>
   </ActionBox>
 </template>
