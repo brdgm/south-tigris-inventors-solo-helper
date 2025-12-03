@@ -1,5 +1,15 @@
 <template>
   <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
+    <div class="workerPlacement" v-if="hasWorkerPlacement">
+      <AppIcon name="worker" class="icon worker"/>
+      <AppIcon name="arrow" class="arrow"/>
+      <template v-if="workerPlacementGuild">
+        <AppIcon type="influence" :name="workerPlacementGuild" class="icon guild"/> 
+      </template>
+      <template v-else>
+        <AppIcon v-for="workerSpace of workerSpacePriority" :key="workerSpace" type="worker-space" :name="workerSpace" class="icon workerSpace"/>
+      </template>
+    </div>
     <div class="actionWrapper">
       <div class="cost" v-if="action.influenceCost">
         <AppIcon v-for="(guild,index) of action.influenceCost" :key="index" type="influence" :name="guild" class="icon"/>
@@ -38,6 +48,11 @@ import showModal from '@brdgm/brdgm-commons/src/util/modal/showModal'
 import AppIcon from '../structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import { nanoid } from 'nanoid'
+import NavigationState from '@/util/NavigationState'
+import CardType from '@/services/enum/CardType'
+import Guild from '@/services/enum/Guild'
+import WorkerSpace from '@/services/enum/WorkerSpace'
+import Player from '@/services/enum/Player'
 
 export default defineComponent({
   name: 'ActionBox',
@@ -54,6 +69,10 @@ export default defineComponent({
       type: Object as PropType<CardAction>,
       required: true
     },
+    navigationState: {
+      type: NavigationState,
+      required: true
+    },
     instructionTitle: {
       type: String,
       required: true
@@ -64,6 +83,32 @@ export default defineComponent({
     }
   },
   computed: {
+    hasWorkerPlacement() : boolean {
+      return !this.navigationState.tentPlaced.includes(Player.BOT)
+          && this.navigationState.cardDeck.currentCard?.cardType == CardType.WORKER
+          && this.navigationState.action == 0
+    },
+    workerPlacementGuild() : Guild|undefined {
+      const guildPriorities = this.action.influenceCost ?? []
+      // detect if there is only one unique guild color present in the array
+      const uniqueGuilds = Array.from(new Set(guildPriorities))
+      if (uniqueGuilds.length == 1) {
+        // user worker spot on a guild
+        return uniqueGuilds[0]
+      }
+      // user worker spots right of the guilds
+      return undefined
+    },
+    workerSpacePriority() : WorkerSpace[] {
+      return (this.navigationState.cardDeck.currentCard?.rowPriorities ?? [])
+          .map(row => { 
+            switch (row) {
+              case 1: return WorkerSpace.HIRE_CAMEL
+              case 2: return WorkerSpace.REFRESH_CRAFTSPEOPLE
+              default: return WorkerSpace.ADVANCE_SHIP
+            }
+        })
+    },
     hasPriority() : boolean {
       return this.$slots.priority !== undefined
     },
@@ -103,6 +148,26 @@ export default defineComponent({
     background-position: right 5px top 5px;
     background-size: 1.25rem;
   }
+  .workerPlacement {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    .icon {
+      &.worker {
+        height: 4rem;
+        margin: -1.75rem;
+      }
+      &.guild {
+        height: 3rem;
+      }
+      &.workerSpace {
+        height: 2.25rem;
+      }
+    }
+  }
   .actionWrapper {
     display: flex;
     flex-direction: row;
@@ -132,11 +197,6 @@ export default defineComponent({
       margin-top: 0.7rem;
       margin-left: -1.1rem;
     }
-    .arrow {
-      height: 1.5rem;
-      margin-left: 0.5rem;
-      margin-right: -0.25rem;
-    }
   }
   .priority {
     display: flex;
@@ -145,5 +205,10 @@ export default defineComponent({
     margin-top: 1rem;
     gap: 0.5rem;
   }
+}
+.arrow {
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  margin-right: -0.25rem;
 }
 </style>
