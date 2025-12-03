@@ -1,5 +1,5 @@
 <template>
-  <h3>Dummy Player</h3>
+  <h3>{{t('roundStart.dummyPlayer.title')}}</h3>
 
   <div class="dummyPlayer">
     <div class="actionBox col instruction" data-bs-toggle="modal" data-bs-target="#dummyPlayerAdvancementModal">
@@ -32,9 +32,11 @@
     </div>
   </div>
 
-  <ModalDialog id="dummyPlayerAdvancementModal" title="Dummy Player TBD" :scrollable="true">
+  <ModalDialog id="dummyPlayerAdvancementModal" :title="t('roundStart.dummyPlayer.title')" :scrollable="true">
     <template #body>
-      <p>...</p>
+      <p>{{t('roundStart.dummyPlayer.influence')}}</p>
+      <p>{{t('roundStart.dummyPlayer.moveShip')}}</p>
+      <p>{{t('roundStart.dummyPlayer.dummyTokens')}}</p>
     </template>
   </ModalDialog>    
 </template>
@@ -42,14 +44,14 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { State, useStateStore } from '@/store/state'
+import { useStateStore } from '@/store/state'
 import RoundCount from '@/services/enum/RoundCount'
 import DummyCard from '@/services/DummyCard'
-import DummyCardDeck from '@/services/DummyCardDeck'
 import WorkerSpace from '@/services/enum/WorkerSpace'
 import Guild from '@/services/enum/Guild'
 import AppIcon from '../structure/AppIcon.vue'
 import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDialog.vue'
+import getDummyCardDeck from '@/util/getDummyCardDeck'
 
 export default defineComponent({
   name: 'DummyPlayerAdvancement',
@@ -103,14 +105,6 @@ export default defineComponent({
     }
   }
 })
-
-function getDummyCardDeck(state : State, round : number) : DummyCardDeck {
-  const persistence = state.rounds.find(r => r.round==round)?.dummyCardDeck
-  if (persistence) {
-    return DummyCardDeck.fromPersistence(persistence)
-  }
-  return DummyCardDeck.new()
-}
 </script>
 
 <style lang="scss" scoped>

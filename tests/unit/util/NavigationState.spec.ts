@@ -54,7 +54,7 @@ describe('util/NavigationState', () => {
     expect(underTest.round).to.equal(2)
     expect(underTest.turn).to.equal(1)
     expect(underTest.cardDeck.toPersistence().discard.length).to.eq(0)
-    expect(underTest.botResources).to.eql({silver:4})
+    expect(underTest.botResources).to.eql({silver:7})
     expect(underTest.tentPlaced).to.eql([])
   })
 })

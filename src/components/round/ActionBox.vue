@@ -44,7 +44,10 @@
     <template #body>
       <p v-if="action.influenceCost" v-html="t('rules.action.general.influenceCost')"/>
       <p v-if="action.silverCost" v-html="t('rules.action.general.silverCost')"/>
-      <p v-if="hasWorkerPlacement" v-html="t('rules.action.general.workerPlacement')"/>
+      <template v-if="hasWorkerPlacement">
+        <p v-if="workerPlacementGuild" v-html="t('rules.action.general.workerPlacementGuild')"/>
+        <p v-else v-html="t('rules.action.general.workerPlacement')"/>
+      </template>
       <slot name="instruction"></slot>
       <p v-if="action.influenceBonus" v-html="t('rules.action.general.influenceBonus')"/>
       <p v-if="action.silverBonus" v-html="t('rules.action.general.silverBonus')"/>

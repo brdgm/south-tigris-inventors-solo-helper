@@ -21,6 +21,14 @@
     <p v-html="t('setupBot.instructions.noSchemeCards')"></p>
   </div>
 
+  <h3 class="mt-3">{{t('setupBot.dummyPlayer.title')}}</h3>
+  <p v-html="t('setupBot.dummyPlayer.preparation.title')"></p>
+  <ul>
+    <li v-html="t('setupBot.dummyPlayer.preparation.unusedPlayerColor')"></li>
+    <li v-html="t('setupBot.dummyPlayer.preparation.ship')"></li>
+    <li v-html="t('setupBot.dummyPlayer.preparation.tentInfluence')"></li>
+  </ul>
+
   <button class="btn btn-primary btn-lg mt-4" @click="startGame()">
     {{t('action.startGame')}}
   </button>

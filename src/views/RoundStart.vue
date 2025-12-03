@@ -2,9 +2,8 @@
   <SideBar :navigationState="navigationState"/>
   <h1>{{t('roundStart.title')}}</h1>
 
-  <div class="instructions">
-    <p>...</p>
-  </div>
+  <h3 class="mt-3">{{t('roundStart.botWorkers.title')}}</h3>
+  <p v-html="t('roundStart.botWorkers.instruction', {count:botWorkerCount})"></p>
 
   <DummyPlayerAdvancement :round="round"/>
 
@@ -56,6 +55,9 @@ export default defineComponent({
         return ''
       }
       return  `/round/${this.round - 1}/end`
+    },
+    botWorkerCount() : number {
+      return (this.round > 2) ? 3 : 2
     }
   },
   methods: {
@@ -65,12 +67,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss" scoped>
-.instructions {
-  max-width: 1000px;
-  & > ul > li {
-    margin-top: 0.5rem;
-  }
-}
-</style>

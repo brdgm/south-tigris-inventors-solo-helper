@@ -83,9 +83,12 @@ export default class CardDeck {
    * @param difficultyLevel Difficulty level
    * @returns New card deck
    */
-  public static new(round : number, difficultyLevel: DifficultyLevel) : CardDeck {
-    const diceCardAdd = [DifficultyLevel.LEVEL_3, DifficultyLevel.LEVEL_4].includes(difficultyLevel) ? 1 : 0
-    const workerCardAdd = [DifficultyLevel.LEVEL_4].includes(difficultyLevel) ? 1 : 0
+  public static new(round : number, difficultyLevel: DifficultyLevel,
+      additionalDiceSchemeCard: boolean=false, additionalWorkerSchemeCard: boolean=false) : CardDeck {
+    const diceCardAdd = ([DifficultyLevel.LEVEL_3, DifficultyLevel.LEVEL_4].includes(difficultyLevel) ? 1 : 0)
+        + (additionalDiceSchemeCard ? 1 : 0)
+    const workerCardAdd = ([DifficultyLevel.LEVEL_4].includes(difficultyLevel) ? 1 : 0)
+        + (additionalWorkerSchemeCard ? 1 : 0)
     let diceCardCount
     let workerCardCount
     switch (round) {

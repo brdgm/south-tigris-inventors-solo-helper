@@ -30,7 +30,7 @@
   "setupBot": {
     "title": "Setup AI",
     "instructions": {
-      "intro": "Set up Inventors as you would for a {roundCount}-Round 2-player game, with a few changes. The Dummy Player is managed by the application. Do not follow the player setup on pages 6-7 for your opponent. Instead, assign them a player colour, giving them only the following items:",
+      "intro": "Set up Inventors as you would for a {roundCount}-Round 2-player game, with a few changes. Do not follow the player setup on pages 6-7 for your opponent. Instead, assign them a player colour, giving them only the following items:",
       "workers": "Place their 3 Workers in their player area.",
       "influence": "Place <b>{count} of their Influence into each Guild</b>. Place the rest of their Influence in a Supply nearby.",
       "tents4Rounds": "Place their 4 Tents nearby, and their Ship on the left-most River space of the Main Board.",
@@ -41,6 +41,28 @@
       "reveal3DeviceBoards": "Only reveal <b>3 Device Boards</b> in the first column. For the solo game, there may <b>never be more than 3 Device Boards in each column</b>.",
       "firstPlayerMaker": "Give yourself the First Player Marker.",
       "noSchemeCards": "The AI does not need the scheme cards - the card deck and the AI silver is managed by this application."
+    },
+    "dummyPlayer": {
+      "title": "Dummy Player Setup",
+      "preparation": {
+        "title": "The Dummy Player is managed by the application. Preparation:",
+        "unusedPlayerColor": "Select an unused player colour.",
+        "ship": "Place the Ship of that colour on the left-most space of the River.",
+        "tentInfluence": "Also place 1 of the Tents and 12 Influence of that colour in a nearby Supply."
+      }
+    }
+  },
+  "roundStart": {
+    "title": "Start of Round",
+    "botWorkers": {
+      "title": "AI Worker Supply",
+      "instruction": "Put <b>{count} Workers</b> into the supply of the AI."
+    },
+    "dummyPlayer": {
+      "title": "Dummy Player",
+      "influence": "Place Influence of the Dummy Player’s colour in the indicated Guilds.",
+      "moveShip": "Move the Dummy’s player Ship the indicated number of spaces along the River. Note that it does not collect or reveal Workshop Tiles, and does not skip empty spaces like players do.",
+      "dummyTokens": "Place the indicated Dummy Tokens on their correct spaces. 2 of these will block spaces for this Round, and the other will make 1 of the spaces cost an extra Influence to use."
     }
   },
   "roundTurnPlayer": {
@@ -55,6 +77,22 @@
     "title": "AI",
     "executed": "Executed",
     "notPossible": "Not Possible"
+  },
+  "roundEnd": {
+    "title": "End of Round",
+    "raiseTents": {
+      "title": "Raise Tents",
+      "influence": "When the AI raises their Tent, they will gain any Influence they cover."
+    },
+    "botTentingAreas": {
+      "title": "Did the AI raise their Tent on either of the right-most Tenting areas?",
+      "space4": "4th space (Envoy)",
+      "space4Result": "The AI gets 1 more Worker Scheme Card next Round (managed by the application).",
+      "space5": "5th space (Hire Camel)",
+      "space5Result": "The AI gets 1 more Dice Scheme Card next Round (managed by the application).",
+      "none": "None of those",
+      "notSelected": "Please select the AI's tenting space."
+    }
   },
   "sideBar": {
     "round": "Round {round}",
@@ -77,7 +115,8 @@
         "influenceCost": "The action is only possible if the AI can spend the indicated Influence.",
         "influenceBonus": "The AI places the indicated influence on Guild(s).",
         "silverBonus": "The AI gains the indicated amount of silver (managed by the application).",
-        "workerPlacement": "The action is only possible, it the AI can place a worker on one of the indicated spaces (in order of preference)."
+        "workerPlacement": "The action is only possible, it the AI can place a worker on one of the indicated spaces (in order of preference).",
+        "workerPlacementGuild": "The action is only possible, it the AI can place a worker on one of the spaces below the indicated guild (priority is left, right, bottom space)."
       },
       "invent": {
         "title": "Invent",

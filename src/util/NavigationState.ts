@@ -7,6 +7,7 @@ import { MAX_TURN } from './getTurnOrder'
 import { cloneDeep } from 'lodash'
 import getDifficultyLevelSettings from './getDifficultyLevelSettings'
 import BotActions from '@/services/BotActions'
+import addSilver from './addSilver'
 
 export default class NavigationState {
 
@@ -53,10 +54,11 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   // get initial card deck prepared for this round
   const initialCardDeck = roundData?.initialCardDeck ?? CardDeck.new(round, state.setup.difficultyLevel).toPersistence()
 
-  // get botResources from last round
+  // get botResources from previous round
   let botResources : BotResources
   if (round > 1) {
-    botResources = getBotPersistence(state, round-1, MAX_TURN, 0).botResources
+    // previous round: add 3 silver
+    botResources = addSilver(getBotPersistence(state, round-1, MAX_TURN, 0).botResources,3)
   }
   else {
     botResources = {
