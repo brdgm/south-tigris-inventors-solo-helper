@@ -49,6 +49,7 @@ import Player from '@/services/enum/Player'
 import BotPlaceTent from '@/components/structure/BotPlaceTent.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import addSilver from '@/util/addSilver'
+import Action from '@/services/enum/Action'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -109,6 +110,9 @@ export default defineComponent({
       this.router.push(this.routeCalculator.getNextActionRouteTo(this.state))
     },
     next() : void {
+      if (this.currentAction?.action == Action.ADD_DICE_RESERVE_CARD) {
+        this.navigationState.cardDeck.addReserveCard()
+      }
       const roundTurn : RoundTurn = {
         round: this.round,
         turn: this.turn,
