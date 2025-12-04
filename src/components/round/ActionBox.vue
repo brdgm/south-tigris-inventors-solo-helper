@@ -63,7 +63,6 @@ import AppIcon from '../structure/AppIcon.vue'
 import { CardAction } from '@/services/Card'
 import { nanoid } from 'nanoid'
 import NavigationState from '@/util/NavigationState'
-import CardType from '@/services/enum/CardType'
 import Guild from '@/services/enum/Guild'
 import WorkerSpace from '@/services/enum/WorkerSpace'
 import Player from '@/services/enum/Player'
@@ -101,8 +100,7 @@ export default defineComponent({
   computed: {
     hasWorkerPlacement() : boolean {
       return !this.navigationState.tentPlaced.includes(Player.BOT)
-          && this.navigationState.cardDeck.currentCard?.cardType == CardType.WORKER
-          && this.navigationState.action == 0
+          && (this.action.placeWorker ?? false)
     },
     workerPlacementGuild() : Guild|undefined {
       const guildPriorities = this.action.influenceCost ?? []

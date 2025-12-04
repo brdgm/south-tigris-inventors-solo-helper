@@ -35,8 +35,11 @@ export default class BotActions {
       placeTent = true
     }
     else {
-      // filter out actions the bot cannot afford (via silver cost)
-      actions = card.actions.filter(action => (action.silverCost ?? 0) <= botResources.silver)
+      actions = card.actions
+          // filter out worker placement actions if bot has no workers
+          .filter(action => (action.placeWorker && botResources.workers > 0) || !action.placeWorker)
+          // filter out actions the bot cannot afford (via silver cost)
+          .filter(action => (action.silverCost ?? 0) <= botResources.silver)
     }
 
     const secondLastCard = (cardDeck.pile.length == 1)

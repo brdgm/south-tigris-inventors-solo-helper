@@ -7,6 +7,10 @@
       <div>{{ navigationState.botResources.silver }}</div>
     </div>
     <div class="metric">
+      <div class="label"><AppIcon name="worker" class="icon worker"/></div>
+      <div>{{ navigationState.botResources.workers }}</div>
+    </div>
+    <div class="metric">
       <div class="label"><AppIcon name="scheme-card" class="icon schemeCard" extension="webp"/></div>
       <div>{{ navigationState.cardDeck.pile.length }}</div>
     </div>
@@ -87,6 +91,10 @@ export default defineComponent({
       drop-shadow(-0.5px 0 0 white)
       drop-shadow(0 1px 0 white)
       drop-shadow(0 -0.5px 0 white);
+  }
+  &.worker {
+    height: 2.75rem;
+    margin: -2rem;
   }
   &.schemeCard {
     height: 1.5rem;

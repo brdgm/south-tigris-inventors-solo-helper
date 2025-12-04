@@ -14,6 +14,7 @@ export default interface Card {
 
 export interface CardAction {
   action: Action
+  placeWorker?: true
   influenceCost?: Guild[]
   influenceBonus?: Guild[]
   silverCost?: number

@@ -28,6 +28,7 @@ import DebugInfo from '@/components/round/DebugInfo.vue'
 import RouteCalculator from '@/services/RouteCalculator'
 import RoundCount from '@/services/enum/RoundCount'
 import DummyPlayerAdvancement from '@/components/round/DummyPlayerAdvancement.vue'
+import getWorkerCount from '@/util/getWorkerCount'
 
 export default defineComponent({
   name: 'RoundStart',
@@ -57,7 +58,7 @@ export default defineComponent({
       return  `/round/${this.round - 1}/end`
     },
     botWorkerCount() : number {
-      return (this.round > 2) ? 3 : 2
+      return getWorkerCount(this.round)
     }
   },
   methods: {

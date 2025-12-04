@@ -7,7 +7,7 @@ import { MAX_TURN } from './getTurnOrder'
 import { cloneDeep } from 'lodash'
 import getDifficultyLevelSettings from './getDifficultyLevelSettings'
 import BotActions from '@/services/BotActions'
-import addSilver from './addSilver'
+import getWorkerCount from './getWorkerCount'
 
 export default class NavigationState {
 
@@ -57,12 +57,17 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
   // get botResources from previous round
   let botResources : BotResources
   if (round > 1) {
-    // previous round: add 3 silver
-    botResources = addSilver(getBotPersistence(state, round-1, MAX_TURN, 0).botResources,3)
+    // from previous round: add 3 silver, start with new workers
+    const previousRoundBotResource = getBotPersistence(state, round-1, MAX_TURN, 0).botResources
+    botResources = {
+      silver: previousRoundBotResource.silver + 3,
+      workers: getWorkerCount(round)
+    }
   }
   else {
     botResources = {
-      silver: 3 + (getDifficultyLevelSettings(state.setup.difficultyLevel).additionalSetupSilver ?? 0)
+      silver: 3 + (getDifficultyLevelSettings(state.setup.difficultyLevel).additionalSetupSilver ?? 0),
+      workers: getWorkerCount(round)
     }
   }
   return {

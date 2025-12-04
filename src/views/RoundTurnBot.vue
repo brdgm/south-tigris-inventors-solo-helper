@@ -45,6 +45,7 @@ import Player from '@/services/enum/Player'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import addSilver from '@/util/addSilver'
 import Action from '@/services/enum/Action'
+import removeWorker from '@/util/removeWorker'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -98,6 +99,17 @@ export default defineComponent({
       if (this.currentAction?.action == Action.ADD_DICE_RESERVE_CARD) {
         this.navigationState.cardDeck.addReserveCard()
       }
+
+      // calculate new silver amount
+      let newBotResources = addSilver(this.navigationState.botResources,
+            (this.currentAction?.silverBonus ?? 0) - (this.currentAction?.silverCost ?? 0))
+
+      // spend worker?
+      if (!this.navigationState.tentPlaced.includes(Player.BOT)
+          && (this.currentAction?.placeWorker ?? false)) {
+        newBotResources = removeWorker(newBotResources)
+      }
+
       const roundTurn : RoundTurn = {
         round: this.round,
         turn: this.turn,
@@ -105,8 +117,7 @@ export default defineComponent({
         player: this.navigationState.player,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          botResources: addSilver(this.navigationState.botResources,
-            (this.currentAction?.silverBonus ?? 0) - (this.currentAction?.silverCost ?? 0))
+          botResources: newBotResources
         }
       }
       if (this.placeTent) {

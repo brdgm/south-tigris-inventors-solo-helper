@@ -85,4 +85,5 @@ export interface DummyCardDeckPersistence {
 }
 export interface BotResources {
   silver: number
+  workers: number
 }

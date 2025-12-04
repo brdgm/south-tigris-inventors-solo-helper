@@ -128,7 +128,7 @@ const cards : Card[] = [
     guildPriorities: [],
     rowPriorities: [],
     actions: [
-      { action: Action.RESEARCH, influenceCost: [Guild.BLUE,Guild.BLUE] },
+      { action: Action.RESEARCH, placeWorker: true, influenceCost: [Guild.BLUE,Guild.BLUE] },
       { action: Action.INFLUENCE, influenceBonus: [Guild.BLUE,Guild.ORANGE,Guild.BLACK] }
     ],
     tentPosition: 5,
@@ -140,7 +140,7 @@ const cards : Card[] = [
     guildPriorities: [],
     rowPriorities: [],
     actions: [
-      { action: Action.RESEARCH, influenceCost: [Guild.ORANGE,Guild.ORANGE] },
+      { action: Action.RESEARCH, placeWorker: true, influenceCost: [Guild.ORANGE,Guild.ORANGE] },
       { action: Action.SILVER, silverBonus: 3 }
     ],
     tentPosition: 2,
@@ -152,7 +152,7 @@ const cards : Card[] = [
     guildPriorities: [Guild.BLUE, Guild.ORANGE, Guild.BLACK],
     rowPriorities: [3, 1, 2],
     actions: [
-      { action: Action.RESEARCH, influenceCost: [Guild.BLACK,Guild.BLACK] },
+      { action: Action.RESEARCH, placeWorker: true, influenceCost: [Guild.BLACK,Guild.BLACK] },
       { action: Action.TEST },
       { action: Action.SILVER, silverBonus: 2 }
     ],
@@ -165,7 +165,7 @@ const cards : Card[] = [
     guildPriorities: [],
     rowPriorities: [1, 3, 2],
     actions: [
-      { action: Action.ADD_DICE_RESERVE_CARD, influenceCost: [Guild.BLUE,Guild.ORANGE,Guild.BLACK], silverBonus: 1 },
+      { action: Action.ADD_DICE_RESERVE_CARD, placeWorker: true, influenceCost: [Guild.BLUE,Guild.ORANGE,Guild.BLACK], silverBonus: 1 },
       { action: Action.INFLUENCE, influenceBonus: [Guild.BLUE,Guild.BLACK], silverBonus: 1 }
     ],
     tentPosition: 3,
@@ -177,7 +177,7 @@ const cards : Card[] = [
     guildPriorities: [],
     rowPriorities: [2, 1, 3],
     actions: [
-      { action: Action.RESEARCH, influenceCost: [Guild.BLUE,Guild.ORANGE,Guild.BLACK] },
+      { action: Action.RESEARCH, placeWorker: true, influenceCost: [Guild.BLUE,Guild.ORANGE,Guild.BLACK] },
       { action: Action.INFLUENCE, influenceBonus: [Guild.BLUE,Guild.ORANGE], silverBonus: 1 }
     ],
     tentPosition: 4,
@@ -189,7 +189,7 @@ const cards : Card[] = [
     guildPriorities: [],
     rowPriorities: [3, 2, 1],
     actions: [
-      { action: Action.ADVANCE_SHIP, influenceCost: [Guild.BLUE,Guild.ORANGE,Guild.BLACK] },
+      { action: Action.ADVANCE_SHIP, placeWorker: true, influenceCost: [Guild.BLUE,Guild.ORANGE,Guild.BLACK] },
       { action: Action.INFLUENCE, influenceBonus: [Guild.ORANGE,Guild.BLACK], silverBonus: 1 }
     ],
     tentPosition: 5,

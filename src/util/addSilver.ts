@@ -7,7 +7,12 @@ import { BotResources } from '@/store/state'
  * @returns New bot resources
  */
 export default function addSilver(botResources: BotResources, value: number) : BotResources {
+  const silver = botResources.silver + value
+  if (silver < 0) {
+    throw new Error('Silver cannot be negative.')
+  }
   return {
-    silver: (botResources.silver + value)
+    silver,
+    workers: botResources.workers
   }
 }
