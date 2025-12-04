@@ -9,7 +9,7 @@
 
   <p class="mt-4" v-html="t('roundTurnPlayer.execute')"></p>
 
-  <PlayerPaySilver v-model="playerPaySilver"/>
+  <BotSilver v-model="botSilver"/>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -48,7 +48,7 @@ import ModalDialog from '@brdgm/brdgm-commons/src/components/structure/ModalDial
 import SideBar from '@/components/round/SideBar.vue'
 import DebugInfo from '@/components/round/DebugInfo.vue'
 import RouteCalculator from '@/services/RouteCalculator'
-import PlayerPaySilver from '@/components/round/PlayerPaySilver.vue'
+import BotSilver from '@/components/round/BotSilver.vue'
 import addSilver from '@/util/addSilver'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import AppIcon from '@/components/structure/AppIcon.vue'
@@ -61,7 +61,7 @@ export default defineComponent({
     ModalDialog,
     SideBar,
     DebugInfo,
-    PlayerPaySilver,
+    BotSilver,
     AppIcon
   },
   setup() {
@@ -78,7 +78,7 @@ export default defineComponent({
   },
   data() {
     return {
-      playerPaySilver: 0
+      botSilver: 0
     }
   },
   computed: {
@@ -101,7 +101,7 @@ export default defineComponent({
         player: this.navigationState.player,
         botPersistence: {
           cardDeck: this.navigationState.cardDeck.toPersistence(),
-          botResources: addSilver(this.navigationState.botResources, toNumber(this.playerPaySilver))
+          botResources: addSilver(this.navigationState.botResources, toNumber(this.botSilver))
         }
       }
       if (placeTent) {

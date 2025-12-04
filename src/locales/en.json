@@ -68,7 +68,7 @@
   "roundTurnPlayer": {
     "title": "Player",
     "execute": "Execute you turn.",
-    "playerPaySilver": "Silver/Provisions you paid to the AI:",
+    "botSilver": "Silver gained by the AI:",
     "placeTent": "Place Tent",
     "placeTentConfirm": "Do you want to place your tent?",
     "placeDummyPlayerTent": "Place the Dummy Player Tent on an available Tent space."
