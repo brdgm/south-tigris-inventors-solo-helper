@@ -94,6 +94,31 @@
       "notSelected": "Please select the AI's tenting space."
     }
   },
+  "gameEnd": {
+    "title": "End of Game",
+    "difficulty": "Difficulty",
+    "count": {
+      "title": "AI Numbers",
+      "count": "Count",
+      "vp": "VP",
+      "workshopTiles": "Workshop Tiles collected",
+      "inventionTiles": "Invention Tiles placed",
+      "builtPublishedDevicesInfluence": "Influence on Built and Published Devices Boards"
+    },
+    "scoring": {
+      "title": "Victory Points",
+      "guildMajorities": "Guild Majorities",
+      "royaltiesTrack": "Royalties Track",
+      "researchTiles": "Research Tiles",
+      "craftspeople": "Craftspeople",
+      "workshopTiles": "Workshop Tiles",
+      "inventionTiles": "Invention Tiles",
+      "builderPublisherInfluence": "Builder & Publisher Influence",
+      "builtPublishedDevices": "Built and Published Devices",
+      "remainingSilverDeviceCards": "Remaining Silver & Device Cards",
+      "totalVP": "Total VP"
+    }
+  },
   "sideBar": {
     "round": "Round {round}",
     "turn": "Turn {turn}"

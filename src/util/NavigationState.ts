@@ -28,11 +28,12 @@ export default class NavigationState {
     this.player = (route.name == 'RoundTurnBot' || route.name == 'RoundTurnBotAction') ? Player.BOT : Player.PLAYER
     this.action = getIntRouteParam(route, 'action')
 
-    const lookupTurn = isRoundEndRoute(route) ? MAX_TURN : this.turn
-    const botPersistence = getBotPersistence(state, this.round, lookupTurn, this.turnOrderIndex)
+    const lookupTurn = (isRoundEndRoute(route) || isGameEndRoute(route)) ? MAX_TURN : this.turn
+    const lookupRound = isGameEndRoute(route) ? 4 : this.round
+    const botPersistence = getBotPersistence(state, lookupRound, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = cloneDeep(botPersistence.botResources)
-    this.tentPlaced = getTentPlaced(state, this.round, lookupTurn, this.turnOrderIndex)
+    this.tentPlaced = getTentPlaced(state, lookupRound, lookupTurn, this.turnOrderIndex)
 
     if (this.player == Player.BOT) {
       this.botActions = BotActions.drawCard(this.cardDeck, botPersistence.botResources, this.tentPlaced.includes(Player.BOT))
@@ -77,7 +78,11 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
 }
 
 function isRoundEndRoute(route:RouteLocation) : boolean {
-  return route.name == 'RoundEnd' || route.name == 'GameEnd'
+  return route.name == 'RoundEnd'
+}
+
+function isGameEndRoute(route:RouteLocation) : boolean {
+  return route.name == 'GameEnd'
 }
 
 function getTentPlaced(state:State, round:number, turn:number, turnOrderIndex:number) : Player[] {

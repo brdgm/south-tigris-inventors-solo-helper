@@ -1,10 +1,10 @@
 <template>
   <h1>{{t('gameEnd.title')}}</h1>
 
-  <p class="mt-4">Final scoring...</p>
+  <FinalScoring/>
 
   <p class="mt-3">
-    {{t('setup.difficultyLevel.title')}}: <b>{{t(`difficultyLevel.${state.setup.difficultyLevel}`)}}</b>
+    {{t('gameEnd.difficulty')}}: <b>{{t(`difficultyLevel.${state.setup.difficultyLevel}`)}}</b>
   </p>
 
   <FooterButtons endGameButtonType="endGame"/>
@@ -17,11 +17,13 @@ import { useRoute, useRouter } from 'vue-router'
 import NavigationState from '@/util/NavigationState'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStateStore } from '@/store/state'
+import FinalScoring from '@/components/scoring/FinalScoring.vue'
 
 export default defineComponent({
   name: 'GameEnd',
   components: {
-    FooterButtons
+    FooterButtons,
+    FinalScoring
   },
   setup() {
     const { t } = useI18n()

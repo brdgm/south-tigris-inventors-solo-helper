@@ -5,36 +5,38 @@
   <h3>{{t('roundEnd.raiseTents.title')}}</h3>
   <p v-html="t('roundEnd.raiseTents.influence')"></p>
 
-  <p class="fw-bold" v-html="t('roundEnd.botTentingAreas.title')"></p>
-  <form>
-    <div class="form-check form-check-inline">
-      <label class="form-check-label fw-bold">
-        <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="4">
-        {{t('roundEnd.botTentingAreas.space4')}}
-      </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <label class="form-check-label fw-bold">
-        <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="5">
-        {{t('roundEnd.botTentingAreas.space5')}}
-      </label>
-    </div>
-    <div class="form-check form-check-inline">
-      <label class="form-check-label fw-bold">
-        <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="0">
-        {{t('roundEnd.botTentingAreas.none')}}
-      </label>
-    </div>
-  </form>
-  <p class="mt-2" v-if="(botTentingArea ?? 0) > 0" v-html="t(`roundEnd.botTentingAreas.space${botTentingArea}Result`)"></p>
+  <template v-if="!isLastRound">
+    <p class="fw-bold" v-html="t('roundEnd.botTentingAreas.title')"></p>
+    <form>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label fw-bold">
+          <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="4">
+          {{t('roundEnd.botTentingAreas.space4')}}
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label fw-bold">
+          <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="5">
+          {{t('roundEnd.botTentingAreas.space5')}}
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <label class="form-check-label fw-bold">
+          <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="0">
+          {{t('roundEnd.botTentingAreas.none')}}
+        </label>
+      </div>
+    </form>
+    <p class="mt-2" v-if="(botTentingArea ?? 0) > 0" v-html="t(`roundEnd.botTentingAreas.space${botTentingArea}Result`)"></p>
 
-  <div class="row mt-4" v-if="botTentingArea == undefined">
-    <div class="col">
-      <div class="alert alert-info" v-html="t('roundEnd.botTentingAreas.notSelected')"></div>
+    <div class="row mt-4" v-if="botTentingArea == undefined">
+      <div class="col">
+        <div class="alert alert-info" v-html="t('roundEnd.botTentingAreas.notSelected')"></div>
+      </div>
     </div>
-  </div>
+  </template>
 
-  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="botTentingArea!=undefined">
+  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="isLastRound || botTentingArea!=undefined">
     {{t('action.next')}}
   </button>
 
@@ -84,6 +86,9 @@ export default defineComponent({
   computed: {
     backButtonRouteTo() : string {
       return this.routeCalculator.getLastTurnRouteTo(this.state)
+    },
+    isLastRound() : boolean {
+      return this.round == 4
     }
   },
   methods: {
