@@ -87,9 +87,9 @@
     "botTentingAreas": {
       "title": "Did the AI raise their Tent on either of the right-most Tenting areas?",
       "space4": "4th space (Envoy)",
-      "space4Result": "The AI gets 1 more Worker Scheme Card next Round (managed by the application).",
+      "space4Result": "The AI gets 1 more Worker Scheme Card next Round <i>(managed by the application)</i>.",
       "space5": "5th space (Hire Camel)",
-      "space5Result": "The AI gets 1 more Dice Scheme Card next Round (managed by the application).",
+      "space5Result": "The AI gets 1 more Dice Scheme Card next Round <i>(managed by the application)</i>.",
       "none": "None of those",
       "notSelected": "Please select the AI's tenting space."
     }
@@ -136,10 +136,10 @@
   "rules": {
     "action": {
       "general": {
-        "silverCost": "The action is only possible if the AI can spend the indicated amount of Silver (managed by the application).",
+        "silverCost": "The action is only possible if the AI can spend the indicated amount of Silver <i>(managed by the application)</i>.",
         "influenceCost": "The action is only possible if the AI can spend the indicated Influence.",
         "influenceBonus": "The AI places the indicated influence on Guild(s).",
-        "silverBonus": "The AI gains the indicated amount of silver (managed by the application).",
+        "silverBonus": "The AI gains the indicated amount of silver <i>(managed by the application)</i>.",
         "workerPlacement": "The action is only possible, it the AI can place a worker on one of the indicated spaces (in order of preference).",
         "workerPlacementGuild": "The action is only possible, it the AI can place a worker on one of the spaces below the indicated guild (priority is left, right, bottom space)."
       },
@@ -189,7 +189,7 @@
       },
       "addDiceReserveCard": {
         "title": "Add Dice Reserve Card",
-        "instruction": "Your opponent will shuffle the top Dice Scheme Card from the Reserve Pile into their Draw Pile (managed by the application)."
+        "instruction": "Your opponent will shuffle the top Dice Scheme Card from the Reserve Pile into their Draw Pile <i>(managed by the application)</i>."
       },
       "tent": {
         "title": "Place Tent",
