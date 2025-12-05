@@ -1,5 +1,5 @@
 <template>
-  <div class="actionBox col" :class="{'instruction': hasInstruction}" @click="showInstructions">
+  <div class="actionBox" :class="{'instruction': hasInstruction}" @click="showInstructions">
     <div class="actionWrapper">
       <template v-if="!navigationState.botActions?.placeTent">
         <div class="cost" v-if="action.influenceCost">

@@ -1,7 +1,7 @@
 <template>
-  <div class="resourcesWrapper">
-    <div class="resources">
-      <p v-html="t('roundTurnPlayer.botSilver')"></p>
+  <div class="botSilverWrapper">
+    <div class="botSilver">
+      <div v-html="t('roundTurnPlayer.botSilver')"></div>
       <div class="option">
         <label for="inputSilverValue">
           <AppIcon name="silver" class="icon" extension="webp"/>
@@ -51,11 +51,14 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.resourcesWrapper {
+.botSilverWrapper {
   margin-top: 15px;
-  max-width: 32rem;
+  max-width: 38rem;
 }
-.resources {
+.botSilver {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   background-color: #ddd;
   border-radius: 0.5rem;
   padding: 1rem;
