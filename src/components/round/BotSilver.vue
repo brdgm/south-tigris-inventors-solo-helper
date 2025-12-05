@@ -54,10 +54,6 @@ export default defineComponent({
 .resourcesWrapper {
   margin-top: 15px;
   max-width: 32rem;
-  padding-right: 10rem;
-  @media (max-width: 600px) {
-    padding-right: 8rem;
-  }
 }
 .resources {
   background-color: #ddd;
