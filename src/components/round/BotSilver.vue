@@ -53,7 +53,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .botSilverWrapper {
   margin-top: 15px;
-  max-width: 38rem;
+  max-width: 32rem;
 }
 .botSilver {
   display: flex;
