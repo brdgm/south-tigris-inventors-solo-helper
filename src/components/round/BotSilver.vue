@@ -32,12 +32,12 @@ export default defineComponent({
   props: {
     modelValue: {
       type: Number,
-      required: true
+      required: false
     }
   },
   data() {
     return {
-      silverValue: this.modelValue
+      silverValue: this.modelValue as number|undefined
     }
   },
   watch: {
