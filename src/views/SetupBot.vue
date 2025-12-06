@@ -29,6 +29,19 @@
     <li v-html="t('setupBot.dummyPlayer.preparation.tentInfluence')"></li>
   </ul>
 
+  <div class="container-fluid mt-4">
+    <div class="row">
+      <div class="col alert alert-primary">
+        <h4>{{t('setupBot.ruleChanges.title')}}</h4>
+        <ul>
+          <li v-html="t('setupBot.ruleChanges.ignoreIcons')"></li>
+          <li v-html="t('setupBot.ruleChanges.influenceLimit')"></li>
+          <li v-html="t('setupBot.ruleChanges.focus')"></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <button class="btn btn-primary btn-lg mt-4" @click="startGame()">
     {{t('action.startGame')}}
   </button>

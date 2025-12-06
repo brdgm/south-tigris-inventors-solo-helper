@@ -50,6 +50,12 @@
         "ship": "Place the Ship of that colour on the left-most space of the River.",
         "tentInfluence": "Also place 1 of the Tents and 12 Influence of that colour in a nearby Supply."
       }
+    },
+    "ruleChanges": {
+      "title": "Rule Changes",
+      "ignoreIcons": "Your opponent ignores all icons on the Main Board, Device Boards, Device Cards, and Inventions Tiles, unless specifically told otherwise.",
+      "influenceLimit": "If your opponent ever needs to place Influence in a Guild, but have none left in their Supply, they simply place none. If they ever need to place Influence on a Device, but have none, move 1 from the leftmost Guild where they have Influence.",
+      "focus": "Many tasks will require your opponent to focus. This is done using the numbers and colours shown for each action. The numbers show their preference for focusing on a top, middle, or bottom row. If all 3 options are unavailable, the action is not possible. The colours show their Dice preference when Testing Devices."
     }
   },
   "roundStart": {
