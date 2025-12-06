@@ -49,8 +49,14 @@
         <p v-else v-html="t('rules.action.general.workerPlacement')"/>
       </template>
       <slot name="instruction"></slot>
-      <p v-if="action.influenceBonus" v-html="t('rules.action.general.influenceBonus')"/>
-      <p v-if="action.silverBonus" v-html="t('rules.action.general.silverBonus')"/>
+      <template v-if="action.influenceBonus">
+        <hr/>
+        <p v-html="t('rules.action.general.influenceBonus')"/>
+      </template>
+      <template v-if="action.silverBonus">
+        <hr/>
+        <p v-html="t('rules.action.general.silverBonus')"/>
+      </template>
     </template>
   </ModalDialog>
 </template>
@@ -224,5 +230,8 @@ export default defineComponent({
   height: 1.5rem;
   margin-left: 0.5rem;
   margin-right: -0.25rem;
+}
+.modal hr:first-child {
+  display: none;
 }
 </style>
