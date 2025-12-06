@@ -34,7 +34,7 @@
       "workers": "Place their 3 Workers in their player area.",
       "influence": "Place <b>{count} of their Influence into each Guild</b>. Place the rest of their Influence in a Supply nearby.",
       "tents4Rounds": "Place their 4 Tents nearby, and their Ship on the left-most River space of the Main Board.",
-      "tents3RoundsTent1": "Place an opponent Tent on the first space of the centre Tent Area, gaining them <b>1 additional Black Influence</b> immediately.",
+      "tents3RoundsTent1": "Place an opponent Tent on the first space of the centre Tent Area, gaining them <b>1 additional Charcoal Influence</b> immediately.",
       "tents3Rounds": "Place their remaining 3 Tents nearby, and their Ship on the left-most River space of the Main Board.",
       "publishedDevice3Rounds": "Place a Published Device into play with a random Device Card and Neutral Invention Tile. Place your opponent’s Influence to indicate them as the Builder and Publisher.",
       "shuffleInventionsTiles": "Shuffle their Invention Tiles and place them in a facedown Draw Pile.",
