@@ -107,19 +107,11 @@
   "gameEnd": {
     "title": "End of Game",
     "difficulty": "Difficulty",
-    "count": {
-      "title": "AI Numbers",
-      "count": "Count",
-      "vp": "VP",
-      "workshopTiles": "AI Workshop Tiles collected",
-      "inventionTiles": "AI Invention Tiles placed",
-      "builtPublishedDevicesInfluence": "AI Influence on Built and Published Devices Boards"
-    },
     "scoring": {
       "title": "Victory Points",
       "guildMajorities": "Guild Majorities",
       "royaltiesTrack": "Royalties Track",
-      "researchTiles": "Research Tiles",
+      "researchTiles": "Research Tiles Influence",
       "craftspeople": "Craftspeople",
       "workshopTiles": "Workshop Tiles",
       "inventionTiles": "Invention Tiles",

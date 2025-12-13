@@ -87,4 +87,8 @@ export interface DummyCardDeckPersistence {
 export interface BotResources {
   silver: number
   workers: number
+  workshopTiles: number
+  inventionTiles: number
+  builtDevices: number
+  publishedDevices: number
 }

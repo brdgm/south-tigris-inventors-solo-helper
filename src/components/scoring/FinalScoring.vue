@@ -4,56 +4,6 @@
       <tbody>
         <tr>
           <th scope="col">
-            <h5>{{t('gameEnd.count.title')}}</h5>
-          </th>
-          <th scope="col">
-            <span class="fw-bold">{{t('gameEnd.count.count')}}</span>
-          </th>
-          <th scope="col">
-            <span class="fw-bold">{{t('gameEnd.count.vp')}}</span>
-          </th>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.count.workshopTiles')"></span>
-          </th>
-          <td>
-            <NumberInput v-model="botWorkshopTilesCount"/>
-          </td>
-          <td>
-            {{botWorkshopTilesVP}}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.count.inventionTiles')"></span>
-          </th>
-          <td>
-            <NumberInput v-model="botInventionTilesCount"/>
-          </td>
-          <td>
-            {{botInventionTilesVP}}
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <span v-html="t('gameEnd.count.builtPublishedDevicesInfluence')"></span>
-          </th>
-          <td>
-            <NumberInput v-model="botBuiltPublishedDevicesInfluenceCount"/>
-          </td>
-          <td>
-            {{botBuiltPublishedDevicesVP}}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="tableWrapper mt-3">
-    <table>
-      <tbody>
-        <tr>
-          <th scope="col">
             <h5>{{t('gameEnd.scoring.title')}}</h5>
           </th>
           <th scope="col">
@@ -177,7 +127,7 @@
 </template>
 
 <script lang="ts">
-import { useStateStore } from '@/store/state'
+import { BotResources, useStateStore } from '@/store/state'
 import { defineComponent, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import NumberInput from '@brdgm/brdgm-commons/src/components/form/NumberInput.vue'
@@ -211,10 +161,6 @@ export default defineComponent({
     const botResearchTilesVP = ref(undefined as number|undefined)
     const botBuilderPublisherInfluenceVP = ref(undefined as number|undefined)
 
-    const botWorkshopTilesCount = ref(undefined as number|undefined)
-    const botInventionTilesCount = ref(undefined as number|undefined)
-    const botBuiltPublishedDevicesInfluenceCount = ref(undefined as number|undefined)
-
     return { t, state, navigationState, 
       playerGuildMajoritiesVP,
       playerRoyaltiesTrackVP,
@@ -227,10 +173,7 @@ export default defineComponent({
       playerRemainingSilverDeviceCardsVP,
       botGuildMajoritiesVP,
       botResearchTilesVP,
-      botBuilderPublisherInfluenceVP,
-      botWorkshopTilesCount,
-      botInventionTilesCount,
-      botBuiltPublishedDevicesInfluenceCount
+      botBuilderPublisherInfluenceVP
     }
   },
   data() {
@@ -239,17 +182,20 @@ export default defineComponent({
     }
   },
   computed: {
+    botResources() : BotResources {
+      return this.navigationState.botResources
+    },
     botWorkshopTilesVP() : number {
-      return toNumber(this.botWorkshopTilesCount) * 2
+      return this.botResources.workshopTiles * 2
     },
     botInventionTilesVP() : number {
-      return toNumber(this.botInventionTilesCount) * 3
+      return this.botResources.inventionTiles * 3
     },
     botBuiltPublishedDevicesVP() : number {
-      return toNumber(this.botBuiltPublishedDevicesInfluenceCount) * 4
+      return (this.botResources.builtDevices + this.botResources.publishedDevices) * 4
     },
     botRemainingSilverVP() : number {
-      return this.navigationState.botResources.silver
+      return this.botResources.silver
     },
     playerTotalVP(): number {
       return toNumber(this.playerGuildMajoritiesVP)

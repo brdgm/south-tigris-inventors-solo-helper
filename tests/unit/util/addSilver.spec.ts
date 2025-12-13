@@ -1,8 +1,9 @@
 import addSilver from '@/util/addSilver'
 import { expect } from 'chai'
+import mockBotResources from '../helper/mockBotResources'
 
 describe('util/addSilver', () => {
   it('addSilver', () => {
-    expect(addSilver({silver: 4, workers: 1}, 1)).to.eql({silver: 5, workers: 1})
+    expect(addSilver(mockBotResources({silver: 4}), 1)).to.eql(mockBotResources({silver: 5}))
   })
 })
