@@ -148,8 +148,7 @@
         "influenceCost": "The action is only possible if the AI can spend the indicated Influence.",
         "influenceBonus": "The AI places the indicated influence on Guild(s).",
         "silverBonus": "The AI gains the indicated amount of silver <i>(managed by the application)</i>.",
-        "workerPlacement": "The action is only possible, if the AI can place a worker on one of the indicated spaces (in order of preference).",
-        "workerPlacementGuild": "The action is only possible, if the AI can place a worker on one of the spaces below the indicated guild (priority is left, right, bottom space)."
+        "workerPlacement": "The action is only possible, if the AI can place a worker on one of the indicated spaces (in order of preference)."
       },
       "invent": {
         "title": "Invent",

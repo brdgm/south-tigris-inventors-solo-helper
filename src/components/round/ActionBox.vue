@@ -27,12 +27,7 @@
       <div class="workerPlacement" v-if="hasWorkerPlacement">
         <AppIcon name="worker" class="icon worker"/>
         <AppIcon name="arrow" class="arrow"/>
-        <template v-if="workerPlacementGuild">
-          <AppIcon type="influence" :name="workerPlacementGuild" class="icon guild"/> 
-        </template>
-        <template v-else>
-          <AppIcon v-for="workerSpace of workerSpacePriority" :key="workerSpace" type="worker-space" :name="workerSpace" class="icon workerSpace"/>
-        </template>
+        <AppIcon v-for="workerSpace of workerSpacePriority" :key="workerSpace" type="worker-space" :name="workerSpace" class="icon workerSpace"/>
       </div>
       <div class="priority" v-if="hasPriority">
         <slot name="priority"></slot>
@@ -45,8 +40,7 @@
       <p v-if="action.influenceCost" v-html="t('rules.action.general.influenceCost')"/>
       <p v-if="action.silverCost" v-html="t('rules.action.general.silverCost')"/>
       <template v-if="hasWorkerPlacement">
-        <p v-if="workerPlacementGuild" v-html="t('rules.action.general.workerPlacementGuild')"/>
-        <p v-else v-html="t('rules.action.general.workerPlacement')"/>
+        <p v-html="t('rules.action.general.workerPlacement')"/>
       </template>
       <slot name="instruction"></slot>
       <template v-if="action.influenceBonus">
@@ -120,14 +114,35 @@ export default defineComponent({
       return undefined
     },
     workerSpacePriority() : WorkerSpace[] {
-      return (this.navigationState.cardDeck.currentCard?.rowPriorities ?? [])
-          .map(row => { 
-            switch (row) {
-              case 1: return WorkerSpace.HIRE_CAMEL
-              case 2: return WorkerSpace.REFRESH_CRAFTSPEOPLE
-              default: return WorkerSpace.ADVANCE_SHIP
-            }
-        })
+      switch (this.workerPlacementGuild) {
+        case Guild.BLUE:
+          return [
+            WorkerSpace.GUILD_BLUE_INFLUENCE_2,
+            WorkerSpace.GUILD_BLUE_INFLUENCE_1_SILVER_1,
+            WorkerSpace.GUILD_BLUE_INFLUENCE_2_SILVER_1
+          ]
+        case Guild.ORANGE:
+          return [
+            WorkerSpace.GUILD_ORANGE_INFLUENCE_2,
+            WorkerSpace.GUILD_ORANGE_INFLUENCE_1_CRAFTSPERSON,
+            WorkerSpace.GUILD_ORANGE_INFLUENCE_2_CRAFTSPERSON
+          ]
+        case Guild.BLACK:
+          return [
+            WorkerSpace.GUILD_BLACK_INFLUENCE_2,
+            WorkerSpace.GUILD_BLACK_INFLUENCE_1_DISCARD_DEVICE_CARD,
+            WorkerSpace.GUILD_BLACK_INFLUENCE_2_DISCARD_DEVICE_CARD
+          ]
+        default:
+          return (this.navigationState.cardDeck.currentCard?.rowPriorities ?? [])
+              .map(row => { 
+                switch (row) {
+                  case 1: return WorkerSpace.HIRE_CAMEL
+                  case 2: return WorkerSpace.REFRESH_CRAFTSPEOPLE
+                  default: return WorkerSpace.ADVANCE_SHIP
+                }
+            })
+      }
     },
     hasPriority() : boolean {
       return this.$slots.priority !== undefined
