@@ -41,7 +41,6 @@
       "tents3Rounds": "Place their remaining 3 Tents nearby, and their Ship on the left-most River space of the Main Board.",
       "publishedDevice3Rounds": "Place a Published Device into play with a random Device Card and Neutral Invention Tile. Place your opponent’s Influence to indicate them as the Builder and Publisher.",
       "shuffleInventionsTiles": "Shuffle their Invention Tiles and place them in a facedown Draw Pile.",
-      "firstPlayerMaker": "Give yourself the First Player Marker.",
       "noSchemeCards": "The AI does not need the scheme cards - the card deck and the AI silver is managed by this application. If you need help on an AI action, tap on the action to get the rules."
     },
     "dummyPlayer": {
@@ -58,7 +57,7 @@
       "ignoreIcons": "Your opponent ignores all icons on the Main Board, Device Boards, Device Cards, and Inventions Tiles, unless specifically told otherwise.",
       "influenceLimit": "If your opponent ever needs to place Influence in a Guild, but have none left in their Supply, they simply place none. If they ever need to place Influence on a Device, but have none, move 1 from the leftmost Guild where they have Influence.",
       "focus": "Many tasks will require your opponent to focus. This is done using the numbers and colours shown for each action. The numbers show their preference for focusing on a top, middle, or bottom row. If all 3 options are unavailable, the action is not possible. The colours show their Dice preference when Testing Devices.",
-      "publishBotDevice": "If you Publish a Device that your opponent Invented, you must still pay 1 Silver to their Supply."
+      "publishBotDevice": "If you Publish a Device that your opponent Invented, you must still pay them 1 Silver."
     }
   },
   "roundStart": {

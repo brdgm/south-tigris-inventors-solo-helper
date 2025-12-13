@@ -183,7 +183,7 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 1.5rem;
   @media (max-width: 600px) {
     gap: 1rem;

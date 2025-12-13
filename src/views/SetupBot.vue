@@ -21,7 +21,6 @@
         <li v-html="t('setupBot.instructions.tents4Rounds')"></li>
       </template>
       <li v-html="t('setupBot.instructions.shuffleInventionsTiles')"></li>
-      <li v-html="t('setupBot.instructions.firstPlayerMaker')"></li>
     </ol>
     <p v-html="t('setupBot.instructions.noSchemeCards')"></p>
   </div>
