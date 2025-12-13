@@ -3,7 +3,7 @@
   "home": {
     "title": "Inventors of the South Tigris Solo Helper",
     "play1": "Play <a href='https://boardgamegeek.com/boardgame/378387/inventors-of-the-south-tigris' target='_blank' rel='noopener'><b>Inventors of the South Tigris</b></a> solo against the AI.",
-    "play2": "This application replaces scheme cards and guides you through the game and solo ruleset. It supports all difficulty levels.",
+    "play2": "This application replaces scheme cards and guides you through the game and solo ruleset. It manages the Dummy Player and supports all difficulty levels.",
     "play3": "You can also play with the <a href='https://boardgamegeek.com/boardgameexpansion/427132/inventors-of-the-south-tigris-era-of-experts' target='_blank' rel='noopener'>Era of Experts</a> expansion.",
     "feedback": "Discussion and Feedback:"
   },
@@ -30,7 +30,10 @@
   "setupBot": {
     "title": "Setup AI",
     "instructions": {
-      "intro": "Set up Inventors as you would for a {roundCount}-Round 2-player game, with a few changes. Do not follow the player setup on pages 6-7 for your opponent. Instead, assign them a player colour, giving them only the following items:",
+      "generalIntro": "Set up Inventors as you would for a {roundCount}-Round 2-player game, with a few changes:",
+      "reveal3DeviceBoards": "Only reveal <b>3 Device Boards</b> in the first column. For the solo game, there may <b>never be more than 3 Device Boards in each column</b>.",
+      "columns2OneDeviceBoard": "Place only <b>1 Device Board</b> with Neutral Invention Tile in the second column.",
+      "botIntro": "Do not follow the player setup on pages 6-7 for your opponent. Instead, assign them a player colour, giving them only the following items:",
       "workers": "Place their 3 Workers in their player area.",
       "influence": "Place <b>{count} of their Influence into each Guild</b>. Place the rest of their Influence in a Supply nearby.",
       "tents4Rounds": "Place their 4 Tents nearby, and their Ship on the left-most River space of the Main Board.",
@@ -38,14 +41,13 @@
       "tents3Rounds": "Place their remaining 3 Tents nearby, and their Ship on the left-most River space of the Main Board.",
       "publishedDevice3Rounds": "Place a Published Device into play with a random Device Card and Neutral Invention Tile. Place your opponent’s Influence to indicate them as the Builder and Publisher.",
       "shuffleInventionsTiles": "Shuffle their Invention Tiles and place them in a facedown Draw Pile.",
-      "reveal3DeviceBoards": "Only reveal <b>3 Device Boards</b> in the first column. For the solo game, there may <b>never be more than 3 Device Boards in each column</b>.",
       "firstPlayerMaker": "Give yourself the First Player Marker.",
-      "noSchemeCards": "The AI does not need the scheme cards - the card deck and the AI silver is managed by this application."
+      "noSchemeCards": "The AI does not need the scheme cards - the card deck and the AI silver is managed by this application. If you need help on an AI action, tap on the action to get the rules."
     },
     "dummyPlayer": {
       "title": "Dummy Player Setup",
       "preparation": {
-        "title": "The Dummy Player is managed by the application. Preparation:",
+        "title": "The Dummy Player and its card deck is managed by the application. Preparation:",
         "unusedPlayerColor": "Select an unused player colour.",
         "ship": "Place the Ship of that colour on the left-most space of the River.",
         "tentInfluence": "Also place 1 of the Tents and 12 Influence of that colour in a nearby Supply."
