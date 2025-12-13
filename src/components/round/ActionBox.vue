@@ -201,6 +201,7 @@ export default defineComponent({
   .workerPlacement {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 1rem;
