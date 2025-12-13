@@ -4,6 +4,7 @@ import mockState from '../helper/mockState'
 import mockRound from '../helper/mockRound'
 import Player from '@/services/enum/Player'
 import mockTurn from '../helper/mockTurn'
+import TentSpace from '@/services/enum/TentSpace'
 
 describe('util/getTurnOrder', () => {
   it('round1-turn2', () => {
@@ -24,8 +25,8 @@ describe('util/getTurnOrder', () => {
     const state = mockState({rounds:[
       mockRound({round:1, startPlayer: Player.PLAYER, turns:[
         mockTurn({round:1,turn:1,player:Player.PLAYER}),
-        mockTurn({round:1,turn:1,player:Player.BOT,tentPlaced:true}),
-        mockTurn({round:1,turn:2,player:Player.PLAYER,tentPlaced:true}),
+        mockTurn({round:1,turn:1,player:Player.BOT,tentPlaced:TentSpace.GUILD_BLUE}),
+        mockTurn({round:1,turn:2,player:Player.PLAYER,tentPlaced:TentSpace.GUILD_BLACK}),
       ]})
     ]})
     expect(getTurnOrder(state, 1, 2)).to.eql([

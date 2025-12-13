@@ -1,6 +1,7 @@
 import { BotPersistence, RoundTurn } from '@/store/state'
 import mockBotPersistence from './mockBotPersistence'
 import Player from '@/services/enum/Player'
+import TentSpace from '@/services/enum/TentSpace'
 
 export default function mockTurn(params?: MockTurnParams) : RoundTurn {
   return {
@@ -18,6 +19,6 @@ export interface MockTurnParams {
   turn? : number
   turnOrderIndex? : number
   player? : Player
-  tentPlaced?: boolean
+  tentPlaced?: TentSpace
   botPersistence?: BotPersistence
 }

@@ -1,5 +1,5 @@
 /**
- * WorkerSpace
+ * Worker space
  */
 enum WorkerSpace {
   HIRE_CAMEL = 'hire-camel',

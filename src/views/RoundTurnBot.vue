@@ -10,8 +10,13 @@
   <BotAction v-if="currentAction" :action="currentAction" :navigationState="navigationState"/>
   <BotAction v-if="placeTent" :action="tentAction" :navigationState="navigationState"/>
 
+  <div v-if="placeTent" class="mt-3">
+    <p v-html="t('roundTurnBot.selectedTentSpace')"></p>
+    <TentSpaceSelection v-model="selectedTentSpace"/>
+  </div>
+
   <template v-if="hasMoreActions">
-    <button class="btn btn-success btn-lg mt-4 me-2" @click="next()">
+    <button class="btn btn-success btn-lg mt-4 me-2" @click="next()" :disabled="placeTent && !selectedTentSpace">
       {{t('roundTurnBot.executed')}}
     </button>
     <button class="btn btn-danger btn-lg mt-4 me-2" @click="notPossible()">
@@ -19,7 +24,7 @@
     </button>
   </template>
   <template v-else>
-    <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()">
+    <button class="btn btn-primary btn-lg mt-4 me-2" @click="next()" :disabled="placeTent && !selectedTentSpace">
       {{t('action.next')}}
     </button>
   </template>
@@ -46,6 +51,8 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import addSilver from '@/util/addSilver'
 import Action from '@/services/enum/Action'
 import removeWorker from '@/util/removeWorker'
+import TentSpaceSelection from '@/components/structure/TentSpaceSelection.vue'
+import TentSpace from '@/services/enum/TentSpace'
 
 export default defineComponent({
   name: 'RoundTurnBot',
@@ -54,7 +61,8 @@ export default defineComponent({
     SideBar,
     DebugInfo,
     BotAction,
-    AppIcon
+    AppIcon,
+    TentSpaceSelection
   },
   setup() {
     const { t } = useI18n()
@@ -67,6 +75,11 @@ export default defineComponent({
     const routeCalculator = new RouteCalculator({round, turn, turnOrderIndex, action, player})
 
     return { t, router, navigationState, state, round, turn, turnOrderIndex, action, player, botActions, routeCalculator }
+  },
+  data() {
+    return {
+      selectedTentSpace: undefined as TentSpace|undefined
+    }
   },
   computed: {
     backButtonRouteTo() : string {
@@ -121,7 +134,7 @@ export default defineComponent({
         }
       }
       if (this.placeTent) {
-        roundTurn.tentPlaced = true
+        roundTurn.tentPlaced = this.selectedTentSpace
       }
       this.state.storeRoundTurn(roundTurn)
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))

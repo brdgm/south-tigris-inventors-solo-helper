@@ -21,13 +21,15 @@
   <ModalDialog id="placeTentModal" :title="t('roundTurnPlayer.placeTent')">
     <template #body>
       <p v-html="t('roundTurnPlayer.placeTentConfirm')"></p>
+      <TentSpaceSelection v-model="selectedTentSpace"/>
       <template v-if="firstTent">
+        <hr/>
         <AppIcon name="dummy-player-tent" class="dummyPlayerTentIcon float-start"/>
         <p v-html="t('roundTurnPlayer.placeDummyPlayerTent')"></p>
       </template>
     </template>
     <template #footer>
-      <button class="btn btn-danger" @click="next(true)" data-bs-dismiss="modal">{{t('roundTurnPlayer.placeTent')}}</button>
+      <button class="btn btn-danger" @click="next(selectedTentSpace)" data-bs-dismiss="modal" :disabled="!selectedTentSpace">{{t('roundTurnPlayer.placeTent')}}</button>
       <button class="btn btn-secondary" data-bs-dismiss="modal">{{t('action.cancel')}}</button>
     </template>
   </ModalDialog>
@@ -53,6 +55,8 @@ import addSilver from '@/util/addSilver'
 import toNumber from '@brdgm/brdgm-commons/src/util/form/toNumber'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import Player from '@/services/enum/Player'
+import TentSpace from '@/services/enum/TentSpace'
+import TentSpaceSelection from '@/components/structure/TentSpaceSelection.vue'
 
 export default defineComponent({
   name: 'RoundTurnPlayer',
@@ -62,7 +66,8 @@ export default defineComponent({
     SideBar,
     DebugInfo,
     BotSilver,
-    AppIcon
+    AppIcon,
+    TentSpaceSelection
   },
   setup() {
     const { t } = useI18n()
@@ -78,7 +83,8 @@ export default defineComponent({
   },
   data() {
     return {
-      botSilver: undefined as number|undefined
+      botSilver: undefined as number|undefined,
+      selectedTentSpace: undefined as TentSpace|undefined
     }
   },
   computed: {
@@ -93,7 +99,7 @@ export default defineComponent({
     }
   },
   methods: {
-    next(placeTent : boolean = false) {
+    next(placeTent? : TentSpace|undefined) {
       const roundTurn : RoundTurn = {
         round: this.round,
         turn: this.turn,
@@ -105,7 +111,7 @@ export default defineComponent({
         }
       }
       if (placeTent) {
-        roundTurn.tentPlaced = true
+        roundTurn.tentPlaced = placeTent
       }
       this.state.storeRoundTurn(roundTurn)
       this.router.push(this.routeCalculator.getNextRouteTo(this.state))

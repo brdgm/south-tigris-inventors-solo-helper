@@ -78,13 +78,14 @@
     "execute": "Execute your turn.",
     "botSilver": "Silver you pay to the AI:",
     "placeTent": "Place Tent",
-    "placeTentConfirm": "Do you want to place your tent?",
+    "placeTentConfirm": "Select the place for your tent:",
     "placeDummyPlayerTent": "Place the Dummy Player Tent on an available Tent space."
   },
   "roundTurnBot": {
     "title": "AI",
     "executed": "Executed",
-    "notPossible": "Not Possible"
+    "notPossible": "Not Possible",
+    "selectedTentSpace": "Tent space selected by AI:"
   },
   "roundEnd": {
     "title": "End of Round",

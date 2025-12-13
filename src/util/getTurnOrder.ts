@@ -20,7 +20,7 @@ export default function getTurnOrder(state: State, currentRound: number, current
   for (let turn=1; turn<=currentTurn+1; turn++) {
     let turnOrderIndex = 0
     for (const player of playerOrder) {
-      const placedTentCount = turns.filter(item => (item.turn<turn || (item.turn==turn && item.turnOrderIndex<turnOrderIndex)) && item.tentPlaced).length
+      const placedTentCount = turns.filter(item => (item.turn<turn || (item.turn==turn && item.turnOrderIndex<turnOrderIndex)) && item.tentPlaced != undefined).length
       if (placedTentCount < 2) {
         if (turn > MAX_TURN) {
           // not a valid round as not all have passed in time, return empty list of steps

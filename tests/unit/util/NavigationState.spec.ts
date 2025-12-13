@@ -9,15 +9,16 @@ import NavigationState from '@/util/NavigationState'
 import Player from '@/services/enum/Player'
 import mockBotPersistence from '../helper/mockBotPersistence'
 import DifficultyLevel from '@/services/enum/DifficultyLevel'
+import TentSpace from '@/services/enum/TentSpace'
 
 const state = mockState({difficultyLevel: DifficultyLevel.LEVEL_3, rounds:[
   mockRound({round:1, startPlayer: Player.PLAYER, initialCardDeck:mockCardDeck({pile:[1,2,3,4]}), turns:[
     mockTurn({round:1,turn:1,player:Player.PLAYER,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[1,2,3,4]}),silver:6,workers:2})}),
     mockTurn({round:1,turn:1,player:Player.BOT,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[2,3,4], discard:[1]}),silver:2,workers:2})}),
-    mockTurn({round:1,turn:2,player:Player.PLAYER,tentPlaced:true,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[2,3,4], discard:[1]}),silver:2,workers:2})}),
+    mockTurn({round:1,turn:2,player:Player.PLAYER,tentPlaced:TentSpace.GUILD_BLUE,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[2,3,4], discard:[1]}),silver:2,workers:2})}),
     mockTurn({round:1,turn:2,player:Player.BOT,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[3,4], discard:[2,1]}),silver:4,workers:2})}),
     mockTurn({round:1,turn:3,player:Player.PLAYER,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[3,4], discard:[2,1]}),silver:4,workers:2})}),
-    mockTurn({round:1,turn:3,player:Player.BOT,tentPlaced:true,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[4], discard:[3,2,1]}),silver:4,workers:2})})
+    mockTurn({round:1,turn:3,player:Player.BOT,tentPlaced:TentSpace.GUILD_BLACK,botPersistence:mockBotPersistence({cardDeck:mockCardDeck({pile:[4], discard:[3,2,1]}),silver:4,workers:2})})
   ]})
 ]})
 

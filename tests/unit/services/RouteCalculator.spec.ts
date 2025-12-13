@@ -4,6 +4,7 @@ import mockRound from '../helper/mockRound'
 import mockState from '../helper/mockState'
 import Player from '@/services/enum/Player'
 import mockTurn from '../helper/mockTurn'
+import TentSpace from '@/services/enum/TentSpace'
 
 describe('services/RouteCalculator', () => {
   it('getNextRouteTo-round1-turn1-player', () => {
@@ -71,7 +72,7 @@ describe('services/RouteCalculator', () => {
 
     const state = mockState({rounds:[
       mockRound({round:1, startPlayer:Player.PLAYER, turns:[
-        mockTurn({round:1, turn:1, player:Player.PLAYER, tentPlaced:true})
+        mockTurn({round:1, turn:1, player:Player.PLAYER, tentPlaced:TentSpace.GUILD_BLUE})
       ]})
     ]})
     expect(routeCalculator.getNextRouteTo(state)).to.eq('/round/1/turn/2/0/player')
@@ -83,8 +84,8 @@ describe('services/RouteCalculator', () => {
 
     const state = mockState({rounds:[
       mockRound({round:1, startPlayer:Player.PLAYER, turns:[
-        mockTurn({round:1, turn:1, player:Player.PLAYER, tentPlaced:true}),
-        mockTurn({round:1, turn:1, player:Player.BOT, tentPlaced:true})]})
+        mockTurn({round:1, turn:1, player:Player.PLAYER, tentPlaced:TentSpace.GUILD_BLUE}),
+        mockTurn({round:1, turn:1, player:Player.BOT, tentPlaced:TentSpace.GUILD_BLACK})]})
     ]})
     expect(routeCalculator.getNextRouteTo(state)).to.eq('/round/1/end')
     expect(routeCalculator.getBackRouteTo(state)).to.eq('/round/1/turn/1/0/player')
@@ -111,8 +112,8 @@ describe('services/RouteCalculator', () => {
 
     const state = mockState({rounds:[
       mockRound({round:1, startPlayer:Player.PLAYER, turns:[
-        mockTurn({round:1, turn:1, player:Player.PLAYER, tentPlaced:true}),
-        mockTurn({round:1, turn:1, player:Player.BOT, tentPlaced:true})]})
+        mockTurn({round:1, turn:1, player:Player.PLAYER, tentPlaced:TentSpace.GUILD_BLUE}),
+        mockTurn({round:1, turn:1, player:Player.BOT, tentPlaced:TentSpace.GUILD_BLACK})]})
     ]})
     expect(routeCalculator.getLastTurnRouteTo(state)).to.eq('/round/1/turn/1/1/bot')
   })

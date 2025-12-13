@@ -89,5 +89,5 @@ function getTentPlaced(state:State, round:number, turn:number, turnOrderIndex:nu
   const roundData = state.rounds.find(item => item.round==round)
   return roundData?.turns
     .filter(item => item.turn < turn || (item.turn == turn && item.turnOrderIndex < turnOrderIndex))
-    .filter(item => item.tentPlaced).map(item => item.player) ?? []
+    .filter(item => item.tentPlaced != undefined).map(item => item.player) ?? []
 }
