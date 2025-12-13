@@ -100,7 +100,8 @@
     "retrieveWorkers": "Retrieve Workers.",
     "raiseTents": {
       "title": "Raise Tents",
-      "influence": "When the AI raises their Tent, they will gain any Influence they cover."
+      "influence": "When the AI raises their Tent, they will gain any Influence they cover.",
+      "dummyPlayer": "Remove the Dummy Player Tent from the board."
     }
   },
   "gameEnd": {

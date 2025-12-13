@@ -15,6 +15,7 @@
     <li v-html="t('roundEnd.raiseTents.title')"></li>
     <ul>
       <li v-html="t('roundEnd.raiseTents.influence')"></li>
+      <li v-html="t('roundEnd.raiseTents.dummyPlayer')"></li>
     </ul>
   </ol>
 
@@ -74,7 +75,7 @@ export default defineComponent({
   },
   methods: {
     next() : void {
-      if (this.round == 4) {
+      if (this.isLastRound) {
         this.router.push('/gameEnd')
       }
       else {

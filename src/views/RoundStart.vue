@@ -59,7 +59,7 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      if (this.round == 1 || (this.state.setup.roundCount==RoundCount.SHORT_3_ROUNDS && this.round == 2)) {
+      if (this.isFirstRound) {
         return ''
       }
       return  `/round/${this.round - 1}/end`
@@ -68,7 +68,7 @@ export default defineComponent({
       return getWorkerCount(this.round)
     },
     isFirstRound() : boolean {
-      return this.round === 1
+      return this.round == 1 || (this.state.setup.roundCount==RoundCount.SHORT_3_ROUNDS && this.round == 2)
     }
   },
   methods: {
