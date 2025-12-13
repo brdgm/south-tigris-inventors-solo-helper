@@ -9,12 +9,16 @@
       <ColorPriority :navigationState="navigationState"/>
       <RowPriority :navigationState="navigationState"/>
     </template>
+    <template #followUpAction>
+      <AdvanceShipFollowUpActions @addActions="(actionId, actions) => $emit('addActions', actionId, actions)"/>
+    </template>
     <template #instruction>
       <p v-html="t('rules.action.test.chooseDie')"/>
       <p v-html="t('rules.action.test.chooseDeviceBoard')"/>
       <p v-html="t('rules.action.test.rollDie')"/>
-      <p v-html="t('rules.action.test.gainInfluenceAdvanceShip')"/>
-      <p v-html="t('rules.action.test.workshopTile')"/>
+      <p v-html="t('rules.action.test.gainInfluence')"/>
+      <p v-html="t('rules.action.test.advanceShip')"/>
+      <p class="fw-bold" v-html="t('rules.action.advanceShip.selectAction')"/>
     </template>
   </ActionBox>
 </template>
@@ -28,15 +32,20 @@ import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
 import ColorPriority from '@/components/structure/ColorPriority.vue'
 import RowPriority from '@/components/structure/RowPriority.vue'
+import AdvanceShipFollowUpActions from './followup/AdvanceShipFollowUpActions.vue'
 
 export default defineComponent({
   name: 'ActionTest',
   inheritAttrs: false,
+  emits: {
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionBox,
     AppIcon,
     ColorPriority,
-    RowPriority
+    RowPriority,
+    AdvanceShipFollowUpActions
   },
   setup() {
     const { t } = useI18n()

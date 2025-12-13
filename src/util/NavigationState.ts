@@ -8,6 +8,8 @@ import { cloneDeep } from 'lodash'
 import getDifficultyLevelSettings from './getDifficultyLevelSettings'
 import BotActions from '@/services/BotActions'
 import getWorkerCount from './getWorkerCount'
+import getTentPlacedInfo from './getTentPlacedInfo'
+import RoundCount from '@/services/enum/RoundCount'
 
 export default class NavigationState {
 
@@ -33,7 +35,7 @@ export default class NavigationState {
     const botPersistence = getBotPersistence(state, lookupRound, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = cloneDeep(botPersistence.botResources)
-    this.tentPlaced = getTentPlaced(state, lookupRound, lookupTurn, this.turnOrderIndex)
+    this.tentPlaced = getTentPlacedInfo(state, lookupRound, lookupTurn, this.turnOrderIndex).tentPlaced
 
     if (this.player == Player.BOT) {
       this.botActions = BotActions.drawCard(this.cardDeck, botPersistence.botResources, this.tentPlaced.includes(Player.BOT))
@@ -62,13 +64,22 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
     const previousRoundBotResource = getBotPersistence(state, round-1, MAX_TURN, 0).botResources
     botResources = {
       silver: previousRoundBotResource.silver + 3,
-      workers: getWorkerCount(round)
+      workers: getWorkerCount(round),
+      workshopTiles: previousRoundBotResource.workshopTiles,
+      inventionTiles: previousRoundBotResource.inventionTiles,
+      builtDevices: previousRoundBotResource.builtDevices,
+      publishedDevices: previousRoundBotResource.publishedDevices
     }
   }
   else {
+    const shortGame = state.setup.roundCount == RoundCount.SHORT_3_ROUNDS
     botResources = {
       silver: 3 + (getDifficultyLevelSettings(state.setup.difficultyLevel).additionalSetupSilver ?? 0),
-      workers: getWorkerCount(round)
+      workers: getWorkerCount(round),
+      workshopTiles: 0,
+      inventionTiles: 0,
+      builtDevices: shortGame ? 1 : 0,
+      publishedDevices: shortGame ? 1 : 0
     }
   }
   return {
@@ -83,11 +94,4 @@ function isRoundEndRoute(route:RouteLocation) : boolean {
 
 function isGameEndRoute(route:RouteLocation) : boolean {
   return route.name == 'GameEnd'
-}
-
-function getTentPlaced(state:State, round:number, turn:number, turnOrderIndex:number) : Player[] {
-  const roundData = state.rounds.find(item => item.round==round)
-  return roundData?.turns
-    .filter(item => item.turn < turn || (item.turn == turn && item.turnOrderIndex < turnOrderIndex))
-    .filter(item => item.tentPlaced).map(item => item.player) ?? []
 }

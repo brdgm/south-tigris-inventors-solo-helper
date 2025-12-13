@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27.43 27.43">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2, .cls-3 {
+        fill: none;
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="cls-3" d="M13.69.5C6.34.51.48,6.38.5,13.74c.02,7.34,5.88,13.12,13.23,13.19,6.29-.06,11.5-4.33,12.86-10.18v-6.08C25.22,4.81,20.02.5,13.71.5h-.03"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-186.29" y1="120.68" x2="-185.29" y2="120.68" gradientTransform="translate(3202.57 -4895.96) rotate(-90) scale(26.43 -26.43)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#696a6d"/>
+      <stop offset=".33" stop-color="#808284"/>
+      <stop offset="1" stop-color="#bcbec0"/>
+    </linearGradient>
+  </defs>
+  <g class="cls-5">
+    <rect class="cls-4" x=".48" y=".5" width="26.1" height="26.43"/>
+  </g>
+  <g>
+    <path class="cls-2" d="M26.93,13.69c-.01-7.35-5.88-13.2-13.24-13.19C6.34.51.48,6.38.5,13.74c.02,7.34,5.88,13.12,13.23,13.19,7.35-.07,13.21-5.89,13.2-13.24Z"/>
+    <path class="cls-1" d="M11.48,16.15c-3.53-3.53-4.14-7.8-2.56-12.45-3.71.91-6.92,6.42-6.44,11.34.53,5.42,4.73,9.58,10.09,10.11,6.08.6,10.21-3.4,11.34-6.43-4.66,1.6-8.91.96-12.44-2.57"/>
+  </g>
+  <polygon class="cls-1" points="13.98 3.17 13.22 4.46 11.73 4.57 12.73 5.69 12.38 7.15 13.75 6.54 15.02 7.33 14.87 5.84 16.01 4.87 14.54 4.55 13.98 3.17"/>
+  <polygon class="cls-1" points="14.8 15.04 15.61 13.78 17.1 13.73 16.15 12.57 16.57 11.14 15.17 11.68 13.94 10.84 14.02 12.33 12.84 13.25 14.29 13.63 14.8 15.04"/>
+  <polygon class="cls-1" points="23.59 11.26 22.18 11.74 20.98 10.85 20.99 12.34 19.77 13.21 21.2 13.65 21.65 15.08 22.51 13.86 24.01 13.88 23.11 12.68 23.59 11.26"/>
+</svg>

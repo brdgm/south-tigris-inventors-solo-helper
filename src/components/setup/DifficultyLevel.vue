@@ -14,7 +14,7 @@
     </div>
   </div>  
   <div class="row">
-    <div class="col-6 offset-3 col-sm-8 offset-sm-2 col-md-5 offset-md-1">
+    <div class="col-11 offset-1 col-sm-10 offset-sm-2 col-md-11 offset-md-1">
       <i>
         <span v-html="t(`difficultyLevel.${difficultyLevel}`)"></span>
         <ul class="small">

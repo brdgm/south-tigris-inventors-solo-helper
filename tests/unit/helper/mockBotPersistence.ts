@@ -1,19 +1,15 @@
 import CardDeck from '@/services/CardDeck'
 import { BotPersistence } from '@/store/state'
 import mockCardDeck from './mockCardDeck'
+import mockBotResources, { MockBotResourcesParams } from './mockBotResources'
 
 export default function mockBotPersistence(params?: MockBotPersistenceParams) : BotPersistence {  
   return {
     cardDeck: (params?.cardDeck ?? mockCardDeck()).toPersistence(),
-    botResources: { 
-      silver: params?.silver ?? 0,
-      workers: params?.workers ?? 0
-    }
+    botResources: mockBotResources(params)
   }
 }
 
-export interface MockBotPersistenceParams {
+export interface MockBotPersistenceParams extends MockBotResourcesParams {
   cardDeck?: CardDeck
-  silver?: number
-  workers?: number
 }

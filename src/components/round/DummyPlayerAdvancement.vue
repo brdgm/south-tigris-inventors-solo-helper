@@ -140,6 +140,7 @@ export default defineComponent({
   .actionWrapper {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 1rem;
@@ -181,8 +182,12 @@ export default defineComponent({
 .workerSpaces {
   display: flex;
   flex-direction: row;
-  gap: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1.5rem;
   margin-top: 1.5rem;
+  @media (max-width: 600px) {
+    gap: 1rem;
+  }
   .workerSpace {
     display: flex;
     flex-direction: column;

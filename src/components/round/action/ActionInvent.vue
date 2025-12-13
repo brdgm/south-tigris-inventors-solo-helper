@@ -28,6 +28,9 @@ import RowPriority from '@/components/structure/RowPriority.vue'
 export default defineComponent({
   name: 'ActionInvent',
   inheritAttrs: false,
+  emits: {
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionBox,
     AppIcon,

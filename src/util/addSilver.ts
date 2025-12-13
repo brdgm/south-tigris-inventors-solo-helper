@@ -13,6 +13,10 @@ export default function addSilver(botResources: BotResources, value: number) : B
   }
   return {
     silver,
-    workers: botResources.workers
+    workers: botResources.workers,
+    workshopTiles: botResources.workshopTiles,
+    inventionTiles: botResources.inventionTiles,
+    builtDevices: botResources.builtDevices,
+    publishedDevices: botResources.publishedDevices
   }
 }

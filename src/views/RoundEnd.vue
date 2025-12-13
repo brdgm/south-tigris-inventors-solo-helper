@@ -1,42 +1,25 @@
 <template>
   <SideBar :navigationState="navigationState"/>
-  <h1>{{t('roundEnd.title')}}</h1>
+  <h1>
+    <AppIcon name="round-end" class="icon"/>
+    {{t('roundEnd.title')}}
+  </h1>
 
-  <h3>{{t('roundEnd.raiseTents.title')}}</h3>
-  <p v-html="t('roundEnd.raiseTents.influence')"></p>
+  <ol class="mt-3">
+    <template v-if="!isLastRound">
+      <li v-html="t('roundEnd.brightenUnusedDice')"></li>
+      <li v-html="t('roundEnd.exhaustUsedDice')"></li>
+      <li v-html="t('roundEnd.returnHiredCamels')"></li>
+      <li v-html="t('roundEnd.retrieveWorkers')"></li>
+    </template>
+    <li v-html="t('roundEnd.raiseTents.title')"></li>
+    <ul>
+      <li v-html="t('roundEnd.raiseTents.influence')"></li>
+      <li v-html="t('roundEnd.raiseTents.dummyPlayer')"></li>
+    </ul>
+  </ol>
 
-  <template v-if="!isLastRound">
-    <p class="fw-bold" v-html="t('roundEnd.botTentingAreas.title')"></p>
-    <form>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label fw-bold">
-          <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="4">
-          {{t('roundEnd.botTentingAreas.space4')}}
-        </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label fw-bold">
-          <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="5">
-          {{t('roundEnd.botTentingAreas.space5')}}
-        </label>
-      </div>
-      <div class="form-check form-check-inline">
-        <label class="form-check-label fw-bold">
-          <input class="form-check-input" type="radio" name="botTentingAreas" v-model="botTentingArea" :value="0">
-          {{t('roundEnd.botTentingAreas.none')}}
-        </label>
-      </div>
-    </form>
-    <p class="mt-2" v-if="(botTentingArea ?? 0) > 0" v-html="t(`roundEnd.botTentingAreas.space${botTentingArea}Result`)"></p>
-
-    <div class="row mt-4" v-if="botTentingArea == undefined">
-      <div class="col">
-        <div class="alert alert-info" v-html="t('roundEnd.botTentingAreas.notSelected')"></div>
-      </div>
-    </div>
-  </template>
-
-  <button class="btn btn-primary btn-lg mt-4" @click="next()" v-if="isLastRound || botTentingArea!=undefined">
+  <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
   </button>
 
@@ -58,13 +41,17 @@ import RouteCalculator from '@/services/RouteCalculator'
 import CardDeck from '@/services/CardDeck'
 import getDummyCardDeck from '@/util/getDummyCardDeck'
 import RoundCount from '@/services/enum/RoundCount'
+import { MAX_TURN } from '@/util/getTurnOrder'
+import getTentPlacedInfo from '@/util/getTentPlacedInfo'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'RoundEnd',
   components: {
     FooterButtons,
     SideBar,
-    DebugInfo
+    DebugInfo,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -78,11 +65,6 @@ export default defineComponent({
 
     return { t, router, state, navigationState, round, routeCalculator }
   },
-  data() {
-    return {
-      botTentingArea: undefined as number|undefined
-    }
-  },
   computed: {
     backButtonRouteTo() : string {
       return this.routeCalculator.getLastTurnRouteTo(this.state)
@@ -93,12 +75,11 @@ export default defineComponent({
   },
   methods: {
     next() : void {
-      if (this.round == 4) {
+      if (this.isLastRound) {
         this.router.push('/gameEnd')
       }
       else {
-        const additionalDiceSchemeCard = (this.botTentingArea == 5)
-        const additionalWorkerSchemeCard = (this.botTentingArea == 4)
+        const tentPlacedInfo = getTentPlacedInfo(this.state, this.round, MAX_TURN, 0)
 
         const dummyCardDeck = getDummyCardDeck(this.state, this.round)
         dummyCardDeck.draw()        
@@ -110,9 +91,10 @@ export default defineComponent({
         this.state.storeRound({
           round: this.round+1,
           turns: [],
-          startPlayer: this.navigationState.tentPlaced[0],
+          startPlayer: tentPlacedInfo.firstPlayer,
           initialCardDeck: CardDeck.new(this.round+1, this.state.setup.difficultyLevel,
-              additionalDiceSchemeCard, additionalWorkerSchemeCard).toPersistence(),
+              tentPlacedInfo.botAdditionalDiceSchemeCard, tentPlacedInfo.botAdditionalWorkerSchemeCard)
+              .toPersistence(),
           dummyCardDeck: dummyCardDeck.toPersistence()
         })
         this.router.push(`/round/${this.round + 1}/start`)
@@ -121,3 +103,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+ol > li {
+  margin-top: 0.5rem;
+}
+.icon {
+  height: 2.5rem;
+  margin-top: -0.5rem;
+}
+</style>

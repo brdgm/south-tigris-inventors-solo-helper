@@ -13,12 +13,14 @@ export default class CardDeck {
 
   private readonly _pile
   private readonly _discard
-  private readonly _reserve
+  private readonly _reserveDice
+  private readonly _reserveWorker
 
-  private constructor(pile : Card[], discard : Card[], reserve : Card[]) {
+  private constructor(pile : Card[], discard : Card[], reserveDice : Card[], reserveWorker : Card[]) {
     this._pile = ref(pile)
     this._discard = ref(discard)
-    this._reserve = ref(reserve)
+    this._reserveDice = ref(reserveDice)
+    this._reserveWorker = ref(reserveWorker)
   }
 
   public get currentCard() : Card|undefined {
@@ -33,8 +35,12 @@ export default class CardDeck {
     return this._discard.value
   }
 
-  public get reserve() : readonly Card[] {
-    return this._reserve.value
+  public get reserveDice() : readonly Card[] {
+    return this._reserveDice.value
+  }
+
+  public get reserveWorker() : readonly Card[] {
+    return this._reserveWorker.value
   }
 
   public get pileEmpty() : boolean {
@@ -58,8 +64,18 @@ export default class CardDeck {
   /**
    * Add 1 dice card from the reserve to the pile an shuffles it.
    */
-  public addReserveCard() : undefined {
-    const card = this._reserve.value.shift()
+  public addDiceReserveCard() : undefined {
+    this.addReserveCard(this._reserveDice.value.shift())
+  }
+
+  /**
+   * Add 1 worker card from the reserve to the pile an shuffles it.
+   */
+  public addWorkerReserveCard() : undefined {
+    this.addReserveCard(this._reserveWorker.value.shift())
+  }
+
+  private addReserveCard(card? : Card) : undefined {
     if (!card) {
       return
     }
@@ -73,7 +89,8 @@ export default class CardDeck {
     return {
       pile: this._pile.value.map(card => card.id),
       discard: this._discard.value.map(card => card.id),
-      reserve: this._reserve.value.map(card => card.id)
+      reserveDice: this._reserveDice.value.map(card => card.id),
+      reserveWorker: this._reserveWorker.value.map(card => card.id)
     }
   }
 
@@ -117,8 +134,9 @@ export default class CardDeck {
       ...allDiceCards.slice(0, diceCardCount),
       ...allWorkerCards.slice(0, workerCardCount)
     ])
-    const remainingDiceCards = allDiceCards.slice(diceCardCount)
-    return new CardDeck(cards, [], remainingDiceCards)
+    const reserveDice = allDiceCards.slice(diceCardCount)
+    const reserveWorker = allWorkerCards.slice(workerCardCount)
+    return new CardDeck(cards, [], reserveDice, reserveWorker)
   }
 
   /**
@@ -128,7 +146,8 @@ export default class CardDeck {
     return new CardDeck(
       persistence.pile.map(Cards.get),
       persistence.discard.map(Cards.get),
-      persistence.reserve.map(Cards.get)
+      persistence.reserveDice.map(Cards.get),
+      persistence.reserveWorker.map(Cards.get)
     )
   }
 

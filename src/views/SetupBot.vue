@@ -2,7 +2,13 @@
   <h1>{{t('setupBot.title')}}</h1>
 
   <div class="instructions mt-4">
-    <p v-html="t('setupBot.instructions.intro', {roundCount:state.setup.roundCount})"></p>
+    <p v-html="t('setupBot.instructions.generalIntro', {roundCount:state.setup.roundCount})"></p>
+    <ul>
+      <li v-html="t('setupBot.instructions.reveal3DeviceBoards')"></li>
+      <li v-html="t('setupBot.instructions.columns2OneDeviceBoard')"></li>
+    </ul>
+
+    <p v-html="t('setupBot.instructions.botIntro', {roundCount:state.setup.roundCount})"></p>
     <ol>
       <li v-html="t('setupBot.instructions.workers')"></li>
       <li v-html="t('setupBot.instructions.influence', {count: 1 + (settings.additionalSetupInfluence ?? 0)})"></li>
@@ -15,8 +21,6 @@
         <li v-html="t('setupBot.instructions.tents4Rounds')"></li>
       </template>
       <li v-html="t('setupBot.instructions.shuffleInventionsTiles')"></li>
-      <li v-html="t('setupBot.instructions.reveal3DeviceBoards')"></li>
-      <li v-html="t('setupBot.instructions.firstPlayerMaker')"></li>
     </ol>
     <p v-html="t('setupBot.instructions.noSchemeCards')"></p>
   </div>
@@ -37,6 +41,7 @@
           <li v-html="t('setupBot.ruleChanges.ignoreIcons')"></li>
           <li v-html="t('setupBot.ruleChanges.influenceLimit')"></li>
           <li v-html="t('setupBot.ruleChanges.focus')"></li>
+          <li v-html="t('setupBot.ruleChanges.publishBotDevice')"></li>
         </ul>
       </div>
     </div>

@@ -28,6 +28,9 @@ import NavigationState from '@/util/NavigationState'
 export default defineComponent({
   name: 'ActionResearch',
   inheritAttrs: false,
+  emits: {
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionBox,
     AppIcon

@@ -2,7 +2,7 @@
   <ActionBox :action="action" :navigationState="navigationState" :instruction-title="t('rules.action.tent.title')">
     <template #action>
       <div class="action">
-        <BotPlaceTent :tentPosition="tentPosition" :dummyPlayerTentPosition="dummyPlayerTentPosition"/>
+        <BotPlaceTent :tentPosition="tentPosition" :dummyPlayerTentPosition="dummyPlayerTentPosition" class="icon"/>
       </div>
     </template>
     <template #instruction>
@@ -23,6 +23,9 @@ import BotPlaceTent from '@/components/structure/BotPlaceTent.vue'
 export default defineComponent({
   name: 'ActionTent',
   inheritAttrs: false,
+  emits: {
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionBox,
     BotPlaceTent
@@ -65,8 +68,10 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
   gap: 10px;
+  margin-left: -2rem;
+  margin-right: -2rem;
 }
 .icon {
-  height: 3rem;
+  max-width: fit-content;
 }
 </style>

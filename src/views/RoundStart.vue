@@ -1,9 +1,14 @@
 <template>
   <SideBar :navigationState="navigationState"/>
-  <h1>{{t('roundStart.title')}}</h1>
+  <h1>
+    <AppIcon name="round-start" class="icon"/>
+    {{t('roundStart.title')}}
+  </h1>
 
-  <h3 class="mt-3">{{t('roundStart.botWorkers.title')}}</h3>
-  <p v-html="t('roundStart.botWorkers.instruction', {count:botWorkerCount})"></p>
+  <template v-if="!isFirstRound">
+    <h3 class="mt-3">{{t('roundStart.royaltiesIncome.title')}}</h3>
+    <p v-html="t('roundStart.royaltiesIncome.instruction')"></p>
+  </template>
 
   <DummyPlayerAdvancement :round="round"/>
 
@@ -29,6 +34,7 @@ import RouteCalculator from '@/services/RouteCalculator'
 import RoundCount from '@/services/enum/RoundCount'
 import DummyPlayerAdvancement from '@/components/round/DummyPlayerAdvancement.vue'
 import getWorkerCount from '@/util/getWorkerCount'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'RoundStart',
@@ -36,7 +42,8 @@ export default defineComponent({
     FooterButtons,
     SideBar,
     DebugInfo,
-    DummyPlayerAdvancement
+    DummyPlayerAdvancement,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -52,13 +59,16 @@ export default defineComponent({
   },
   computed: {
     backButtonRouteTo() : string {
-      if (this.round == 1 || (this.state.setup.roundCount==RoundCount.SHORT_3_ROUNDS && this.round == 2)) {
+      if (this.isFirstRound) {
         return ''
       }
       return  `/round/${this.round - 1}/end`
     },
     botWorkerCount() : number {
       return getWorkerCount(this.round)
+    },
+    isFirstRound() : boolean {
+      return this.round == 1 || (this.state.setup.roundCount==RoundCount.SHORT_3_ROUNDS && this.round == 2)
     }
   },
   methods: {
@@ -68,3 +78,10 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.icon {
+  height: 2.5rem;
+  margin-top: -0.5rem;
+}
+</style>

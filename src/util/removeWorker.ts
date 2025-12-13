@@ -11,6 +11,10 @@ export default function removeWorker(botResources: BotResources) : BotResources 
   }
   return {
     silver: botResources.silver,
-    workers: botResources.workers - 1
+    workers: botResources.workers - 1,
+    workshopTiles: botResources.workshopTiles,
+    inventionTiles: botResources.inventionTiles,
+    builtDevices: botResources.builtDevices,
+    publishedDevices: botResources.publishedDevices
   }
 }

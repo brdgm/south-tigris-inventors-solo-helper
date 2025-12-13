@@ -5,6 +5,7 @@ import Expansion from '@/services/enum/Expansion'
 import toggleArrayItem from '@brdgm/brdgm-commons/src/util/array/toggleArrayItem'
 import RoundCount from '@/services/enum/RoundCount'
 import Player from '@/services/enum/Player'
+import TentSpace from '@/services/enum/TentSpace'
 
 export const useStateStore = defineStore(`${name}.state`, {
   state: () => {
@@ -67,7 +68,7 @@ export interface RoundTurn {
   turn: number
   turnOrderIndex: number
   player: Player
-  tentPlaced?: boolean
+  tentPlaced?: TentSpace
   botPersistence: BotPersistence
 }
 export interface BotPersistence {
@@ -77,7 +78,8 @@ export interface BotPersistence {
 export interface CardDeckPersistence {
   pile: number[]
   discard: number[]
-  reserve: number[]
+  reserveDice: number[]
+  reserveWorker: number[]
 }
 export interface DummyCardDeckPersistence {
   pile: number[]
@@ -86,4 +88,8 @@ export interface DummyCardDeckPersistence {
 export interface BotResources {
   silver: number
   workers: number
+  workshopTiles: number
+  inventionTiles: number
+  builtDevices: number
+  publishedDevices: number
 }
