@@ -1,0 +1,242 @@
+{
+  "gameTitle": "Inventors of the South Tigris",
+  "home": {
+    "title": "Inventors of the South Tigris Solo Helper",
+    "play1": "Play <a href='https://boardgamegeek.com/boardgame/378387/inventors-of-the-south-tigris' target='_blank' rel='noopener'><b>Inventors of the South Tigris</b></a> solo against the AI.",
+    "play2": "This application replaces scheme cards and guides you through the game and solo ruleset. It manages the Dummy Player and supports all difficulty levels.",
+    "play3": "You can also play with the <a href='https://boardgamegeek.com/boardgameexpansion/427132/inventors-of-the-south-tigris-era-of-experts' target='_blank' rel='noopener'>Era of Experts</a> expansion.",
+    "feedback": "Discussion and Feedback:"
+  },
+  "setup": {
+    "title": "Setup",
+    "eraOfExpertsDifficultyLevelWarning": "When using <b>Era of Experts</b> expansion, you should play on <b>Difficulty Level 4</b>.",
+    "eraOfExpertsRoundCountWarning": "When using <b>Era of Experts</b> expansion, you should play the shorter <b>3 rounds</b> version of the game.",
+    "difficultyLevel": {
+      "title": "Difficulty Level",
+      "easy": "Easy",
+      "hard": "Hard",
+      "level2up": "3 additional Silver and 1 more of each influence during Setup",
+      "level3up": "1 more Dice Scheme card each Round",
+      "level4up": "1 more Worker Scheme card each Round"
+    },
+    "roundCountSelection": {
+      "title": "Number of Rounds"
+    },
+    "expansions": {
+      "title": "Expansions",
+      "era-of-experts": "Era of Experts"
+    }
+  },
+  "setupBot": {
+    "title": "Setup AI",
+    "instructions": {
+      "generalIntro": "Set up Inventors as you would for a {roundCount}-Round 2-player game, with a few changes:",
+      "reveal3DeviceBoards": "Only reveal <b>3 Device Boards</b> in the first column. For the solo game, there may <b>never be more than 3 Device Boards in each column</b>.",
+      "columns2OneDeviceBoard": "Place only <b>1 Device Board</b> with Neutral Invention Tile in the second column.",
+      "botIntro": "Do not follow the player setup on pages 6-7 for your opponent. Instead, assign them a player colour, giving them only the following items:",
+      "workers": "Place their 3 Workers in their player area.",
+      "influence": "Place <b>{count} of their Influence into each Guild</b>. Place the rest of their Influence in a Supply nearby.",
+      "tents4Rounds": "Place their 4 Tents nearby, and their Ship on the left-most River space of the Main Board.",
+      "tents3RoundsTent1": "Place an opponent Tent on the first space of the centre Tent Area, gaining them <b>1 additional Charcoal Influence</b> immediately.",
+      "tents3Rounds": "Place their remaining 3 Tents nearby, and their Ship on the left-most River space of the Main Board.",
+      "publishedDevice3Rounds": "Place a Published Device into play with a random Device Card and Neutral Invention Tile. Place your opponent’s Influence to indicate them as the Builder and Publisher.",
+      "shuffleInventionsTiles": "Shuffle their Invention Tiles and place them in a facedown Draw Pile.",
+      "noSchemeCards": "The AI does not need the scheme cards - the card deck and the AI silver is managed by this application. If you need help on an AI action, tap on the action to get the rules."
+    },
+    "dummyPlayer": {
+      "title": "Dummy Player Setup",
+      "preparation": {
+        "title": "The Dummy Player and its card deck is managed by the application. Preparation:",
+        "unusedPlayerColor": "Select an unused player colour.",
+        "ship": "Place the Ship of that colour on the left-most space of the River.",
+        "tentInfluence": "Also place 1 of the Tents and 12 Influence of that colour in a nearby Supply."
+      }
+    },
+    "ruleChanges": {
+      "title": "Rule Changes",
+      "ignoreIcons": "Your opponent ignores all icons on the Main Board, Device Boards, Device Cards, and Inventions Tiles, unless specifically told otherwise.",
+      "influenceLimit": "If your opponent ever needs to place Influence in a Guild, but have none left in their Supply, they simply place none. If they ever need to place Influence on a Device, but have none, move 1 from the leftmost Guild where they have Influence.",
+      "focus": "Many tasks will require your opponent to focus. This is done using the numbers and colours shown for each action. The numbers show their preference for focusing on a top, middle, or bottom row. If all 3 options are unavailable, the action is not possible. The colours show their Dice preference when Testing Devices.",
+      "publishBotDevice": "If you Publish a Device that your opponent Invented, you must still pay them 1 Silver."
+    }
+  },
+  "roundStart": {
+    "title": "Start of Round",
+    "royaltiesIncome": {
+      "title": "Royalties and Income",
+      "instruction": "Player: Gain Royalties and Income in any order."
+    },
+    "dummyPlayer": {
+      "title": "Dummy Player",
+      "influence": "Place Influence of the Dummy Player’s colour in the indicated Guilds.",
+      "moveShip": "Move the Dummy’s player Ship the indicated number of spaces along the River. Note that it does not collect or reveal Workshop Tiles, and does not skip empty spaces like players do.",
+      "dummyTokens": "Place the indicated Dummy Tokens on their correct spaces. 2 of these will block spaces for this Round, and the other will make 1 of the spaces cost an extra Influence to use."
+    }
+  },
+  "roundTurnPlayer": {
+    "title": "Player",
+    "execute": "Execute your turn.",
+    "botSilver": "Silver you pay to the AI:",
+    "placeTent": "Place Tent",
+    "placeTentConfirm": "Select the place for your tent:",
+    "placeDummyPlayerTent": "Place the Dummy Player Tent on an available Tent space."
+  },
+  "roundTurnBot": {
+    "title": "AI",
+    "executed": "Executed",
+    "notPossible": "Not Possible",
+    "placeTent": {
+      "title": "Tent space selected by AI:",
+      "envoy": "The AI gets 1 more Worker Scheme Card next Round <i>(managed by the application)</i>.",
+      "hireCamel": "The AI gets 1 more Dice Scheme Card next Round <i>(managed by the application)</i>.",
+      "notSelected": "Please select the AI's tenting space."
+    }
+  },
+  "roundEnd": {
+    "title": "End of Round",
+    "brightenUnusedDice": "Player: Brighten all unused Dice.",
+    "exhaustUsedDice": "Player: Exhaust all used Dice.",
+    "returnHiredCamels": "Player: Return hired Camels.",
+    "retrieveWorkers": "Retrieve Workers.",
+    "raiseTents": {
+      "title": "Raise Tents",
+      "influence": "When the AI raises their Tent, they will gain any Influence they cover.",
+      "dummyPlayer": "Remove the Dummy Player Tent from the board."
+    }
+  },
+  "gameEnd": {
+    "title": "End of Game",
+    "difficulty": "Difficulty",
+    "scoring": {
+      "title": "Victory Points",
+      "guildMajorities": "Guild Majorities",
+      "royaltiesTrack": "Royalties Track",
+      "researchTiles": "Research Tiles Influence",
+      "craftspeople": "Craftspeople",
+      "workshopTiles": "Workshop Tiles",
+      "inventionTiles": "Invention Tiles",
+      "builderPublisherInfluence": "Builder & Publisher Influence",
+      "builtPublishedDevices": "Built and Published Devices",
+      "remainingSilverDeviceCards": "Remaining Silver & Device Cards",
+      "totalVP": "Total VP"
+    }
+  },
+  "sideBar": {
+    "round": "Round {round}",
+    "turn": "Turn {turn}"
+  },
+  "difficultyLevel": {
+    "1": "Level 1",
+    "2": "Level 2",
+    "3": "Level 3",
+    "4": "Level 4"
+  },
+  "roundCount": {
+    "4": "Standard (4 Rounds)",
+    "3": "Shorter (3 Rounds)"
+  },
+  "rules": {
+    "action": {
+      "general": {
+        "silverCost": "The action is only possible if the AI can spend the indicated amount of Silver <i>(managed by the application)</i>.",
+        "influenceCost": "The action is only possible if the AI can spend the indicated Influence.",
+        "influenceBonus": "The AI places the indicated influence on Guild(s).",
+        "silverBonus": "The AI gains the indicated amount of silver <i>(managed by the application)</i>.",
+        "workerPlacement": "The action is only possible, if the AI can place a worker on one of the indicated spaces (in order of preference)."
+      },
+      "invent": {
+        "title": "Invent",
+        "chooseDevice": "Your opponent will use their number focus to Invent a particular Device.",
+        "deviceCard": "If there is a Device Board available, turn over the top Device Card from the Draw Pile. If placing it would create at least 1 Influence match, place it on that Device Board. If not, discard it and reveal a new Device Card. Keep doing this until there is at least 1 match.",
+        "gainInfluence": "After placing the Device Card, your opponent gains 1 Influence for each match. Take the top Invention Tile from their Draw Pile and place it on the Device. They ignore all other costs and effects that players are usually concerned with."
+      },
+      "build": {
+        "title": "Build",
+        "buildDevice": "Your opponent will use their number focus to Build a previously Invented Device.",
+        "turnOverTile": "Turn over and move the Invention Tile as normal. If it was your Invention Tile, you still gain the effect. Place their Influence on the Builder slot of the Device Board, and move it into the highest possible row of the next column."
+      },
+      "publish": {
+        "title": "Publish",
+        "publishDevice": "Your opponent will use their number focus to Publish a previously Built Device. If you were the Inventor, gain 1 Silver from the Main Supply.",
+        "moveDeviceBoard": "Place their Influence on the Publisher slot of the Device Board, and move it into the highest possible row of the next column. Do not slide other Built Devices up if spaces appear above them."
+      },
+      "test": {
+        "title": "Test",
+        "chooseDie": "Your opponent will use their colour focus to decide what colour Die to place. If there are no spaces on Built and Published Devices of that colour, they will look for their next colour preference.",
+        "chooseDeviceBoard": "Use their number preference to determine which row they will place the coloured Die in. If there is 1 or more available space in that row, they will place it on the left-most Built or Published Device in that row.",
+        "rollDie": "Take the coloured Die from the Main Supply and roll it. Place it on the indicated Device Board <i>(it does not matter if the rolled number was lower than other Dice on that Device Board)</i>.",
+        "gainInfluence": "If the Die covers an Influence icon, your opponent gains 1 Influence of that colour.",
+        "advanceShip": "Move their Ship the indicated number of spaces, following the same movement rules as you would."
+      },
+      "research": {
+        "title": "Research",
+        "researchSpaces": {
+          "title": "When Researching, they will only carry this out on spaces that are completely empty - no Workshop Tiles or Research Tile. They will always prioritise spaces in the following order:",
+          "currentSection": "The left-most empty space within the River section where their Ship rests, but not to the right of their Ship.",
+          "previousSection": "The left-most empty space in the River section to the left of the section where their Ship rests.",
+          "entireRiver": "The left-most empty space on the entire River, even if this is to the right of their Ship."
+        },
+        "researchTile": "After selecting a space, place their Influence on the left Influence slot. Reveal the top Research Tile from that River section’s Draw pile, and place it faceup on that space. They ignore all icons on Research Tiles."
+      },
+      "influence": {
+        "title": "Influence"
+      },
+      "silver": {
+        "title": "Silver"
+      },
+      "advanceShip": {
+        "title": "Advance Ship",
+        "moveShip": "Move their Ship 1 space, following the same movement rules as you would.",
+        "selectAction": "Select below on which space the Ship ended its movement."
+      },
+      "addDiceReserveCard": {
+        "title": "Add Dice Reserve Card",
+        "instruction": "Your opponent will shuffle the top Dice Scheme Card from the Reserve Pile into their Draw Pile <i>(managed by the application)</i>."
+      },
+      "addWorkerReserveCard": {
+        "title": "Add Worker Reserve Card",
+        "instruction": "Your opponent will shuffle the top Worker Scheme Card from the Reserve Pile into their Draw Pile <i>(managed by the application)</i>."
+      },
+      "workshopTile": {
+        "title": "Workshop Tile",
+        "instruction": "Place the Workshop Tile facedown in their Supply for end-game scoring."
+      },
+      "riverEnd": {
+        "title": "End of River",
+        "workshopTile": "If they stop at the last space of the River, take the top Workshop Tile there. If the Draw Pile has run out, take the right-most Workshop Tile from the River.",
+        "noWorkshopTiles": "If there are no Workshop Tiles remaining, they gain 2 Silver.",
+        "selectAction": "Select below which action they took at the end of the River."
+      },
+      "tent": {
+        "title": "Place Tent",
+        "placeTent": "The brown Tent icon shows where they want to place their Tent in reference to the 5 spaces of the Main Board. If that space is blocked, they take the next space to the right, wrapping back around to the left if needed.",
+        "dummyPlayerTent": "The white Tent icon shows where they will place the Dummy Player’s Tent."
+      }
+    }
+  },
+  "notfound": {
+    "title": "Not Found"
+  },
+  "action": {
+    "playGame": "Play Game",
+    "startGame": "Start Game",
+    "next": "Next",
+    "nextRound": "Next Round",
+    "abortGame": "Abort Game",
+    "abortGameConfirm": "Aborting the running game - are you sure?",
+    "endGame": "End Game",
+    "endGameConfirm": "End this game and return to home screen - are you sure?",
+    "cancel": "Cancel",
+    "backToHome": "Back to Home",
+    "back": "Back",
+    "close": "Close",
+    "ok": "OK"
+  },
+  "footer": {
+    "credits": "Credits"
+  },
+  "serviceWorkerUpdatedRefresh": {
+    "title": "Refresh Application",
+    "notice": "The application was updated - do you want to refresh to use the latest version?"
+  }
+}

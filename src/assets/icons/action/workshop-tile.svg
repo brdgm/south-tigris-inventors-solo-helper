@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 27.86 27.86">
+  <!-- Generator: Adobe Illustrator 30.1.0, SVG Export Plug-In . SVG Version: 2.1.1 Build 136)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#linear-gradient2);
+      }
+
+      .st1 {
+        fill: url(#linear-gradient1);
+      }
+
+      .st2, .st3 {
+        fill: none;
+      }
+
+      .st3 {
+        stroke: #fff;
+        stroke-miterlimit: 10;
+        stroke-width: .75px;
+      }
+
+      .st4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .st5 {
+        clip-path: url(#clippath-2);
+      }
+
+      .st6 {
+        fill: url(#linear-gradient);
+      }
+
+      .st7 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path class="st2" d="M.37,20.89v5.45c0,.63.51,1.14,1.14,1.14h24.83c.36,0,.69-.17.9-.43v-10.15L.37,20.89Z"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" x1="-351.5" y1="486.37" x2="-350.5" y2="486.37" gradientTransform="translate(9529.9 13208.43) scale(27.11 -27.11)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#00aeef"/>
+      <stop offset="1" stop-color="#004d6d"/>
+    </linearGradient>
+    <clipPath id="clippath-1">
+      <path class="st2" d="M1.52.38C.89.38.37.89.37,1.52v9.57l26.87-3.99V.81c-.21-.26-.53-.43-.9-.43H1.52Z"/>
+    </clipPath>
+    <linearGradient id="linear-gradient1" x1="-351.5" y1="486.37" x2="-350.5" y2="486.37" gradientTransform="translate(9478.81 13121) scale(26.97 -26.97)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#939598"/>
+      <stop offset="0" stop-color="#939598"/>
+      <stop offset="1" stop-color="#414042"/>
+    </linearGradient>
+    <clipPath id="clippath-2">
+      <polygon class="st2" points=".37 11.08 .37 20.89 27.24 16.9 27.24 7.09 .37 11.08"/>
+    </clipPath>
+    <linearGradient id="linear-gradient2" x1="-351.5" y1="486.31" x2="-350.5" y2="486.31" gradientTransform="translate(9529.9 13198.61) scale(27.11 -27.11)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e5a741"/>
+      <stop offset="1" stop-color="#bc5218"/>
+    </linearGradient>
+  </defs>
+  <g class="st7">
+    <rect class="st6" x=".37" y="16.9" width="26.87" height="10.58"/>
+  </g>
+  <g class="st4">
+    <rect class="st1" x=".37" y=".38" width="26.87" height="10.71"/>
+  </g>
+  <g class="st5">
+    <rect class="st0" x=".37" y="7.09" width="26.87" height="13.81"/>
+  </g>
+  <path class="st3" d="M1.52.38h24.83c.63,0,1.14.51,1.14,1.14v24.83c0,.63-.51,1.14-1.14,1.14H1.52c-.63,0-1.14-.51-1.14-1.14V1.52C.38.89.89.38,1.52.38Z"/>
+</svg>
