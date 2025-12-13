@@ -8,6 +8,7 @@ import { cloneDeep } from 'lodash'
 import getDifficultyLevelSettings from './getDifficultyLevelSettings'
 import BotActions from '@/services/BotActions'
 import getWorkerCount from './getWorkerCount'
+import getTentPlacedInfo from './getTentPlacedInfo'
 
 export default class NavigationState {
 
@@ -33,7 +34,7 @@ export default class NavigationState {
     const botPersistence = getBotPersistence(state, lookupRound, lookupTurn, this.turnOrderIndex)
     this.cardDeck = CardDeck.fromPersistence(botPersistence.cardDeck)
     this.botResources = cloneDeep(botPersistence.botResources)
-    this.tentPlaced = getTentPlaced(state, lookupRound, lookupTurn, this.turnOrderIndex)
+    this.tentPlaced = getTentPlacedInfo(state, lookupRound, lookupTurn, this.turnOrderIndex).tentPlaced
 
     if (this.player == Player.BOT) {
       this.botActions = BotActions.drawCard(this.cardDeck, botPersistence.botResources, this.tentPlaced.includes(Player.BOT))
@@ -83,11 +84,4 @@ function isRoundEndRoute(route:RouteLocation) : boolean {
 
 function isGameEndRoute(route:RouteLocation) : boolean {
   return route.name == 'GameEnd'
-}
-
-function getTentPlaced(state:State, round:number, turn:number, turnOrderIndex:number) : Player[] {
-  const roundData = state.rounds.find(item => item.round==round)
-  return roundData?.turns
-    .filter(item => item.turn < turn || (item.turn == turn && item.turnOrderIndex < turnOrderIndex))
-    .filter(item => item.tentPlaced != undefined).map(item => item.player) ?? []
 }

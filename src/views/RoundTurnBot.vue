@@ -11,8 +11,15 @@
   <BotAction v-if="placeTent" :action="tentAction" :navigationState="navigationState"/>
 
   <div v-if="placeTent" class="mt-3">
-    <p v-html="t('roundTurnBot.selectedTentSpace')"></p>
+    <p v-html="t('roundTurnBot.placeTent.title')"></p>
     <TentSpaceSelection v-model="selectedTentSpace"/>
+    <p class="mt-2" v-if="selectedTentSpace" v-html="selectedTentSpaceInfo"></p>
+  </div>
+
+  <div class="row mt-3" v-if="placeTent && !selectedTentSpace">
+    <div class="col">
+      <div class="alert alert-info" v-html="t('roundTurnBot.placeTent.notSelected')"></div>
+    </div>
   </div>
 
   <template v-if="hasMoreActions">
@@ -102,6 +109,21 @@ export default defineComponent({
     },
     tentAction() : CardAction {
       return { action: Action.TENT }
+    },
+    selectedTentSpaceInfo() : string|undefined {
+      if (this.isLastRound) {
+        return undefined
+      }
+      if (this.selectedTentSpace == TentSpace.ENVOY) {
+        return this.t('roundTurnBot.placeTent.envoy')
+      }
+      else if (this.selectedTentSpace == TentSpace.HIRE_CAMEL) {
+        return this.t('roundTurnBot.placeTent.hireCamel')
+      }
+      return undefined
+    },
+    isLastRound() : boolean {
+      return this.round == 4
     }
   },
   methods: {

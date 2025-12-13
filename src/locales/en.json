@@ -85,22 +85,18 @@
     "title": "AI",
     "executed": "Executed",
     "notPossible": "Not Possible",
-    "selectedTentSpace": "Tent space selected by AI:"
+    "placeTent": {
+      "title": "Tent space selected by AI:",
+      "envoy": "The AI gets 1 more Worker Scheme Card next Round <i>(managed by the application)</i>.",
+      "hireCamel": "The AI gets 1 more Dice Scheme Card next Round <i>(managed by the application)</i>.",
+      "notSelected": "Please select the AI's tenting space."
+    }
   },
   "roundEnd": {
     "title": "End of Round",
     "raiseTents": {
       "title": "Raise Tents",
       "influence": "When the AI raises their Tent, they will gain any Influence they cover."
-    },
-    "botTentingAreas": {
-      "title": "Did the AI raise their Tent on either of the right-most Tenting areas?",
-      "space4": "4th space (Envoy)",
-      "space4Result": "The AI gets 1 more Worker Scheme Card next Round <i>(managed by the application)</i>.",
-      "space5": "5th space (Hire Camel)",
-      "space5Result": "The AI gets 1 more Dice Scheme Card next Round <i>(managed by the application)</i>.",
-      "none": "None of those",
-      "notSelected": "Please select the AI's tenting space."
     }
   },
   "gameEnd": {
