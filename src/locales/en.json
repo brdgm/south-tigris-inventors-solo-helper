@@ -107,9 +107,9 @@
       "title": "AI Numbers",
       "count": "Count",
       "vp": "VP",
-      "workshopTiles": "Workshop Tiles collected",
-      "inventionTiles": "Invention Tiles placed",
-      "builtPublishedDevicesInfluence": "Influence on Built and Published Devices Boards"
+      "workshopTiles": "AI Workshop Tiles collected",
+      "inventionTiles": "AI Invention Tiles placed",
+      "builtPublishedDevicesInfluence": "AI Influence on Built and Published Devices Boards"
     },
     "scoring": {
       "title": "Victory Points",
