@@ -1,9 +1,22 @@
 <template>
   <SideBar :navigationState="navigationState"/>
-  <h1>{{t('roundEnd.title')}}</h1>
+  <h1>
+    <AppIcon name="round-end" class="icon"/>
+    {{t('roundEnd.title')}}
+  </h1>
 
-  <h3>{{t('roundEnd.raiseTents.title')}}</h3>
-  <p v-html="t('roundEnd.raiseTents.influence')"></p>
+  <ol class="mt-3">
+    <template v-if="!isLastRound">
+      <li v-html="t('roundEnd.brightenUnusedDice')"></li>
+      <li v-html="t('roundEnd.exhaustUsedDice')"></li>
+      <li v-html="t('roundEnd.returnHiredCamels')"></li>
+      <li v-html="t('roundEnd.retrieveWorkers')"></li>
+    </template>
+    <li v-html="t('roundEnd.raiseTents.title')"></li>
+    <ul>
+      <li v-html="t('roundEnd.raiseTents.influence')"></li>
+    </ul>
+  </ol>
 
   <button class="btn btn-primary btn-lg mt-4" @click="next()">
     {{t('action.next')}}
@@ -29,13 +42,15 @@ import getDummyCardDeck from '@/util/getDummyCardDeck'
 import RoundCount from '@/services/enum/RoundCount'
 import { MAX_TURN } from '@/util/getTurnOrder'
 import getTentPlacedInfo from '@/util/getTentPlacedInfo'
+import AppIcon from '@/components/structure/AppIcon.vue'
 
 export default defineComponent({
   name: 'RoundEnd',
   components: {
     FooterButtons,
     SideBar,
-    DebugInfo
+    DebugInfo,
+    AppIcon
   },
   setup() {
     const { t } = useI18n()
@@ -87,3 +102,13 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="scss" scoped>
+ol > li {
+  margin-top: 0.5rem;
+}
+.icon {
+  height: 2.5rem;
+  margin-top: -0.5rem;
+}
+</style>

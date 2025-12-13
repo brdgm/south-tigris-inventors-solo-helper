@@ -62,9 +62,9 @@
   },
   "roundStart": {
     "title": "Start of Round",
-    "botWorkers": {
-      "title": "AI Worker Supply",
-      "instruction": "Put <b>{count} Workers</b> into the supply of the AI."
+    "royaltiesIncome": {
+      "title": "Royalties and Income",
+      "instruction": "Player: Gain Royalties and Income in any order."
     },
     "dummyPlayer": {
       "title": "Dummy Player",
@@ -94,6 +94,10 @@
   },
   "roundEnd": {
     "title": "End of Round",
+    "brightenUnusedDice": "Player: Brighten all unused Dice.",
+    "exhaustUsedDice": "Player: Exhaust all used Dice.",
+    "returnHiredCamels": "Player: Return hired Camels.",
+    "retrieveWorkers": "Retrieve Workers.",
     "raiseTents": {
       "title": "Raise Tents",
       "influence": "When the AI raises their Tent, they will gain any Influence they cover."
