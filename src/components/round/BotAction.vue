@@ -1,6 +1,7 @@
 <template>
   <div class="actionItem">
-    <component :is="componentName" :action="action" :navigationState="navigationState"/>
+    <component :is="componentName" :action="action" :navigationState="navigationState"
+        @addActions="(actionId: string, actions: CardAction[]) => $emit('addActions', actionId, actions)"/>
   </div>
 </template>
 
@@ -19,9 +20,15 @@ import ActionAdvanceShip from './action/ActionAdvanceShip.vue'
 import ActionAddDiceReserveCard from './action/ActionAddDiceReserveCard.vue'
 import ActionTent from './action/ActionTent.vue'
 import NavigationState from '@/util/NavigationState'
+import ActionAddWorkerReserveCard from './action/ActionAddWorkerReserveCard.vue'
+import ActionWorkshopTile from './action/ActionWorkshopTile.vue'
+import ActionRiverEnd from './action/ActionRiverEnd.vue'
 
 export default defineComponent({
   name: 'BotAction',
+  emits: {
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionInvent,
     ActionBuild,
@@ -31,8 +38,11 @@ export default defineComponent({
     ActionSilver,
     ActionInfluence,
     ActionAdvanceShip,
+    ActionTent,
     ActionAddDiceReserveCard,
-    ActionTent
+    ActionAddWorkerReserveCard,
+    ActionWorkshopTile,
+    ActionRiverEnd
   },
   setup() {
     const { t } = useI18n()

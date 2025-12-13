@@ -34,6 +34,9 @@
       </div>
     </template>
   </div>
+  <div v-if="hasFollowUpAction" class="actionBox followUp col">
+    <slot name="followUpAction"></slot>
+  </div>
 
   <ModalDialog :id="modalId" :title="instructionTitle" :scrollable="true" :size-lg="modalSizeLg">
     <template #body>
@@ -147,6 +150,9 @@ export default defineComponent({
     hasPriority() : boolean {
       return this.$slots.priority !== undefined
     },
+    hasFollowUpAction() : boolean {
+      return this.$slots.followUpAction !== undefined
+    },
     hasInstruction() : boolean {
       return this.$slots.instruction !== undefined
     }
@@ -176,12 +182,21 @@ export default defineComponent({
   padding-left: 2rem;
   padding-right: 2rem;
   min-height: 7rem;
+  z-index: 20;
   &.instruction {
     cursor: pointer;
     background-image: url('@/assets/icons/help-semi-transparent.webp');
     background-repeat: no-repeat;
     background-position: right 5px top 5px;
     background-size: 1.25rem;
+  }
+  &.followUp {
+    margin-top: -15px;
+    padding-top: 25px;
+    border-style: none;
+    background-color: #caac8c;
+    min-height: 0;
+    z-index: 10;
   }
   .workerPlacement {
     display: flex;

@@ -1,16 +1,17 @@
 <template>
-  <ActionBox :action="action" :navigationState="navigationState" :instruction-title="t('rules.action.advanceShip.title')">
+  <ActionBox :action="action" :navigationState="navigationState" :instruction-title="t('rules.action.riverEnd.title')">
     <template #action>
       <div class="action">
-        <AppIcon type="action" :name="action.action" class="icon"/>
+        <AppIcon type="ship-target" name="river-end" extension="webp" class="icon"/>
       </div>
     </template>
     <template #followUpAction>
-      <AdvanceShipFollowUpActions @addActions="(actionId, actions) => $emit('addActions', actionId, actions)"/>
+      <RiverEndFollowUpActions @addActions="(actionId, actions) => $emit('addActions', actionId, actions)"/>
     </template>
     <template #instruction>
-      <p v-html="t('rules.action.advanceShip.moveShip')"/>
-      <p class="fw-bold" v-html="t('rules.action.advanceShip.selectAction')"/>
+      <p v-html="t('rules.action.riverEnd.workshopTile')"/>
+      <p v-html="t('rules.action.riverEnd.noWorkshopTiles')"/>
+      <p class="fw-bold" v-html="t('rules.action.riverEnd.selectAction')"/>
     </template>
   </ActionBox>
 </template>
@@ -22,10 +23,10 @@ import { CardAction } from '@/services/Card'
 import ActionBox from '../ActionBox.vue'
 import AppIcon from '@/components/structure/AppIcon.vue'
 import NavigationState from '@/util/NavigationState'
-import AdvanceShipFollowUpActions from './followup/AdvanceShipFollowUpActions.vue'
+import RiverEndFollowUpActions from './followup/RiverEndFollowUpActions.vue'
 
 export default defineComponent({
-  name: 'ActionAdvanceShip',
+  name: 'ActionRiverEnd',
   inheritAttrs: false,
   emits: {
     addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
@@ -33,7 +34,7 @@ export default defineComponent({
   components: {
     ActionBox,
     AppIcon,
-    AdvanceShipFollowUpActions
+    RiverEndFollowUpActions
   },
   setup() {
     const { t } = useI18n()
@@ -61,6 +62,6 @@ export default defineComponent({
   gap: 10px;
 }
 .icon {
-  height: 3rem;
+  height: 4rem;
 }
 </style>

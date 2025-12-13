@@ -57,7 +57,8 @@
       "title": "Rule Changes",
       "ignoreIcons": "Your opponent ignores all icons on the Main Board, Device Boards, Device Cards, and Inventions Tiles, unless specifically told otherwise.",
       "influenceLimit": "If your opponent ever needs to place Influence in a Guild, but have none left in their Supply, they simply place none. If they ever need to place Influence on a Device, but have none, move 1 from the leftmost Guild where they have Influence.",
-      "focus": "Many tasks will require your opponent to focus. This is done using the numbers and colours shown for each action. The numbers show their preference for focusing on a top, middle, or bottom row. If all 3 options are unavailable, the action is not possible. The colours show their Dice preference when Testing Devices."
+      "focus": "Many tasks will require your opponent to focus. This is done using the numbers and colours shown for each action. The numbers show their preference for focusing on a top, middle, or bottom row. If all 3 options are unavailable, the action is not possible. The colours show their Dice preference when Testing Devices.",
+      "publishBotDevice": "If you Publish a Device that your opponent Invented, you must still pay 1 Silver to their Supply."
     }
   },
   "roundStart": {
@@ -165,8 +166,8 @@
         "chooseDie": "Your opponent will use their colour focus to decide what colour Die to place. If there are no spaces on Built and Published Devices of that colour, they will look for their next colour preference.",
         "chooseDeviceBoard": "Use their number preference to determine which row they will place the coloured Die in. If there is 1 or more available space in that row, they will place it on the left-most Built or Published Device in that row.",
         "rollDie": "Take the coloured Die from the Main Supply and roll it. Place it on the indicated Device Board <i>(it does not matter if the rolled number was lower than other Dice on that Device Board)</i>.",
-        "gainInfluenceAdvanceShip": "If the Die covers an Influence icon, your opponent gains 1 Influence of that colour. Move their Ship the indicated number of spaces, following the same movement rules as you would.",
-        "workshopTile": "If they stop at a space with a Workshop Tile, place it facedown in their Supply for end-game scoring."
+        "gainInfluence": "If the Die covers an Influence icon, your opponent gains 1 Influence of that colour.",
+        "advanceShip": "Move their Ship the indicated number of spaces, following the same movement rules as you would."
       },
       "research": {
         "title": "Research",
@@ -186,11 +187,26 @@
       },
       "advanceShip": {
         "title": "Advance Ship",
-        "moveShip": "Move their Ship 1 space, following the same movement rules as you would."
+        "moveShip": "Move their Ship 1 space, following the same movement rules as you would.",
+        "selectAction": "Select below on which space the Ship ended its movement."
       },
       "addDiceReserveCard": {
         "title": "Add Dice Reserve Card",
         "instruction": "Your opponent will shuffle the top Dice Scheme Card from the Reserve Pile into their Draw Pile <i>(managed by the application)</i>."
+      },
+      "addWorkerReserveCard": {
+        "title": "Add Worker Reserve Card",
+        "instruction": "Your opponent will shuffle the top Worker Scheme Card from the Reserve Pile into their Draw Pile <i>(managed by the application)</i>."
+      },
+      "workshopTile": {
+        "title": "Workshop Tile",
+        "instruction": "Place the Workshop Tile facedown in their Supply for end-game scoring."
+      },
+      "riverEnd": {
+        "title": "End of River",
+        "workshopTile": "If they stop at the last space of the River, take the top Workshop Tile there. If the Draw Pile has run out, take the right-most Workshop Tile from the River.",
+        "noWorkshopTiles": "If there are no Workshop Tiles remaining, they gain 2 Silver.",
+        "selectAction": "Select below which action they took at the end of the River."
       },
       "tent": {
         "title": "Place Tent",

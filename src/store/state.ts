@@ -78,7 +78,8 @@ export interface BotPersistence {
 export interface CardDeckPersistence {
   pile: number[]
   discard: number[]
-  reserve: number[]
+  reserveDice: number[]
+  reserveWorker: number[]
 }
 export interface DummyCardDeckPersistence {
   pile: number[]

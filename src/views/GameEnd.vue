@@ -7,6 +7,8 @@
     {{t('gameEnd.difficulty')}}: <b>{{t(`difficultyLevel.${state.setup.difficultyLevel}`)}}</b>
   </p>
 
+  <DebugInfo :navigationState="navigationState"/>
+
   <FooterButtons endGameButtonType="endGame"/>
 </template>
 
@@ -18,12 +20,14 @@ import NavigationState from '@/util/NavigationState'
 import FooterButtons from '@/components/structure/FooterButtons.vue'
 import { useStateStore } from '@/store/state'
 import FinalScoring from '@/components/scoring/FinalScoring.vue'
+import DebugInfo from '@/components/round/DebugInfo.vue'
 
 export default defineComponent({
   name: 'GameEnd',
   components: {
     FooterButtons,
-    FinalScoring
+    FinalScoring,
+    DebugInfo
   },
   setup() {
     const { t } = useI18n()

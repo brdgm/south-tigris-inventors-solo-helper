@@ -23,6 +23,9 @@ import BotPlaceTent from '@/components/structure/BotPlaceTent.vue'
 export default defineComponent({
   name: 'ActionTent',
   inheritAttrs: false,
+  emits: {
+    addActions: (_actionId: string, _actions: CardAction[]) => true  // eslint-disable-line @typescript-eslint/no-unused-vars
+  },
   components: {
     ActionBox,
     BotPlaceTent

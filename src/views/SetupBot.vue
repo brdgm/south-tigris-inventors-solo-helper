@@ -42,6 +42,7 @@
           <li v-html="t('setupBot.ruleChanges.ignoreIcons')"></li>
           <li v-html="t('setupBot.ruleChanges.influenceLimit')"></li>
           <li v-html="t('setupBot.ruleChanges.focus')"></li>
+          <li v-html="t('setupBot.ruleChanges.publishBotDevice')"></li>
         </ul>
       </div>
     </div>
