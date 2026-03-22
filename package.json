@@ -1,6 +1,6 @@
 {
   "name": "@brdgm/south-tigris-inventors-solo-helper",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": true,
   "description": "Inventors of the South Tigris Solo Helper",
   "appDeployName": "south-tigris-inventors",
