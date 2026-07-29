@@ -59,12 +59,13 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
 
   // get botResources from previous round
   let botResources : BotResources
-  if (round > 1) {
+  const firstRound = state.setup.roundCount === RoundCount.SHORT_3_ROUNDS ? 2 : 1
+  if (round > firstRound) {
     // from previous round: add 3 silver, start with new workers
     const previousRoundBotResource = getBotPersistence(state, round-1, MAX_TURN, 0).botResources
     botResources = {
       silver: previousRoundBotResource.silver + 3,
-      workers: getWorkerCount(round),
+      workers: getWorkerCount(),
       workshopTiles: previousRoundBotResource.workshopTiles,
       inventionTiles: previousRoundBotResource.inventionTiles,
       builtDevices: previousRoundBotResource.builtDevices,
@@ -75,7 +76,7 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
     const shortGame = state.setup.roundCount == RoundCount.SHORT_3_ROUNDS
     botResources = {
       silver: 3 + (getDifficultyLevelSettings(state.setup.difficultyLevel).additionalSetupSilver ?? 0),
-      workers: getWorkerCount(round),
+      workers: getWorkerCount(),
       workshopTiles: 0,
       inventionTiles: 0,
       builtDevices: shortGame ? 1 : 0,
