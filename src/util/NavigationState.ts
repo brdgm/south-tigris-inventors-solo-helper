@@ -59,7 +59,8 @@ function getBotPersistence(state:State, round:number, turn:number, turnOrderInde
 
   // get botResources from previous round
   let botResources : BotResources
-  if (round > 1) {
+  const firstRound = state.setup.roundCount === RoundCount.SHORT_3_ROUNDS ? 2 : 1
+  if (round > firstRound) {
     // from previous round: add 3 silver, start with new workers
     const previousRoundBotResource = getBotPersistence(state, round-1, MAX_TURN, 0).botResources
     botResources = {
