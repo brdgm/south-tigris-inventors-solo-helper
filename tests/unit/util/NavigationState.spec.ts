@@ -65,7 +65,7 @@ describe('util/NavigationState', () => {
     const underTest = navigationState('RoundTurnPlayer',{round:'2',turn:'1',turnOrderIndex:'0'})
     expect(underTest.round).to.equal(2)
     expect(underTest.turn).to.equal(1)
-    expect(underTest.cardDeck.toPersistence().discard.length).to.eq(0)
+    expect(underTest.cardDeck.toPersistence().discard).to.have.lengthOf(0)
     expect(underTest.botResources).to.eql(mockBotResources({silver:7, workers:2}))
     expect(underTest.tentPlaced).to.eql([])
   })
