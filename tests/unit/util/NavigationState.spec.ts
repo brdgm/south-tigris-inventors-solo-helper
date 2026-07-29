@@ -39,7 +39,7 @@ describe('util/NavigationState', () => {
     expect(underTest.round).to.equal(1)
     expect(underTest.turn).to.equal(1)
     expect(underTest.cardDeck.toPersistence()).to.eql(mockCardDeck({pile:[1,2,3,4]}).toPersistence())
-    expect(underTest.botResources).to.eql(mockBotResources({silver:6, workers:2}))
+    expect(underTest.botResources).to.eql(mockBotResources({silver:6, workers:3}))
     expect(underTest.tentPlaced).to.eql([])
   })
 
@@ -66,7 +66,7 @@ describe('util/NavigationState', () => {
     expect(underTest.round).to.equal(2)
     expect(underTest.turn).to.equal(1)
     expect(underTest.cardDeck.toPersistence().discard).to.have.lengthOf(0)
-    expect(underTest.botResources).to.eql(mockBotResources({silver:7, workers:2}))
+    expect(underTest.botResources).to.eql(mockBotResources({silver:7, workers:3}))
     expect(underTest.tentPlaced).to.eql([])
   })
 
@@ -75,7 +75,7 @@ describe('util/NavigationState', () => {
     expect(underTest.round).to.equal(2)
     expect(underTest.turn).to.equal(1)
     expect(underTest.cardDeck.toPersistence()).to.eql(mockCardDeck({pile:[1,2,3,4]}).toPersistence())
-    expect(underTest.botResources).to.eql(mockBotResources({silver:3, workers:2, builtDevices:1, publishedDevices:1}))
+    expect(underTest.botResources).to.eql(mockBotResources({silver:3, workers:3, builtDevices:1, publishedDevices:1}))
     expect(underTest.tentPlaced).to.eql([])
   })
 
