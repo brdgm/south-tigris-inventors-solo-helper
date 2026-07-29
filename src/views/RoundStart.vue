@@ -65,7 +65,7 @@ export default defineComponent({
       return  `/round/${this.round - 1}/end`
     },
     botWorkerCount() : number {
-      return getWorkerCount(this.round)
+      return getWorkerCount()
     },
     isFirstRound() : boolean {
       return this.round == 1 || (this.state.setup.roundCount==RoundCount.SHORT_3_ROUNDS && this.round == 2)
